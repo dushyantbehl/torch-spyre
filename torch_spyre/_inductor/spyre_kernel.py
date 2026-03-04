@@ -41,6 +41,7 @@ from .constants import (
 from . import Unsupported
 from .ir import FixedTiledLayout
 from .pass_utils import map_dims_to_vars
+from .debug_trace import trace_opfunc, trace_kernel_spec
 
 
 class RValue(ABC):
@@ -134,11 +135,14 @@ class SpyreOpFuncs:
 
     @staticmethod
     def layernormnorm(*args):
-        return PointwiseOp("layernormnorm", list(args))
+        result = PointwiseOp("layernormnorm", list(args))
+        trace_opfunc("layernormnorm", "layernormnorm", [f"arg{i}" for i in range(len(args))])
+        return result
 
     @staticmethod
     def layernormscale(x, eps):
         op_info = {"constants": {"eps": eps}}
+        trace_opfunc("layernormscale", "layernormscale", [repr(x)], op_info)
         return PointwiseOp("layernormscale", [x], op_info)
 
     @staticmethod
@@ -193,7 +197,9 @@ class SpyreOpFuncs:
                 "softplusThresh": threshold,
             }
         }
-        return PointwiseOp("softplus", [x], op_info)
+        result = PointwiseOp("softplus", [x], op_info)
+        trace_opfunc("softplus", "softplus", [repr(x)], op_info)
+        return result
 
     @staticmethod
     def sqrt(x):
@@ -417,9 +423,9 @@ class SpyreKernel(SIMDKernel[CSEVariable]):
             )
             scales.append(scale)
             op_info.update(value.op_info)
-            self.kernel_specs.append(
-                create_kernel_spec(value.op, False, di, args, scales, op_info)
-            )
+            ks = create_kernel_spec(value.op, False, di, args, scales, op_info)
+            self.kernel_specs.append(ks)
+            trace_kernel_spec(ks)
         elif isinstance(value, TensorAccess):
             # Reshapes, transposes, and other dataops
             in_di = self.derive_dim_info(value)
@@ -487,6 +493,7 @@ class SpyreKernel(SIMDKernel[CSEVariable]):
                 ks.op_info["transposed_dims"] = [0, 1]
 
             self.kernel_specs.append(ks)
+            trace_kernel_spec(ks)
         else:
             raise Unsupported(f"store value of unexpected type {type(value)}")
 
@@ -554,9 +561,9 @@ class SpyreKernel(SIMDKernel[CSEVariable]):
                 self.analyze_tensor_access(di, y),
                 self.analyze_tensor_access(di, dst),
             ]
-            self.kernel_specs.append(
-                create_kernel_spec(value.op, True, di, args, scales, op_info)
-            )
+            ks = create_kernel_spec(value.op, True, di, args, scales, op_info)
+            self.kernel_specs.append(ks)
+            trace_kernel_spec(ks)
         elif value.op == BATCH_MATMUL_OP:
             if (
                 len(value.arguments) != 2
@@ -605,9 +612,9 @@ class SpyreKernel(SIMDKernel[CSEVariable]):
                 self.analyze_tensor_access(di, y),
                 self.analyze_tensor_access(di, dst),
             ]
-            self.kernel_specs.append(
-                create_kernel_spec(value.op, True, di, args, scales, op_info)
-            )
+            ks = create_kernel_spec(value.op, True, di, args, scales, op_info)
+            self.kernel_specs.append(ks)
+            trace_kernel_spec(ks)
         else:
             # All other reductions have exactly one input which is a tensor
             if (not len(value.arguments) == 1) or (
@@ -624,9 +631,9 @@ class SpyreKernel(SIMDKernel[CSEVariable]):
                 self.analyze_tensor_access(di, x),
                 self.analyze_tensor_access(di, dst),
             ]
-            self.kernel_specs.append(
-                create_kernel_spec(value.op, True, di, args, scales, op_info)
-            )
+            ks = create_kernel_spec(value.op, True, di, args, scales, op_info)
+            self.kernel_specs.append(ks)
+            trace_kernel_spec(ks)
 
     def analyze_tensor_access(
         self,

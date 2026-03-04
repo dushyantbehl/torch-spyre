@@ -22,6 +22,7 @@ from torch._inductor.runtime.runtime_utils import cache_dir
 from torch_spyre._C import convert_artifacts
 from torch_spyre._inductor.codegen.superdsc import generate_sdsc
 from torch_spyre._inductor.constants import SEGMENT_OFFSETS
+from torch_spyre._inductor.debug_trace import trace_sdsc_input, trace_sdsc_output
 from . import KernelSpec, ConstantArg, UnimplementedOp
 from .kernel_runner import (
     SpyreSDSCKernelRunner,
@@ -92,8 +93,10 @@ class SpyreAsyncCompile:
         }
         if ks.op_info is not None:
             kernel_descriptor["op_info"] = ks.op_info
+        trace_sdsc_input(kernel_name, kernel_descriptor)
         pointers = dict(zip(_argument_names, SEGMENT_OFFSETS))
         dt_sdsc = generate_sdsc(pointers, **kernel_descriptor)
+        trace_sdsc_output(kernel_name, dt_sdsc)
         kernel_output_dir = get_output_dir(kernel_name)
         subdir = os.path.join(kernel_output_dir, "execute", kernel_name)
         os.makedirs(subdir, exist_ok=True)

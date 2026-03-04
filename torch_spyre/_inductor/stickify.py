@@ -37,6 +37,7 @@ from . import Unsupported
 from .constants import MATMUL_REDUCTION_OP, BATCH_MATMUL_OP
 from .ir import FixedTiledLayout
 from .pass_utils import SchedNodeArg, get_mem_deps, map_dims_to_vars
+from .debug_trace import trace_layout_input, trace_layout_output, is_enabled as _trace_enabled
 
 
 aten = torch.ops.aten
@@ -277,16 +278,53 @@ def propagate_spyre_tensor_layouts(
     # Visit them and use the inputs' FixedTiledLayouts and the operation being
     # performed by the node to convert its output FixedLayouts to FixedTiledLayouts.
 
+    def _fmt_arg_layout(arg: SchedNodeArg) -> dict:
+        """Format a SchedNodeArg's layout for tracing."""
+        info = {"host_size": list(arg.layout.size), "dtype": str(arg.layout.dtype)}
+        if isinstance(arg.layout, FixedTiledLayout):
+            stl = arg.layout.device_layout
+            info["device_size"] = list(stl.device_size)
+            info["dim_map"] = list(stl.dim_map)
+        return info
+
+    def _fmt_output_layout(layout) -> dict:
+        """Format an output layout for tracing."""
+        info = {"host_size": list(layout.size), "dtype": str(layout.dtype)}
+        if isinstance(layout, FixedTiledLayout):
+            stl = layout.device_layout
+            info["device_size"] = list(stl.device_size)
+            info["dim_map"] = list(stl.dim_map)
+            info["device_dtype"] = str(stl.device_dtype)
+        return info
+
     it = iter(nodes)
     for n in it:
         if isinstance(n, SchedulerNode) and isinstance(n.node, ComputedBuffer):
             n.node.decide_layout()
             if isinstance(n.node.data, Pointwise):
-                output_layout = pointwise_layout(n, get_mem_deps(n))
+                args = get_mem_deps(n)
+                if _trace_enabled():
+                    origin = next(iter(n.node.data.origins), None)
+                    op_name = str(origin.target) if origin else "unknown"
+                    trace_layout_input(
+                        n.node.name, f"Pointwise({op_name})",
+                        [_fmt_arg_layout(a) for a in args],
+                    )
+                output_layout = pointwise_layout(n, args)
                 n.node.layout = output_layout
+                if _trace_enabled():
+                    trace_layout_output(n.node.name, _fmt_output_layout(output_layout))
             elif isinstance(n.node.data, Reduction):
-                output_layout = reduction_layout(n, get_mem_deps(n))
+                args = get_mem_deps(n)
+                if _trace_enabled():
+                    trace_layout_input(
+                        n.node.name, f"Reduction({n.node.data.reduction_type})",
+                        [_fmt_arg_layout(a) for a in args],
+                    )
+                output_layout = reduction_layout(n, args)
                 n.node.layout = output_layout
+                if _trace_enabled():
+                    trace_layout_output(n.node.name, _fmt_output_layout(output_layout))
             else:
                 print(f"Warning: unhandled node type {type(n.node)}")
         elif isinstance(n, ExternKernelSchedulerNode):

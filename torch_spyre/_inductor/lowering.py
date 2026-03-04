@@ -27,6 +27,7 @@ from torch_spyre._C import get_elem_in_stick
 from torch_spyre.fallbacks import fallback_ops
 from .ir import SpyreReduction
 from torch._inductor.virtualized import V
+from .debug_trace import trace_lowering
 
 # The specific spyre lowerings will be registered into this dictionary
 # and merged with the in-tree lowerings when needed
@@ -248,6 +249,14 @@ def lower_slice(x):
 
 @register_spyre_lowering(torch.ops.spyre.exx2)
 def lower_exx2(x, exx2Scale, useZeroMean):
+    trace_lowering(
+        "spyre.exx2",
+        {"x.size": list(x.get_size()), "x.dtype": str(x.get_dtype()),
+         "exx2Scale": exx2Scale, "useZeroMean": useZeroMean},
+        {"ir_type": "SpyreReduction", "reduction_type": "exx2",
+         "ranges": list(x.get_size()[:-1]) + [f"elem_in_stick({x.get_dtype()})"],
+         "reduction_ranges": "last dim"},
+    )
     kwargs = lowering._make_reduction_inner(
         x, axis=[-1], keepdims=True, dtype=x.dtype, override_return_dtype=None
     )
@@ -274,6 +283,14 @@ def lower_exx2(x, exx2Scale, useZeroMean):
 
 @register_spyre_lowering(torch.ops.spyre.layernormnorm)
 def lower_layernormnorm(x, mean, norm_mean, weight, bias):
+    trace_lowering(
+        "spyre.layernormnorm",
+        {"x.size": list(x.get_size()), "mean.size": list(mean.get_size()),
+         "norm_mean.size": list(norm_mean.get_size()),
+         "has_weight": weight is not None, "has_bias": bias is not None},
+        {"ir_type": "Pointwise", "ranges": list(x.get_size()),
+         "inner_fn": "layernormnorm(x, mean, norm_mean, [weight], [bias])"},
+    )
     fn = lowering.ops_wrapper(torch.ops.spyre.layernormnorm.__name__)
 
     def inner_fn(index):
@@ -302,6 +319,12 @@ def lower_layernormnorm(x, mean, norm_mean, weight, bias):
 
 @register_spyre_lowering(torch.ops.spyre.layernormscale)
 def lower_layernormscale(x, eps):
+    trace_lowering(
+        "spyre.layernormscale",
+        {"x.size": list(x.get_size()), "x.dtype": str(x.get_dtype()), "eps": eps},
+        {"ir_type": "Pointwise", "ranges": list(x.get_size()),
+         "inner_fn": f"layernormscale(load(x), eps={eps})"},
+    )
     fn = lowering.ops_wrapper(torch.ops.spyre.layernormscale.__name__)
 
     def inner_fn(index):
@@ -353,6 +376,13 @@ def lower_gelu(x, approximate="none"):
 
 @register_spyre_lowering(torch.ops.spyre.softplus)
 def lower_softplus(x, beta=1.0, threshold=20.0):
+    trace_lowering(
+        "spyre.softplus",
+        {"x.size": list(x.get_size()), "x.dtype": str(x.get_dtype()),
+         "x.device": str(x.get_device()), "beta": beta, "threshold": threshold},
+        {"ir_type": "Pointwise", "ranges": list(x.get_size()),
+         "inner_fn": f"softplus(load(x), beta={beta}, threshold={threshold})"},
+    )
     fn = lowering.ops_wrapper(torch.ops.spyre.softplus.__name__)
 
     def inner_fn(index):

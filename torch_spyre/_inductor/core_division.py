@@ -35,6 +35,7 @@ from . import Unsupported
 from .constants import MATMUL_REDUCTION_OP, BATCH_MATMUL_OP
 from .ir import FixedTiledLayout
 from .pass_utils import SchedNodeArg, get_mem_deps
+from .debug_trace import trace_core_division
 
 
 aten = torch.ops.aten
@@ -403,8 +404,20 @@ def core_division_planning(
         if isinstance(n, SchedulerNode) and isinstance(n.node, ComputedBuffer):
             if isinstance(n.node.data, Pointwise):
                 divide_pointwise_op(n, get_mem_deps(n), max_cores)
+                trace_core_division(n.node.name, "Pointwise", {
+                    "max_cores": max_cores,
+                    "n_cores_used": getattr(n, "n_cores_used", 1),
+                    "core_division": getattr(n, "spyre_core_division", None),
+                    "output_device_size": list(n.node.get_layout().device_layout.device_size)
+                        if isinstance(n.node.get_layout(), FixedTiledLayout) else "N/A",
+                })
             elif isinstance(n.node.data, Reduction):
                 divide_reduction_op(n, get_mem_deps(n), max_cores)
+                trace_core_division(n.node.name, f"Reduction({n.node.data.reduction_type})", {
+                    "max_cores": max_cores,
+                    "n_cores_used": getattr(n, "n_cores_used", 1),
+                    "core_division": getattr(n, "spyre_core_division", None),
+                })
             else:
                 # Core division not supported on other IRNode types
                 pass

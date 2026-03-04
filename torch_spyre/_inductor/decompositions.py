@@ -17,6 +17,7 @@ from typing import Optional, Sequence, Union
 import torch
 
 from torch._inductor.decomposition import register_decomposition
+from .debug_trace import trace_decomposition
 
 
 @register_decomposition([torch.ops.spyre.compact])
@@ -32,6 +33,13 @@ def layernorm_decomp(
     bias: Optional[torch.Tensor] = None,
     eps: float = 1e-5,
 ) -> torch.Tensor:
+    trace_decomposition(
+        "spyre.layer_norm → exx2 + layernormscale + layernormnorm",
+        {"input.shape": list(input.shape) if hasattr(input, 'shape') else "symbolic",
+         "normalized_shape": normalized_shape, "eps": eps,
+         "has_weight": weight is not None, "has_bias": bias is not None},
+        "exx2(input, 1/N, False) → layernormscale(mean, eps) → layernormnorm(input, mean, scale, weight, bias)",
+    )
     mean = torch.ops.spyre.exx2(input, 1.0 / normalized_shape[0], False)
     norm_mean = torch.ops.spyre.layernormscale(mean, eps)
     return torch.ops.spyre.layernormnorm(input, mean, norm_mean, weight, bias)
@@ -75,6 +83,13 @@ def spyre_layer_norm(
     eps: float = 1e-5,
 ) -> torch.Tensor:
     if input.device.type == "spyre" and len(normalized_shape) == 1:
+        trace_decomposition(
+            "F.layer_norm → spyre.layer_norm",
+            {"input.shape": list(input.shape), "input.dtype": str(input.dtype),
+             "normalized_shape": list(normalized_shape), "eps": eps,
+             "has_weight": weight is not None, "has_bias": bias is not None},
+            "torch.ops.spyre.layer_norm(input, normalized_shape, weight, bias, eps)",
+        )
         return torch.ops.spyre.layer_norm(input, normalized_shape, weight, bias, eps)
     else:
         return orig_layer_norm(input, normalized_shape, weight, bias, eps)
@@ -105,6 +120,12 @@ def spyre_softplus(
     input: torch.Tensor, beta: float = 1.0, threshold: float = 20.0
 ) -> torch.Tensor:
     if input.device.type == "spyre":
+        trace_decomposition(
+            "F.softplus → spyre.softplus",
+            {"input.shape": list(input.shape), "input.dtype": str(input.dtype),
+             "beta": beta, "threshold": threshold},
+            "torch.ops.spyre.softplus(input, beta, threshold)",
+        )
         return torch.ops.spyre.softplus(input, beta, threshold)
     else:
         return orig_softplus(input, beta, threshold)
