@@ -24,6 +24,7 @@ from torch_spyre._inductor.codegen.superdsc import compile_op_spec
 from torch_spyre._inductor.logging_utils import get_inductor_logger, _get_env_bool
 from torch_spyre._inductor.op_spec import OpSpec, UnimplementedOp
 from .kernel_runner import SpyreSDSCKernelRunner, SpyreUnimplementedRunner
+from torch_spyre._inductor.codegen.validate_superdsc import validate_superdsc
 
 logger = get_inductor_logger("sdsc_compile")
 
@@ -53,6 +54,8 @@ class SpyreAsyncCompile:
             sdsc_json, arg_map = compile_op_spec(kernel_name, ks)
             sdscs_json.append(sdsc_json)
             arg_mappings.append(arg_map)
+        validate_superdsc(sdscs_json)
+
 
         # Write SDSCs to file system, invoke backend compiler, and return KernelRunner
         kernel_output_dir = get_output_dir(kernel_name)
