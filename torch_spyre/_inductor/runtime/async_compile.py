@@ -21,6 +21,7 @@ import subprocess
 from torch._inductor.runtime.runtime_utils import cache_dir
 from torch_spyre._C import convert_artifacts
 from torch_spyre._inductor.codegen.superdsc import generate_sdsc
+from torch_spyre._inductor.codegen.validate_superdsc import validate_superdsc
 from torch_spyre._inductor.constants import SEGMENT_OFFSETS
 from . import KernelSpec, ConstantArg, UnimplementedOp
 from .kernel_runner import (
@@ -94,6 +95,7 @@ class SpyreAsyncCompile:
             kernel_descriptor["op_info"] = ks.op_info
         pointers = dict(zip(_argument_names, SEGMENT_OFFSETS))
         dt_sdsc = generate_sdsc(pointers, **kernel_descriptor)
+        validate_superdsc(dt_sdsc)
         kernel_output_dir = get_output_dir(kernel_name)
         subdir = os.path.join(kernel_output_dir, "execute", kernel_name)
         os.makedirs(subdir, exist_ok=True)
