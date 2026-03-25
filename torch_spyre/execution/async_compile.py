@@ -24,6 +24,7 @@ from torch_spyre._inductor.codegen.superdsc import compile_op_spec
 from torch_spyre._inductor.logging_utils import get_inductor_logger, _get_env_bool
 from torch_spyre._inductor.op_spec import OpSpec, UnimplementedOp
 from .kernel_runner import SpyreSDSCKernelRunner, SpyreUnimplementedRunner
+from torch_spyre._inductor.codegen.validate_superdsc import validate_superdsc
 
 logger = get_inductor_logger("sdsc_compile")
 
@@ -51,6 +52,7 @@ class SpyreAsyncCompile:
                 return SpyreUnimplementedRunner(kernel_name, ks.op)
 
             dt_sdsc, arg_map = compile_op_spec(kernel_name, ks)
+            validate_superdsc(dt_sdsc)
             sdscs.append(dt_sdsc)
             arg_mappings.append(arg_map)
 
