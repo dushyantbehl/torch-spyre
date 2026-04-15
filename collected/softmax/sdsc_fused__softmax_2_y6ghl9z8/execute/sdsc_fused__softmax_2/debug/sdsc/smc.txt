@@ -1,0 +1,4672 @@
+/// @core:0
+
+
+/// @unit:l3lu
+/// @regInit:LAR:R0:410
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:0
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_LDMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SYNC synctag=83
+L3_SUBLARIMM be=be imm=852 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:l3su
+/// @regInit:LAR:R0:474
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:134217728
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_SYNC synctag=163
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_STMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SUBLARIMM be=be imm=980 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:lxlu0
+/// @regInit:R0:1625216:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1159425 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu0
+/// @regInit:R0:1633408:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1175809 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxlu1
+/// @regInit:R0:1627264:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1163521 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu1
+/// @regInit:R0:1635456:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1179905 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:sfp0
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:sfp1
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:pe0
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+/// @unit:pe1
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+
+/// @core:1
+
+
+/// @unit:l3lu
+/// @regInit:LAR:R0:410
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:16
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_LDMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SYNC synctag=83
+L3_SUBLARIMM be=be imm=852 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:l3su
+/// @regInit:LAR:R0:474
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:134217744
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_SYNC synctag=163
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_STMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SUBLARIMM be=be imm=980 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:lxlu0
+/// @regInit:R0:1625216:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1159425 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu0
+/// @regInit:R0:1633408:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1175809 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxlu1
+/// @regInit:R0:1627264:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1163521 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu1
+/// @regInit:R0:1635456:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1179905 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:sfp0
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:sfp1
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:pe0
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+/// @unit:pe1
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+
+/// @core:2
+
+
+/// @unit:l3lu
+/// @regInit:LAR:R0:410
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:32
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_LDMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SYNC synctag=83
+L3_SUBLARIMM be=be imm=852 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:l3su
+/// @regInit:LAR:R0:474
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:134217760
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_SYNC synctag=163
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_STMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SUBLARIMM be=be imm=980 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:lxlu0
+/// @regInit:R0:1625216:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1159425 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu0
+/// @regInit:R0:1633408:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1175809 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxlu1
+/// @regInit:R0:1627264:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1163521 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu1
+/// @regInit:R0:1635456:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1179905 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:sfp0
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:sfp1
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:pe0
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+/// @unit:pe1
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+
+/// @core:3
+
+
+/// @unit:l3lu
+/// @regInit:LAR:R0:410
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:48
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_LDMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SYNC synctag=83
+L3_SUBLARIMM be=be imm=852 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:l3su
+/// @regInit:LAR:R0:474
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:134217776
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_SYNC synctag=163
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_STMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SUBLARIMM be=be imm=980 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:lxlu0
+/// @regInit:R0:1625216:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1159425 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu0
+/// @regInit:R0:1633408:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1175809 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxlu1
+/// @regInit:R0:1627264:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1163521 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu1
+/// @regInit:R0:1635456:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1179905 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:sfp0
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:sfp1
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:pe0
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+/// @unit:pe1
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+
+/// @core:4
+
+
+/// @unit:l3lu
+/// @regInit:LAR:R0:410
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:64
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_LDMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SYNC synctag=83
+L3_SUBLARIMM be=be imm=852 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:l3su
+/// @regInit:LAR:R0:474
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:134217792
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_SYNC synctag=163
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_STMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SUBLARIMM be=be imm=980 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:lxlu0
+/// @regInit:R0:1625216:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1159425 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu0
+/// @regInit:R0:1633408:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1175809 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxlu1
+/// @regInit:R0:1627264:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1163521 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu1
+/// @regInit:R0:1635456:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1179905 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:sfp0
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:sfp1
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:pe0
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+/// @unit:pe1
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+
+/// @core:5
+
+
+/// @unit:l3lu
+/// @regInit:LAR:R0:410
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:80
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_LDMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SYNC synctag=83
+L3_SUBLARIMM be=be imm=852 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:l3su
+/// @regInit:LAR:R0:474
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:134217808
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_SYNC synctag=163
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_STMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SUBLARIMM be=be imm=980 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:lxlu0
+/// @regInit:R0:1625216:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1159425 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu0
+/// @regInit:R0:1633408:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1175809 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxlu1
+/// @regInit:R0:1627264:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1163521 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu1
+/// @regInit:R0:1635456:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1179905 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:sfp0
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:sfp1
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:pe0
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+/// @unit:pe1
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+
+/// @core:6
+
+
+/// @unit:l3lu
+/// @regInit:LAR:R0:410
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:96
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_LDMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SYNC synctag=83
+L3_SUBLARIMM be=be imm=852 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:l3su
+/// @regInit:LAR:R0:474
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:134217824
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_SYNC synctag=163
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_STMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SUBLARIMM be=be imm=980 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:lxlu0
+/// @regInit:R0:1625216:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1159425 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu0
+/// @regInit:R0:1633408:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1175809 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxlu1
+/// @regInit:R0:1627264:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1163521 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu1
+/// @regInit:R0:1635456:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1179905 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:sfp0
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:sfp1
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:pe0
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+/// @unit:pe1
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+
+/// @core:7
+
+
+/// @unit:l3lu
+/// @regInit:LAR:R0:410
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:112
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_LDMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SYNC synctag=83
+L3_SUBLARIMM be=be imm=852 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:l3su
+/// @regInit:LAR:R0:474
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:134217840
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_SYNC synctag=163
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_STMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SUBLARIMM be=be imm=980 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:lxlu0
+/// @regInit:R0:1625216:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1159425 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu0
+/// @regInit:R0:1633408:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1175809 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxlu1
+/// @regInit:R0:1627264:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1163521 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu1
+/// @regInit:R0:1635456:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1179905 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:sfp0
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:sfp1
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:pe0
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+/// @unit:pe1
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+
+/// @core:8
+
+
+/// @unit:l3lu
+/// @regInit:LAR:R0:410
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:128
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_LDMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SYNC synctag=83
+L3_SUBLARIMM be=be imm=852 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:l3su
+/// @regInit:LAR:R0:474
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:134217856
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_SYNC synctag=163
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_STMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SUBLARIMM be=be imm=980 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:lxlu0
+/// @regInit:R0:1625216:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1159425 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu0
+/// @regInit:R0:1633408:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1175809 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxlu1
+/// @regInit:R0:1627264:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1163521 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu1
+/// @regInit:R0:1635456:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1179905 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:sfp0
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:sfp1
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:pe0
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+/// @unit:pe1
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+
+/// @core:9
+
+
+/// @unit:l3lu
+/// @regInit:LAR:R0:410
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:144
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_LDMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SYNC synctag=83
+L3_SUBLARIMM be=be imm=852 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:l3su
+/// @regInit:LAR:R0:474
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:134217872
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_SYNC synctag=163
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_STMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SUBLARIMM be=be imm=980 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:lxlu0
+/// @regInit:R0:1625216:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1159425 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu0
+/// @regInit:R0:1633408:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1175809 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxlu1
+/// @regInit:R0:1627264:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1163521 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu1
+/// @regInit:R0:1635456:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1179905 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:sfp0
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:sfp1
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:pe0
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+/// @unit:pe1
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+
+/// @core:10
+
+
+/// @unit:l3lu
+/// @regInit:LAR:R0:410
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:160
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_LDMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SYNC synctag=83
+L3_SUBLARIMM be=be imm=852 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:l3su
+/// @regInit:LAR:R0:474
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:134217888
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_SYNC synctag=163
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_STMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SUBLARIMM be=be imm=980 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:lxlu0
+/// @regInit:R0:1625216:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1159425 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu0
+/// @regInit:R0:1633408:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1175809 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxlu1
+/// @regInit:R0:1627264:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1163521 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu1
+/// @regInit:R0:1635456:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1179905 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:sfp0
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:sfp1
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:pe0
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+/// @unit:pe1
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+
+/// @core:11
+
+
+/// @unit:l3lu
+/// @regInit:LAR:R0:410
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:176
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_LDMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SYNC synctag=83
+L3_SUBLARIMM be=be imm=852 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:l3su
+/// @regInit:LAR:R0:474
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:134217904
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_SYNC synctag=163
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_STMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SUBLARIMM be=be imm=980 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:lxlu0
+/// @regInit:R0:1625216:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1159425 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu0
+/// @regInit:R0:1633408:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1175809 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxlu1
+/// @regInit:R0:1627264:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1163521 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu1
+/// @regInit:R0:1635456:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1179905 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:sfp0
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:sfp1
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:pe0
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+/// @unit:pe1
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+
+/// @core:12
+
+
+/// @unit:l3lu
+/// @regInit:LAR:R0:410
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:192
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_LDMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SYNC synctag=83
+L3_SUBLARIMM be=be imm=852 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:l3su
+/// @regInit:LAR:R0:474
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:134217920
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_SYNC synctag=163
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_STMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SUBLARIMM be=be imm=980 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:lxlu0
+/// @regInit:R0:1625216:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1159425 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu0
+/// @regInit:R0:1633408:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1175809 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxlu1
+/// @regInit:R0:1627264:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1163521 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu1
+/// @regInit:R0:1635456:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1179905 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:sfp0
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:sfp1
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:pe0
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+/// @unit:pe1
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+
+/// @core:13
+
+
+/// @unit:l3lu
+/// @regInit:LAR:R0:410
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:208
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_LDMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SYNC synctag=83
+L3_SUBLARIMM be=be imm=852 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:l3su
+/// @regInit:LAR:R0:474
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:134217936
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_SYNC synctag=163
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_STMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SUBLARIMM be=be imm=980 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:lxlu0
+/// @regInit:R0:1625216:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1159425 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu0
+/// @regInit:R0:1633408:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1175809 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxlu1
+/// @regInit:R0:1627264:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1163521 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu1
+/// @regInit:R0:1635456:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1179905 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:sfp0
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:sfp1
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:pe0
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+/// @unit:pe1
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+
+/// @core:14
+
+
+/// @unit:l3lu
+/// @regInit:LAR:R0:410
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:224
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_LDMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SYNC synctag=83
+L3_SUBLARIMM be=be imm=852 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:l3su
+/// @regInit:LAR:R0:474
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:134217952
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_SYNC synctag=163
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_STMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SUBLARIMM be=be imm=980 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:lxlu0
+/// @regInit:R0:1625216:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1159425 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu0
+/// @regInit:R0:1633408:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1175809 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxlu1
+/// @regInit:R0:1627264:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1163521 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu1
+/// @regInit:R0:1635456:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1179905 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:sfp0
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:sfp1
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:pe0
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+/// @unit:pe1
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+
+/// @core:15
+
+
+/// @unit:l3lu
+/// @regInit:LAR:R0:410
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:240
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_LDMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SYNC synctag=83
+L3_SUBLARIMM be=be imm=852 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:l3su
+/// @regInit:LAR:R0:474
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:134217968
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_SYNC synctag=163
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_STMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SUBLARIMM be=be imm=980 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:lxlu0
+/// @regInit:R0:1625216:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1159425 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu0
+/// @regInit:R0:1633408:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1175809 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxlu1
+/// @regInit:R0:1627264:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1163521 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu1
+/// @regInit:R0:1635456:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1179905 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:sfp0
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:sfp1
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:pe0
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+/// @unit:pe1
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+
+/// @core:16
+
+
+/// @unit:l3lu
+/// @regInit:LAR:R0:410
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:256
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_LDMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SYNC synctag=83
+L3_SUBLARIMM be=be imm=852 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:l3su
+/// @regInit:LAR:R0:474
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:134217984
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_SYNC synctag=163
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_STMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SUBLARIMM be=be imm=980 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:lxlu0
+/// @regInit:R0:1625216:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1159425 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu0
+/// @regInit:R0:1633408:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1175809 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxlu1
+/// @regInit:R0:1627264:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1163521 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu1
+/// @regInit:R0:1635456:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1179905 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:sfp0
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:sfp1
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:pe0
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+/// @unit:pe1
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+
+/// @core:17
+
+
+/// @unit:l3lu
+/// @regInit:LAR:R0:410
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:272
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_LDMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SYNC synctag=83
+L3_SUBLARIMM be=be imm=852 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:l3su
+/// @regInit:LAR:R0:474
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:134218000
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_SYNC synctag=163
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_STMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SUBLARIMM be=be imm=980 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:lxlu0
+/// @regInit:R0:1625216:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1159425 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu0
+/// @regInit:R0:1633408:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1175809 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxlu1
+/// @regInit:R0:1627264:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1163521 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu1
+/// @regInit:R0:1635456:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1179905 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:sfp0
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:sfp1
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:pe0
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+/// @unit:pe1
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+
+/// @core:18
+
+
+/// @unit:l3lu
+/// @regInit:LAR:R0:410
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:288
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_LDMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SYNC synctag=83
+L3_SUBLARIMM be=be imm=852 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:l3su
+/// @regInit:LAR:R0:474
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:134218016
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_SYNC synctag=163
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_STMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SUBLARIMM be=be imm=980 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:lxlu0
+/// @regInit:R0:1625216:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1159425 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu0
+/// @regInit:R0:1633408:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1175809 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxlu1
+/// @regInit:R0:1627264:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1163521 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu1
+/// @regInit:R0:1635456:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1179905 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:sfp0
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:sfp1
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:pe0
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+/// @unit:pe1
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+
+/// @core:19
+
+
+/// @unit:l3lu
+/// @regInit:LAR:R0:410
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:304
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_LDMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SYNC synctag=83
+L3_SUBLARIMM be=be imm=852 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:l3su
+/// @regInit:LAR:R0:474
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:134218032
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_SYNC synctag=163
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_STMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SUBLARIMM be=be imm=980 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:lxlu0
+/// @regInit:R0:1625216:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1159425 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu0
+/// @regInit:R0:1633408:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1175809 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxlu1
+/// @regInit:R0:1627264:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1163521 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu1
+/// @regInit:R0:1635456:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1179905 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:sfp0
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:sfp1
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:pe0
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+/// @unit:pe1
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+
+/// @core:20
+
+
+/// @unit:l3lu
+/// @regInit:LAR:R0:410
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:320
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_LDMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SYNC synctag=83
+L3_SUBLARIMM be=be imm=852 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:l3su
+/// @regInit:LAR:R0:474
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:134218048
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_SYNC synctag=163
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_STMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SUBLARIMM be=be imm=980 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:lxlu0
+/// @regInit:R0:1625216:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1159425 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu0
+/// @regInit:R0:1633408:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1175809 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxlu1
+/// @regInit:R0:1627264:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1163521 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu1
+/// @regInit:R0:1635456:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1179905 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:sfp0
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:sfp1
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:pe0
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+/// @unit:pe1
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+
+/// @core:21
+
+
+/// @unit:l3lu
+/// @regInit:LAR:R0:410
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:336
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_LDMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SYNC synctag=83
+L3_SUBLARIMM be=be imm=852 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:l3su
+/// @regInit:LAR:R0:474
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:134218064
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_SYNC synctag=163
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_STMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SUBLARIMM be=be imm=980 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:lxlu0
+/// @regInit:R0:1625216:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1159425 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu0
+/// @regInit:R0:1633408:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1175809 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxlu1
+/// @regInit:R0:1627264:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1163521 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu1
+/// @regInit:R0:1635456:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1179905 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:sfp0
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:sfp1
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:pe0
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+/// @unit:pe1
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+
+/// @core:22
+
+
+/// @unit:l3lu
+/// @regInit:LAR:R0:410
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:352
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_LDMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SYNC synctag=83
+L3_SUBLARIMM be=be imm=852 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:l3su
+/// @regInit:LAR:R0:474
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:134218080
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_SYNC synctag=163
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_STMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SUBLARIMM be=be imm=980 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:lxlu0
+/// @regInit:R0:1625216:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1159425 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu0
+/// @regInit:R0:1633408:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1175809 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxlu1
+/// @regInit:R0:1627264:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1163521 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu1
+/// @regInit:R0:1635456:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1179905 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:sfp0
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:sfp1
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:pe0
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+/// @unit:pe1
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+
+/// @core:23
+
+
+/// @unit:l3lu
+/// @regInit:LAR:R0:410
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:368
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_LDMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SYNC synctag=83
+L3_SUBLARIMM be=be imm=852 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:l3su
+/// @regInit:LAR:R0:474
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:134218096
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_SYNC synctag=163
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_STMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SUBLARIMM be=be imm=980 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:lxlu0
+/// @regInit:R0:1625216:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1159425 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu0
+/// @regInit:R0:1633408:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1175809 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxlu1
+/// @regInit:R0:1627264:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1163521 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu1
+/// @regInit:R0:1635456:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1179905 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:sfp0
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:sfp1
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:pe0
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+/// @unit:pe1
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+
+/// @core:24
+
+
+/// @unit:l3lu
+/// @regInit:LAR:R0:410
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:384
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_LDMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SYNC synctag=83
+L3_SUBLARIMM be=be imm=852 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:l3su
+/// @regInit:LAR:R0:474
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:134218112
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_SYNC synctag=163
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_STMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SUBLARIMM be=be imm=980 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:lxlu0
+/// @regInit:R0:1625216:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1159425 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu0
+/// @regInit:R0:1633408:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1175809 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxlu1
+/// @regInit:R0:1627264:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1163521 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu1
+/// @regInit:R0:1635456:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1179905 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:sfp0
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:sfp1
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:pe0
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+/// @unit:pe1
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+
+/// @core:25
+
+
+/// @unit:l3lu
+/// @regInit:LAR:R0:410
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:400
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_LDMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SYNC synctag=83
+L3_SUBLARIMM be=be imm=852 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:l3su
+/// @regInit:LAR:R0:474
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:134218128
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_SYNC synctag=163
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_STMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SUBLARIMM be=be imm=980 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:lxlu0
+/// @regInit:R0:1625216:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1159425 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu0
+/// @regInit:R0:1633408:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1175809 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxlu1
+/// @regInit:R0:1627264:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1163521 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu1
+/// @regInit:R0:1635456:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1179905 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:sfp0
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:sfp1
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:pe0
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+/// @unit:pe1
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+
+/// @core:26
+
+
+/// @unit:l3lu
+/// @regInit:LAR:R0:410
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:416
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_LDMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SYNC synctag=83
+L3_SUBLARIMM be=be imm=852 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:l3su
+/// @regInit:LAR:R0:474
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:134218144
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_SYNC synctag=163
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_STMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SUBLARIMM be=be imm=980 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:lxlu0
+/// @regInit:R0:1625216:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1159425 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu0
+/// @regInit:R0:1633408:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1175809 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxlu1
+/// @regInit:R0:1627264:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1163521 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu1
+/// @regInit:R0:1635456:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1179905 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:sfp0
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:sfp1
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:pe0
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+/// @unit:pe1
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+
+/// @core:27
+
+
+/// @unit:l3lu
+/// @regInit:LAR:R0:410
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:432
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_LDMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SYNC synctag=83
+L3_SUBLARIMM be=be imm=852 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:l3su
+/// @regInit:LAR:R0:474
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:134218160
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_SYNC synctag=163
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_STMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SUBLARIMM be=be imm=980 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:lxlu0
+/// @regInit:R0:1625216:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1159425 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu0
+/// @regInit:R0:1633408:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1175809 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxlu1
+/// @regInit:R0:1627264:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1163521 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu1
+/// @regInit:R0:1635456:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1179905 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:sfp0
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:sfp1
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:pe0
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+/// @unit:pe1
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+
+/// @core:28
+
+
+/// @unit:l3lu
+/// @regInit:LAR:R0:410
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:448
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_LDMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SYNC synctag=83
+L3_SUBLARIMM be=be imm=852 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:l3su
+/// @regInit:LAR:R0:474
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:134218176
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_SYNC synctag=163
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_STMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SUBLARIMM be=be imm=980 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:lxlu0
+/// @regInit:R0:1625216:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1159425 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu0
+/// @regInit:R0:1633408:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1175809 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxlu1
+/// @regInit:R0:1627264:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1163521 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu1
+/// @regInit:R0:1635456:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1179905 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:sfp0
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:sfp1
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:pe0
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+/// @unit:pe1
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+
+/// @core:29
+
+
+/// @unit:l3lu
+/// @regInit:LAR:R0:410
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:464
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_LDMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SYNC synctag=83
+L3_SUBLARIMM be=be imm=852 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:l3su
+/// @regInit:LAR:R0:474
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:134218192
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_SYNC synctag=163
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_STMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SUBLARIMM be=be imm=980 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:lxlu0
+/// @regInit:R0:1625216:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1159425 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu0
+/// @regInit:R0:1633408:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1175809 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxlu1
+/// @regInit:R0:1627264:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1163521 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu1
+/// @regInit:R0:1635456:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1179905 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:sfp0
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:sfp1
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:pe0
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+/// @unit:pe1
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+
+/// @core:30
+
+
+/// @unit:l3lu
+/// @regInit:LAR:R0:410
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:480
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_LDMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SYNC synctag=83
+L3_SUBLARIMM be=be imm=852 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:l3su
+/// @regInit:LAR:R0:474
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:134218208
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_SYNC synctag=163
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_STMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SUBLARIMM be=be imm=980 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:lxlu0
+/// @regInit:R0:1625216:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1159425 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu0
+/// @regInit:R0:1633408:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1175809 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxlu1
+/// @regInit:R0:1627264:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1163521 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu1
+/// @regInit:R0:1635456:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1179905 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:sfp0
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:sfp1
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:pe0
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+/// @unit:pe1
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+
+/// @core:31
+
+
+/// @unit:l3lu
+/// @regInit:LAR:R0:410
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:496
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_LDMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SYNC synctag=83
+L3_SUBLARIMM be=be imm=852 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:l3su
+/// @regInit:LAR:R0:474
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:134218224
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=8
+L3_SYNC synctag=163
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=2
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_STMU burst=16 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=496 src0=0
+L3_ADDLARIMM be=be imm=16 src0=1
+L3_SUBLARIMM be=be imm=980 src0=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:lxlu0
+/// @regInit:R0:1625216:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1159425 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu0
+/// @regInit:R0:1633408:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1175809 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxlu1
+/// @regInit:R0:1627264:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=16 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1163521 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu1
+/// @regInit:R0:1635456:R1:128
+/// @regInit:SPR:R0:1535
+LX_MVLOOPCNT imm=8
+LX_LDSTU burst=1 burstsize=16 producertag=sfp src0=0 src1=1 sttype=128b
+LX_SYNC synctag=11
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1179905 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:sfp0
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:sfp1
+/// @regInit:R0:#SEN169_FP16:"0x3e003e003e003e003e003e003e003e00":R1:#SEN169_FP16:"0x10001000100010001000100010001000"
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=32
+SFP_LOGICAL be=0 imm=1 mask=255 src0=pe src2=0.0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FEST imm=0 mask=255 src0=R10 src2=0.0 tgtrf=R2 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FEST imm=1 mask=255 src0=R10 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+SFP_FMUL mask=255 src0=R2 src1=R6 src2=0.0 tgtrf=R6 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_IME imm=1 mask=255 src0=pe src2=R6 tgtrf=R6 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+SFP_FMA mask=255 src0=pe src1=1.0 src2=R0 tgtrf=R10 unrlfldtgt=yes unroll=x4
+SFP_FMUL be=0 mask=255 src0=R10 src1=R6 src2=0.0 tgtrf=R10 unrlfldsrc0=yes unrlfldsrc1=yes unrlfldtgt=yes unroll=x4
+SFP_FMA be=be mask=255 src0=R10 src1=1.0 src2=R1 tgtlx=result unrlfldsrc0=yes unroll=x4
+SFP_RETURN
+
+/// @unit:pe0
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+/// @unit:pe1
+/// @regInit:R0:#SEN169_FP16:"0x46dc46dc46dc46dc46dc46dc46dc46dc":R1:#SEN169_FP16:"0x46e246e246e246e246e246e246e246e2":R2:#SEN169_FP16:"0x34c534c534c534c534c534c534c534c5":R3:#SEN169_FP16:"0x21212121212121212121212121212121"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMINMAX imm=7 mask=255 src0=lxlu src2=R0 tgtrf=R4 unrlfldtgt=yes unroll=x4
+PE_FMUL mask=255 src0=R4 src1=R1 src2=0.0 tgtrf=R8 unrlfldsrc0=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=1 mask=255 src0=icvtconst src2=R8 tgtrf=R12 unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_ICVT imm=0 mask=255 src0=icvtconst src2=R8 tgtrf=R8 tgtsfp=result unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_FNMS mask=255 src0=R12 src1=R2 src2=R4 tgtrf=R4 unrlfldsrc0=yes unrlfldsrc2=yes unrlfldtgt=yes unroll=x4
+PE_SHR imm=4 mask=255 src0=R8 src2=0.0 tgtsfp=result unrlfldsrc0=yes unroll=x4
+PE_FNMS be=be mask=255 src0=R12 src1=R3 src2=R4 tgtsfp=result unrlfldsrc0=yes unrlfldsrc2=yes unroll=x4
+PE_RETURN
+PE_RETURN
+
+

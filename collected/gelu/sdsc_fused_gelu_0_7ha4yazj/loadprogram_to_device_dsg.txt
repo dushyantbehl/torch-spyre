@@ -1,0 +1,6 @@
+N 0 SenProgSend sdsc_fused_gelu_0_7ha4yazj-SenProgSend
+A dev_ptr 6 120259084288
+A size 6 6272
+I { }
+O { }
+T { }

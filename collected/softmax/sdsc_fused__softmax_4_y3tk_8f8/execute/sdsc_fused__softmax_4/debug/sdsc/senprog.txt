@@ -1,0 +1,203 @@
+===== START file: prog.txt =====
+========== Core: 0 Corelet: 0 Unit: l3lu Program START ============
+L3_MVLOOPCNT | (2 << 10)
+L3_EARIMM | (0 << 10) | (1 << 6)
+L3_MVLOOPCNT | (8 << 10)
+L3_LARIMM | (0 << 10) | (2 << 6)
+L3_MVLOOPCNT | (2 << 10)
+L3_LARREGCOPY | (3 << 6) | (2 << 10)
+L3_MODLARREG | (3 << 6) | (0 << 10)
+L3_MVLOOPCNT | (8 << 10)
+L3_LDMU | (1 << 31) | (0 << 22) | (0 << 27) | (3 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_ADDEARIMM | (256 << 10) | (0 << 6)
+L3_ADDLARIMM | (1 << 31) | (256 << 10) | (2 << 6)
+L3_LDMU | (2 << 22) | (0 << 27) | (1 << 6) | (0 << 10) | (1 << 14) | (1 << 18)
+L3_SYNC | (83 << 10)
+L3_SUBLARIMM | (4920 << 10) | (1 << 6)
+L3_SUBLARIMM | (1 << 31) | (1332 << 10) | (0 << 6)
+L3_ADDEARIMM | (1 << 31) | (-7936 << 10) | (0 << 6)
+L3_RETURN
+========== Core: 0 Corelet: 0 Unit: l3lu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3LU-LAR:0
+0000000000 410.000000
+0000000001 2458.000000
+#
+L3LU-LBR:0
+0000000000 12288.000000
+#
+L3LU-EAR:0
+0000000000 0.000000
+#
+L3LU-EBR:0
+0000000000 0.000000
+0000000001 134217728.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 0 Corelet: 0 Unit: l3su Program START ============
+L3_MVLOOPCNT | (2 << 10)
+L3_MVLOOPCNT | (8 << 10)
+L3_SYNC | (163 << 10)
+L3_LARIMM | (0 << 10) | (1 << 6)
+L3_MVLOOPCNT | (2 << 10)
+L3_LARREGCOPY | (2 << 6) | (1 << 10)
+L3_MODLARREG | (2 << 6) | (0 << 10)
+L3_MVLOOPCNT | (8 << 10)
+L3_STMU | (1 << 31) | (0 << 22) | (0 << 27) | (2 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_ADDEARIMM | (256 << 10) | (0 << 6)
+L3_ADDLARIMM | (1 << 31) | (256 << 10) | (1 << 6)
+L3_SUBLARIMM | (1 << 31) | (3380 << 10) | (0 << 6)
+L3_ADDEARIMM | (1 << 31) | (-7936 << 10) | (0 << 6)
+L3_RETURN
+========== Core: 0 Corelet: 0 Unit: l3su Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3SU-LAR:0
+0000000000 1434.000000
+#
+L3SU-LBR:0
+0000000000 12288.000000
+#
+L3SU-EAR:0
+0000000000 0.000000
+#
+L3SU-EBR:0
+0000000000 268435456.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 0 Corelet: 0 Unit: lxlu Program START ============
+LX_SETDSTMASK | (0 << 19)
+LX_MVLOOPCNT | (16 << 10)
+LX_SYNC | (7 << 10)
+LX_MVLOOPCNT | (256 << 10)
+LX_LDSTI | (1 << 29) | (0 << 10) | (0 << 27) | (0 << 6)
+LX_LDSTIU | (1 << 31) | (1 << 29) | (128 << 10) | (0 << 27) | (1 << 6)
+LX_SUBLRFIMM | (2097151 << 10) | (1 << 6)
+LX_MODLRFIMM | (1251585 << 10) | (1 << 6)
+LX_SUBLRFIMM | (2097151 << 10) | (0 << 6)
+LX_MODLRFIMM | (1 << 31) | (1678081 << 10) | (0 << 6)
+LX_RETURN
+========== Core: 0 Corelet: 0 Unit: lxlu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXLU:0:0
+0000000000 1887488.000000
+0000000001 1625216.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 0 Corelet: 0 Unit: lxsu Program START ============
+LX_MVLOOPCNT | (16 << 10)
+LX_MVLOOPCNT | (4 << 10)
+LX_LDSTU | (1 << 31) | (1 << 16) | (0 << 17) | (1 << 29) | (0 << 6) | (1 << 10) | (0 << 27)
+LX_SYNC | (11 << 10)
+LX_SUBLRFIMM | (2097151 << 10) | (0 << 6)
+LX_MODLRFIMM | (1 << 31) | (1513729 << 10) | (0 << 6)
+LX_RETURN
+========== Core: 0 Corelet: 0 Unit: lxsu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXSU:0:0
+0000000000 1756288.000000
+0000000001 128.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 0 Corelet: 1 Unit: lxlu Program START ============
+LX_SETDSTMASK | (0 << 19)
+LX_MVLOOPCNT | (16 << 10)
+LX_SYNC | (7 << 10)
+LX_MVLOOPCNT | (256 << 10)
+LX_LDSTI | (1 << 29) | (0 << 10) | (0 << 27) | (0 << 6)
+LX_LDSTIU | (1 << 31) | (1 << 29) | (128 << 10) | (0 << 27) | (1 << 6)
+LX_SUBLRFIMM | (2097151 << 10) | (1 << 6)
+LX_MODLRFIMM | (1317121 << 10) | (1 << 6)
+LX_SUBLRFIMM | (2097151 << 10) | (0 << 6)
+LX_MODLRFIMM | (1 << 31) | (1678337 << 10) | (0 << 6)
+LX_RETURN
+========== Core: 0 Corelet: 1 Unit: lxlu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXLU:0:1
+0000000000 1887616.000000
+0000000001 1657984.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 0 Corelet: 1 Unit: lxsu Program START ============
+LX_MVLOOPCNT | (16 << 10)
+LX_MVLOOPCNT | (4 << 10)
+LX_LDSTU | (1 << 31) | (1 << 16) | (0 << 17) | (1 << 29) | (0 << 6) | (1 << 10) | (0 << 27)
+LX_SYNC | (11 << 10)
+LX_SUBLRFIMM | (2097151 << 10) | (0 << 6)
+LX_MODLRFIMM | (1 << 31) | (1579265 << 10) | (0 << 6)
+LX_RETURN
+========== Core: 0 Corelet: 1 Unit: lxsu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXSU:0:1
+0000000000 1789056.000000
+0000000001 128.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 0 Corelet: 0 Unit: sfp Program START ============
+SFP_MVLOOPCNT | (4096UL << 11)
+SFP_LOGICAL | (1UL << 11) | (255UL << 36) | (1UL << 6) | (16UL << 16) | (20UL << 30)
+SFP_FCMP | (7UL << 11) | (255UL << 36) | (0UL << 44) | (16UL << 6) | (20UL << 16)
+SFP_SELECT | (0UL << 11) | (255UL << 36) | (0UL << 44) | (19UL << 6) | (18UL << 16) | (21UL << 30)
+SFP_FMINMAX | (2UL << 11) | (255UL << 36) | (0UL << 44) | (20UL << 6) | (20UL << 16) | (20UL << 30) | (1UL << 47) | (1UL << 49) | (1UL << 50) | (0UL << 45)
+SFP_FCMP | (6UL << 11) | (255UL << 36) | (0UL << 44) | (16UL << 6) | (20UL << 16)
+SFP_SELECT | (0UL << 11) | (255UL << 36) | (0UL << 44) | (17UL << 6) | (20UL << 16) | (20UL << 30)
+SFP_EE | (0UL << 11) | (255UL << 36) | (20UL << 6) | (10UL << 16) | (22UL << 30) | (1UL << 47) | (1UL << 50) | (0UL << 45)
+SFP_IME | (0UL << 11) | (255UL << 36) | (16UL << 6) | (20UL << 16) | (20UL << 30) | (1UL << 49) | (1UL << 50) | (0UL << 45)
+SFP_FEST | (2UL << 11) | (255UL << 36) | (20UL << 6) | (10UL << 16) | (23UL << 30) | (1UL << 47) | (1UL << 50) | (0UL << 45)
+SFP_MVLOOPCNT | (2UL << 11)
+SFP_FNMS | (255UL << 36) | (20UL << 6) | (23UL << 11) | (12UL << 16) | (24UL << 30) | (1UL << 47) | (1UL << 48) | (1UL << 50) | (0UL << 45)
+SFP_FMUL | (1UL << 35) | (255UL << 36) | (23UL << 6) | (24UL << 11) | (10UL << 16) | (23UL << 30) | (1UL << 47) | (1UL << 48) | (1UL << 50) | (0UL << 45)
+SFP_IME | (2UL << 11) | (255UL << 36) | (22UL << 6) | (23UL << 16) | (24UL << 30) | (1UL << 47) | (1UL << 49) | (1UL << 50) | (0UL << 45)
+SFP_FMUL | (255UL << 36) | (24UL << 6) | (21UL << 11) | (10UL << 16) | (24UL << 30) | (1UL << 47) | (1UL << 48) | (1UL << 50) | (0UL << 45)
+SFP_FMUL | (1UL << 35) | (255UL << 36) | (24UL << 6) | (1UL << 11) | (10UL << 16) | (3UL << 24)
+SFP_RETURN
+========== Core: 0 Corelet: 0 Unit: sfp Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+SFP:0:0
+0000000000 datatype:SEN169_FP16 00000000000000000000000000000000
+0000000001 datatype:SEN169_FP16 ffffffffffffffffffffffffffffffff
+0000000002 datatype:SEN169_FP16 3e003e003e003e003e003e003e003e00
+0000000003 datatype:SEN169_FP16 be00be00be00be00be00be00be00be00
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 0 Corelet: 1 Unit: sfp Program START ============
+SFP_MVLOOPCNT | (4096UL << 11)
+SFP_LOGICAL | (1UL << 11) | (255UL << 36) | (1UL << 6) | (16UL << 16) | (20UL << 30)
+SFP_FCMP | (7UL << 11) | (255UL << 36) | (0UL << 44) | (16UL << 6) | (20UL << 16)
+SFP_SELECT | (0UL << 11) | (255UL << 36) | (0UL << 44) | (19UL << 6) | (18UL << 16) | (21UL << 30)
+SFP_FMINMAX | (2UL << 11) | (255UL << 36) | (0UL << 44) | (20UL << 6) | (20UL << 16) | (20UL << 30) | (1UL << 47) | (1UL << 49) | (1UL << 50) | (0UL << 45)
+SFP_FCMP | (6UL << 11) | (255UL << 36) | (0UL << 44) | (16UL << 6) | (20UL << 16)
+SFP_SELECT | (0UL << 11) | (255UL << 36) | (0UL << 44) | (17UL << 6) | (20UL << 16) | (20UL << 30)
+SFP_EE | (0UL << 11) | (255UL << 36) | (20UL << 6) | (10UL << 16) | (22UL << 30) | (1UL << 47) | (1UL << 50) | (0UL << 45)
+SFP_IME | (0UL << 11) | (255UL << 36) | (16UL << 6) | (20UL << 16) | (20UL << 30) | (1UL << 49) | (1UL << 50) | (0UL << 45)
+SFP_FEST | (2UL << 11) | (255UL << 36) | (20UL << 6) | (10UL << 16) | (23UL << 30) | (1UL << 47) | (1UL << 50) | (0UL << 45)
+SFP_MVLOOPCNT | (2UL << 11)
+SFP_FNMS | (255UL << 36) | (20UL << 6) | (23UL << 11) | (12UL << 16) | (24UL << 30) | (1UL << 47) | (1UL << 48) | (1UL << 50) | (0UL << 45)
+SFP_FMUL | (1UL << 35) | (255UL << 36) | (23UL << 6) | (24UL << 11) | (10UL << 16) | (23UL << 30) | (1UL << 47) | (1UL << 48) | (1UL << 50) | (0UL << 45)
+SFP_IME | (2UL << 11) | (255UL << 36) | (22UL << 6) | (23UL << 16) | (24UL << 30) | (1UL << 47) | (1UL << 49) | (1UL << 50) | (0UL << 45)
+SFP_FMUL | (255UL << 36) | (24UL << 6) | (21UL << 11) | (10UL << 16) | (24UL << 30) | (1UL << 47) | (1UL << 48) | (1UL << 50) | (0UL << 45)
+SFP_FMUL | (1UL << 35) | (255UL << 36) | (24UL << 6) | (1UL << 11) | (10UL << 16) | (3UL << 24)
+SFP_RETURN
+========== Core: 0 Corelet: 1 Unit: sfp Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+SFP:0:1
+0000000000 datatype:SEN169_FP16 00000000000000000000000000000000
+0000000001 datatype:SEN169_FP16 ffffffffffffffffffffffffffffffff
+0000000002 datatype:SEN169_FP16 3e003e003e003e003e003e003e003e00
+0000000003 datatype:SEN169_FP16 be00be00be00be00be00be00be00be00
+===== END file: reg_initial.txt =====

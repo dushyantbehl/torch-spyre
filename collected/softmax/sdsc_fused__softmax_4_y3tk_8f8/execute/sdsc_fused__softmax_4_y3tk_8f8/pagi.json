@@ -1,0 +1,13 @@
+{
+  "dsName_" : "sdsc_fused__softmax_4_y3tk_8f8",
+  "isMarker_" : 0,
+  "defaultAddr_" : "120259084288",
+  "addrMap_" : [
+  ],
+  "addrMapTag_" : [
+  ],
+  "inputSym_" : [],
+  "addrIdxSym_" : [],
+  "variableDefs_" : {
+  }
+}

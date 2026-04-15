@@ -1,0 +1,6 @@
+N 0 SenPreparedOp sdsc_fused__softmax_0_718q3wo2
+E 0 1
+N 1 SenProgAddrGenerate sdsc_fused__softmax_0_718q3wo2
+I { }
+O { }
+T { }

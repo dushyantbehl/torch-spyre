@@ -1,0 +1,79 @@
+/// @core:0
+
+
+/// @unit:l3lu
+/// @regInit:LAR:R0:410
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:0
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=4
+L3_LDMU burst=0 group=0 src0=0 src1=0 src2=0 src3=0
+L3_SYNC synctag=19
+L3_SUBLARIMM be=be imm=884 src0=0
+L3_RETURN
+L3_RETURN
+L3_RETURN
+L3_RETURN
+
+/// @unit:l3su
+/// @regInit:LAR:R0:0
+/// @regInit:LBR:R0:12762
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:134217728
+/// @regInit:SPR:R0:1535:R1:255
+L3_SYNC synctag=35
+L3_STM burst=1 group=0 src0=0 src1=0 src2=0 src3=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:lxlu0
+/// @regInit:R0:1625216:R1:128:R2:1633536
+/// @regInit:SPR:R0:1535
+LX_SYNC synctag=7
+LX_LDSTU burst=1 burstsize=32 consumertag=pe ldtype=128b src0=0 src1=1
+LX_MVLOOPCNT imm=3
+LX_SYNC synctag=7
+LX_SYNC synctag=34
+LX_LDSTI consumertag=sfp imm=0 ldtype=128b src0=2
+LX_LDSTU burst=1 burstsize=32 consumertag=pe ldtype=128b src0=0 src1=1
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1161473 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu0
+/// @regInit:R0:1633408:R1:1633408
+/// @regInit:SPR:R0:1535
+LX_LDSTI imm=128 producertag=sfp src0=0 sttype=128b
+LX_MVLOOPCNT imm=3
+LX_SYNC synctag=17
+LX_LDSTI be=be imm=128 producertag=sfp src0=1 sttype=128b
+LX_SYNC synctag=11
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:sfp0
+/// @regInit:SPR:R0:511:R1:7423
+SFP_FMA mask=255 mode=fp16 src0=pe src1=1.0 src2=0.0 tgtrf=R1 unrlfldsrc0=0 unrlfldsrc1=0 unrlfldsrc2=0 unrlfldtgt=0 unroll=x1
+SFP_LOGICAL imm=1 mask=255 src0=R1 src2=0.0 tgtlx=src0 tgtrf=no unrlfldsrc0=0 unrlfldsrc2=0 unrlfldtgt=0 unroll=x1
+SFP_MVLOOPCNT imm=3
+SFP_LOGICAL imm=1 mask=255 src0=lxlu src2=0.0 tgtrf=R0 unrlfldsrc0=0 unrlfldsrc2=0 unrlfldtgt=0 unroll=x1
+SFP_FMA mask=255 mode=fp16 src0=pe src1=1.0 src2=0.0 tgtrf=R1 unrlfldsrc0=0 unrlfldsrc1=0 unrlfldsrc2=0 unrlfldtgt=0 unroll=x1
+SFP_FMA mask=255 mode=fp16 src0=R0 src1=1.0 src2=R1 tgtrf=R1 unrlfldsrc0=0 unrlfldsrc1=0 unrlfldsrc2=0 unrlfldtgt=0 unroll=x1
+SFP_LOGICAL be=be imm=1 mask=255 src0=R1 src2=0.0 tgtlx=src0 tgtrf=no unrlfldsrc0=0 unrlfldsrc2=0 unrlfldtgt=0 unroll=x1
+SFP_RETURN
+
+/// @unit:pe0
+/// @regInit:R1:#SEN169_FP16:"0x30003000300030003000300030003000":R2:#SEN169_FP16:"0x00000000000000000000000000000000"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=4
+PE_FMA mask=255 src0=R2 src1=1.0 src2=0.0 tgtrf=R0 unrlfldsrc0=0 unrlfldsrc1=0 unrlfldsrc2=0 unrlfldtgt=0 unroll=x1
+PE_MVLOOPCNT imm=32
+PE_FMA be=be mask=255 src0=lxlu src1=R1 src2=R0 tgtrf=R0 unrlfldsrc0=0 unrlfldsrc1=0 unrlfldsrc2=0 unrlfldtgt=0 unroll=x1
+PE_LOGICAL be=be imm=1 mask=255 src0=R0 src2=0.0 tgtrf=no tgtsfp=src0 unrlfldsrc0=0 unrlfldsrc2=0 unrlfldtgt=0 unroll=x1
+PE_RETURN
+
+

@@ -1,0 +1,6 @@
+N 0 SenProgSend sdsc_fused__softmax_1_rnuco5an-SenProgSend
+A dev_ptr 6 120259084288
+A size 6 1664
+I { }
+O { }
+T { }

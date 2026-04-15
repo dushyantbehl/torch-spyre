@@ -1,0 +1,168 @@
+/// @core:0
+
+
+/// @unit:l3lu
+/// @regInit:LAR:R0:410
+/// @regInit:LBR:R0:12288
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:0
+/// @regInit:SPR:R0:1535:R1:255
+L3_MVLOOPCNT imm=16
+L3_LARIMM imm=0 src0=1
+L3_MVLOOPCNT imm=16
+L3_LARREGCOPY src0=2 src1=1
+L3_MODLARREG src0=2 src1=0
+L3_LDMU burst=0 group=0 src0=2 src1=0 src2=0 src3=0
+L3_ADDEARIMM imm=480 src0=0
+L3_ADDLARIMM be=be imm=32 src0=1
+L3_SYNC synctag=83
+L3_ADDEARIMM imm=-8160 src0=0
+L3_SUBLARIMM be=be imm=1332 src0=0
+L3_RETURN
+
+/// @unit:l3su
+/// @regInit:LAR:R0:0
+/// @regInit:LBR:R0:13722
+/// @regInit:EAR:R0:0
+/// @regInit:EBR:R0:134217728
+/// @regInit:SPR:R0:1535:R1:255
+L3_SYNC synctag=163
+L3_STMU burst=16 group=0 src0=0 src1=0 src2=0 src3=0
+L3_RETURN
+L3_RETURN
+
+/// @unit:lxlu0
+/// @regInit:R0:1621248:R1:1755904:R2:4096
+/// @regInit:SPR:R0:1535
+LX_SYNC synctag=7
+LX_MVLOOPCNT imm=2
+LX_MVLOOPCNT imm=32
+LX_LDSTU burst=1 burstsize=4 consumertag=pe ldtype=128b src0=0 src1=2
+LX_MODLRFIMM be=be lrfimm=-16256 src0=0
+LX_MODLRFIMM be=be lrfimm=12288 src0=0
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM lrfimm=1243649 src0=0
+LX_SETDSTMASK mode=sfp
+LX_MVLOOPCNT imm=15
+LX_SYNC synctag=7
+LX_SYNC synctag=34
+LX_LRFREGCOPY src0=3 src1=1
+LX_MVLOOPCNT imm=2
+LX_LDSTIU consumertag=sfp imm=512 ldtype=128b src0=3
+LX_LDSTI consumertag=sfp imm=128 ldtype=128b src0=3
+LX_LDSTI consumertag=sfp imm=256 ldtype=128b src0=3
+LX_LDSTI consumertag=sfp imm=384 ldtype=128b src0=3
+LX_MVLOOPCNT imm=32
+LX_LDSTU burst=1 burstsize=4 consumertag=pe ldtype=128b src0=0 src1=2
+LX_MODLRFIMM be=be lrfimm=-16256 src0=0
+LX_MODLRFIMM be=be lrfimm=12288 src0=0
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1243649 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu0
+/// @regInit:R0:1756288:R1:1756288:R2:128
+/// @regInit:SPR:R0:1535
+LX_LDSTU burst=1 burstsize=8 producertag=sfp src0=0 src1=2 sttype=128b
+LX_MVLOOPCNT imm=15
+LX_SYNC synctag=17
+LX_LRFREGCOPY src0=0 src1=1
+LX_LDSTU be=be burst=1 burstsize=8 producertag=sfp src0=0 src1=2 sttype=128b
+LX_SYNC synctag=11
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxlu1
+/// @regInit:R0:1654016:R1:1756928:R2:4096
+/// @regInit:SPR:R0:1535
+LX_SYNC synctag=7
+LX_MVLOOPCNT imm=2
+LX_MVLOOPCNT imm=32
+LX_LDSTU burst=1 burstsize=4 consumertag=pe ldtype=128b src0=0 src1=2
+LX_MODLRFIMM be=be lrfimm=-16256 src0=0
+LX_MODLRFIMM be=be lrfimm=12288 src0=0
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM lrfimm=1309185 src0=0
+LX_SETDSTMASK mode=sfp
+LX_MVLOOPCNT imm=15
+LX_SYNC synctag=7
+LX_SYNC synctag=34
+LX_LRFREGCOPY src0=3 src1=1
+LX_MVLOOPCNT imm=2
+LX_LDSTIU consumertag=sfp imm=512 ldtype=128b src0=3
+LX_LDSTI consumertag=sfp imm=128 ldtype=128b src0=3
+LX_LDSTI consumertag=sfp imm=256 ldtype=128b src0=3
+LX_LDSTI consumertag=sfp imm=384 ldtype=128b src0=3
+LX_MVLOOPCNT imm=32
+LX_LDSTU burst=1 burstsize=4 consumertag=pe ldtype=128b src0=0 src1=2
+LX_MODLRFIMM be=be lrfimm=-16256 src0=0
+LX_MODLRFIMM be=be lrfimm=12288 src0=0
+LX_SUBLRFIMM lrfimm=2097151 src0=0
+LX_MODLRFIMM be=be lrfimm=1309185 src0=0
+LX_RETURN
+LX_RETURN
+LX_RETURN
+LX_RETURN
+
+/// @unit:lxsu1
+/// @regInit:R0:1757312:R1:1757312:R2:128
+/// @regInit:SPR:R0:1535
+LX_LDSTU burst=1 burstsize=8 producertag=sfp src0=0 src1=2 sttype=128b
+LX_MVLOOPCNT imm=15
+LX_SYNC synctag=17
+LX_LRFREGCOPY src0=0 src1=1
+LX_LDSTU be=be burst=1 burstsize=8 producertag=sfp src0=0 src1=2 sttype=128b
+LX_SYNC synctag=11
+LX_RETURN
+LX_RETURN
+
+/// @unit:sfp0
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=2
+SFP_FMA mask=255 mode=fp16 src0=pe src1=1.0 src2=0.0 tgtrf=R4 unrlfldsrc0=0 unrlfldsrc1=0 unrlfldsrc2=0 unrlfldtgt=1 unroll=x4
+SFP_LOGICAL be=be imm=1 mask=255 src0=R4 src2=0.0 tgtlx=src0 tgtrf=no unrlfldsrc0=1 unrlfldsrc2=0 unrlfldtgt=0 unroll=x4
+SFP_MVLOOPCNT imm=30
+SFP_LOGICAL imm=1 mask=255 src0=lxlu src2=0.0 tgtrf=R0 unrlfldsrc0=0 unrlfldsrc2=0 unrlfldtgt=1 unroll=x4
+SFP_FMA mask=255 mode=fp16 src0=pe src1=1.0 src2=0.0 tgtrf=R4 unrlfldsrc0=0 unrlfldsrc1=0 unrlfldsrc2=0 unrlfldtgt=1 unroll=x4
+SFP_FMA mask=255 mode=fp16 src0=R0 src1=1.0 src2=R4 tgtrf=R4 unrlfldsrc0=1 unrlfldsrc1=0 unrlfldsrc2=1 unrlfldtgt=1 unroll=x4
+SFP_LOGICAL be=be imm=1 mask=255 src0=R4 src2=0.0 tgtlx=src0 tgtrf=no unrlfldsrc0=1 unrlfldsrc2=0 unrlfldtgt=0 unroll=x4
+SFP_RETURN
+SFP_RETURN
+
+/// @unit:sfp1
+/// @regInit:SPR:R0:511:R1:7423
+SFP_MVLOOPCNT imm=2
+SFP_FMA mask=255 mode=fp16 src0=pe src1=1.0 src2=0.0 tgtrf=R4 unrlfldsrc0=0 unrlfldsrc1=0 unrlfldsrc2=0 unrlfldtgt=1 unroll=x4
+SFP_LOGICAL be=be imm=1 mask=255 src0=R4 src2=0.0 tgtlx=src0 tgtrf=no unrlfldsrc0=1 unrlfldsrc2=0 unrlfldtgt=0 unroll=x4
+SFP_MVLOOPCNT imm=30
+SFP_LOGICAL imm=1 mask=255 src0=lxlu src2=0.0 tgtrf=R0 unrlfldsrc0=0 unrlfldsrc2=0 unrlfldtgt=1 unroll=x4
+SFP_FMA mask=255 mode=fp16 src0=pe src1=1.0 src2=0.0 tgtrf=R4 unrlfldsrc0=0 unrlfldsrc1=0 unrlfldsrc2=0 unrlfldtgt=1 unroll=x4
+SFP_FMA mask=255 mode=fp16 src0=R0 src1=1.0 src2=R4 tgtrf=R4 unrlfldsrc0=1 unrlfldsrc1=0 unrlfldsrc2=1 unrlfldtgt=1 unroll=x4
+SFP_LOGICAL be=be imm=1 mask=255 src0=R4 src2=0.0 tgtlx=src0 tgtrf=no unrlfldsrc0=1 unrlfldsrc2=0 unrlfldtgt=0 unroll=x4
+SFP_RETURN
+SFP_RETURN
+
+/// @unit:pe0
+/// @regInit:R4:#SEN169_FP16:"0x00000000000000000000000000000000"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMA mask=255 src0=R4 src1=1.0 src2=0.0 tgtrf=R0 unrlfldsrc0=0 unrlfldsrc1=0 unrlfldsrc2=0 unrlfldtgt=1 unroll=x4
+PE_MVLOOPCNT imm=32
+PE_FMA be=be mask=255 src0=lxlu src1=1.0 src2=R0 tgtrf=R0 unrlfldsrc0=0 unrlfldsrc1=0 unrlfldsrc2=1 unrlfldtgt=1 unroll=x4
+PE_LOGICAL be=be imm=1 mask=255 src0=R0 src2=0.0 tgtrf=no tgtsfp=src0 unrlfldsrc0=1 unrlfldsrc2=0 unrlfldtgt=0 unroll=x4
+PE_RETURN
+
+/// @unit:pe1
+/// @regInit:R4:#SEN169_FP16:"0x00000000000000000000000000000000"
+/// @regInit:SPR:R0:1535:R1:7423
+PE_MVLOOPCNT imm=32
+PE_FMA mask=255 src0=R4 src1=1.0 src2=0.0 tgtrf=R0 unrlfldsrc0=0 unrlfldsrc1=0 unrlfldsrc2=0 unrlfldtgt=1 unroll=x4
+PE_MVLOOPCNT imm=32
+PE_FMA be=be mask=255 src0=lxlu src1=1.0 src2=R0 tgtrf=R0 unrlfldsrc0=0 unrlfldsrc1=0 unrlfldsrc2=1 unrlfldtgt=1 unroll=x4
+PE_LOGICAL be=be imm=1 mask=255 src0=R0 src2=0.0 tgtrf=no tgtsfp=src0 unrlfldsrc0=1 unrlfldsrc2=0 unrlfldtgt=0 unroll=x4
+PE_RETURN
+
+

@@ -1,0 +1,6 @@
+N 0 SenPreparedOp sdsc_fused__softmax_2_cg15bdg6
+E 0 1
+N 1 SenProgAddrGenerate sdsc_fused__softmax_2_cg15bdg6
+I { }
+O { }
+T { }

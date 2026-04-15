@@ -1,0 +1,2688 @@
+===== START file: prog.txt =====
+========== Core: 0 Corelet: 0 Unit: l3lu Program START ============
+L3_LDMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_LDMU | (4 << 22) | (0 << 27) | (1 << 6) | (1 << 10) | (1 << 14) | (1 << 18)
+L3_SYNC | (19 << 10)
+L3_RETURN
+========== Core: 0 Corelet: 0 Unit: l3lu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3LU-LAR:0
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-LBR:0
+0000000000 12698.000000
+0000000001 12706.000000
+#
+L3LU-EAR:0
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-EBR:0
+0000000000 0.000000
+0000000001 134217728.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 0 Corelet: 0 Unit: l3su Program START ============
+L3_SYNC | (35 << 10)
+L3_STMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_RETURN
+========== Core: 0 Corelet: 0 Unit: l3su Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3SU-LAR:0
+0000000000 0.000000
+#
+L3SU-LBR:0
+0000000000 12714.000000
+#
+L3SU-EAR:0
+0000000000 0.000000
+#
+L3SU-EBR:0
+0000000000 268435456.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 0 Corelet: 0 Unit: lxlu Program START ============
+LX_SYNC | (7 << 10)
+LX_SETDSTMASK | (0 << 19)
+LX_MVLOOPCNT | (4 << 10)
+LX_LDSTIU | (1 << 29) | (128 << 10) | (0 << 27) | (0 << 6)
+LX_LDSTIU | (1 << 31) | (1 << 29) | (128 << 10) | (0 << 27) | (1 << 6)
+LX_RETURN
+========== Core: 0 Corelet: 0 Unit: lxlu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXLU:0:0
+0000000000 1626240.000000
+0000000001 1625216.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 0 Corelet: 0 Unit: lxsu Program START ============
+LX_LDSTU | (1 << 16) | (4 << 17) | (1 << 29) | (0 << 6) | (1 << 10) | (0 << 27)
+LX_SYNC | (11 << 10)
+LX_RETURN
+========== Core: 0 Corelet: 0 Unit: lxsu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXSU:0:0
+0000000000 1627264.000000
+0000000001 128.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 0 Corelet: 0 Unit: sfp Program START ============
+SFP_MVLOOPCNT | (4UL << 11)
+SFP_FMA | (255UL << 36) | (0UL << 44) | (1UL << 6) | (1UL << 11) | (1UL << 16) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_FMA | (1UL << 35) | (255UL << 36) | (0UL << 44) | (9UL << 6) | (1UL << 11) | (10UL << 16) | (3UL << 24) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_RETURN
+========== Core: 0 Corelet: 0 Unit: sfp Program END ============
+===== END file: prog.txt =====
+===== START file: prog.txt =====
+========== Core: 1 Corelet: 0 Unit: l3lu Program START ============
+L3_LDMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_LDMU | (4 << 22) | (0 << 27) | (1 << 6) | (1 << 10) | (1 << 14) | (1 << 18)
+L3_SYNC | (19 << 10)
+L3_RETURN
+========== Core: 1 Corelet: 0 Unit: l3lu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3LU-LAR:1
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-LBR:1
+0000000000 12698.000000
+0000000001 12706.000000
+#
+L3LU-EAR:1
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-EBR:1
+0000000000 4.000000
+0000000001 134217732.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 1 Corelet: 0 Unit: l3su Program START ============
+L3_SYNC | (35 << 10)
+L3_STMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_RETURN
+========== Core: 1 Corelet: 0 Unit: l3su Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3SU-LAR:1
+0000000000 0.000000
+#
+L3SU-LBR:1
+0000000000 12714.000000
+#
+L3SU-EAR:1
+0000000000 0.000000
+#
+L3SU-EBR:1
+0000000000 268435460.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 1 Corelet: 0 Unit: lxlu Program START ============
+LX_SYNC | (7 << 10)
+LX_SETDSTMASK | (0 << 19)
+LX_MVLOOPCNT | (4 << 10)
+LX_LDSTIU | (1 << 29) | (128 << 10) | (0 << 27) | (0 << 6)
+LX_LDSTIU | (1 << 31) | (1 << 29) | (128 << 10) | (0 << 27) | (1 << 6)
+LX_RETURN
+========== Core: 1 Corelet: 0 Unit: lxlu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXLU:1:0
+0000000000 1626240.000000
+0000000001 1625216.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 1 Corelet: 0 Unit: lxsu Program START ============
+LX_LDSTU | (1 << 16) | (4 << 17) | (1 << 29) | (0 << 6) | (1 << 10) | (0 << 27)
+LX_SYNC | (11 << 10)
+LX_RETURN
+========== Core: 1 Corelet: 0 Unit: lxsu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXSU:1:0
+0000000000 1627264.000000
+0000000001 128.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 1 Corelet: 0 Unit: sfp Program START ============
+SFP_MVLOOPCNT | (4UL << 11)
+SFP_FMA | (255UL << 36) | (0UL << 44) | (1UL << 6) | (1UL << 11) | (1UL << 16) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_FMA | (1UL << 35) | (255UL << 36) | (0UL << 44) | (9UL << 6) | (1UL << 11) | (10UL << 16) | (3UL << 24) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_RETURN
+========== Core: 1 Corelet: 0 Unit: sfp Program END ============
+===== END file: prog.txt =====
+===== START file: prog.txt =====
+========== Core: 2 Corelet: 0 Unit: l3lu Program START ============
+L3_LDMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_LDMU | (4 << 22) | (0 << 27) | (1 << 6) | (1 << 10) | (1 << 14) | (1 << 18)
+L3_SYNC | (19 << 10)
+L3_RETURN
+========== Core: 2 Corelet: 0 Unit: l3lu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3LU-LAR:2
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-LBR:2
+0000000000 12698.000000
+0000000001 12706.000000
+#
+L3LU-EAR:2
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-EBR:2
+0000000000 8.000000
+0000000001 134217736.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 2 Corelet: 0 Unit: l3su Program START ============
+L3_SYNC | (35 << 10)
+L3_STMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_RETURN
+========== Core: 2 Corelet: 0 Unit: l3su Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3SU-LAR:2
+0000000000 0.000000
+#
+L3SU-LBR:2
+0000000000 12714.000000
+#
+L3SU-EAR:2
+0000000000 0.000000
+#
+L3SU-EBR:2
+0000000000 268435464.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 2 Corelet: 0 Unit: lxlu Program START ============
+LX_SYNC | (7 << 10)
+LX_SETDSTMASK | (0 << 19)
+LX_MVLOOPCNT | (4 << 10)
+LX_LDSTIU | (1 << 29) | (128 << 10) | (0 << 27) | (0 << 6)
+LX_LDSTIU | (1 << 31) | (1 << 29) | (128 << 10) | (0 << 27) | (1 << 6)
+LX_RETURN
+========== Core: 2 Corelet: 0 Unit: lxlu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXLU:2:0
+0000000000 1626240.000000
+0000000001 1625216.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 2 Corelet: 0 Unit: lxsu Program START ============
+LX_LDSTU | (1 << 16) | (4 << 17) | (1 << 29) | (0 << 6) | (1 << 10) | (0 << 27)
+LX_SYNC | (11 << 10)
+LX_RETURN
+========== Core: 2 Corelet: 0 Unit: lxsu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXSU:2:0
+0000000000 1627264.000000
+0000000001 128.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 2 Corelet: 0 Unit: sfp Program START ============
+SFP_MVLOOPCNT | (4UL << 11)
+SFP_FMA | (255UL << 36) | (0UL << 44) | (1UL << 6) | (1UL << 11) | (1UL << 16) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_FMA | (1UL << 35) | (255UL << 36) | (0UL << 44) | (9UL << 6) | (1UL << 11) | (10UL << 16) | (3UL << 24) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_RETURN
+========== Core: 2 Corelet: 0 Unit: sfp Program END ============
+===== END file: prog.txt =====
+===== START file: prog.txt =====
+========== Core: 3 Corelet: 0 Unit: l3lu Program START ============
+L3_LDMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_LDMU | (4 << 22) | (0 << 27) | (1 << 6) | (1 << 10) | (1 << 14) | (1 << 18)
+L3_SYNC | (19 << 10)
+L3_RETURN
+========== Core: 3 Corelet: 0 Unit: l3lu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3LU-LAR:3
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-LBR:3
+0000000000 12698.000000
+0000000001 12706.000000
+#
+L3LU-EAR:3
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-EBR:3
+0000000000 12.000000
+0000000001 134217740.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 3 Corelet: 0 Unit: l3su Program START ============
+L3_SYNC | (35 << 10)
+L3_STMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_RETURN
+========== Core: 3 Corelet: 0 Unit: l3su Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3SU-LAR:3
+0000000000 0.000000
+#
+L3SU-LBR:3
+0000000000 12714.000000
+#
+L3SU-EAR:3
+0000000000 0.000000
+#
+L3SU-EBR:3
+0000000000 268435468.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 3 Corelet: 0 Unit: lxlu Program START ============
+LX_SYNC | (7 << 10)
+LX_SETDSTMASK | (0 << 19)
+LX_MVLOOPCNT | (4 << 10)
+LX_LDSTIU | (1 << 29) | (128 << 10) | (0 << 27) | (0 << 6)
+LX_LDSTIU | (1 << 31) | (1 << 29) | (128 << 10) | (0 << 27) | (1 << 6)
+LX_RETURN
+========== Core: 3 Corelet: 0 Unit: lxlu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXLU:3:0
+0000000000 1626240.000000
+0000000001 1625216.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 3 Corelet: 0 Unit: lxsu Program START ============
+LX_LDSTU | (1 << 16) | (4 << 17) | (1 << 29) | (0 << 6) | (1 << 10) | (0 << 27)
+LX_SYNC | (11 << 10)
+LX_RETURN
+========== Core: 3 Corelet: 0 Unit: lxsu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXSU:3:0
+0000000000 1627264.000000
+0000000001 128.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 3 Corelet: 0 Unit: sfp Program START ============
+SFP_MVLOOPCNT | (4UL << 11)
+SFP_FMA | (255UL << 36) | (0UL << 44) | (1UL << 6) | (1UL << 11) | (1UL << 16) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_FMA | (1UL << 35) | (255UL << 36) | (0UL << 44) | (9UL << 6) | (1UL << 11) | (10UL << 16) | (3UL << 24) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_RETURN
+========== Core: 3 Corelet: 0 Unit: sfp Program END ============
+===== END file: prog.txt =====
+===== START file: prog.txt =====
+========== Core: 4 Corelet: 0 Unit: l3lu Program START ============
+L3_LDMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_LDMU | (4 << 22) | (0 << 27) | (1 << 6) | (1 << 10) | (1 << 14) | (1 << 18)
+L3_SYNC | (19 << 10)
+L3_RETURN
+========== Core: 4 Corelet: 0 Unit: l3lu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3LU-LAR:4
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-LBR:4
+0000000000 12698.000000
+0000000001 12706.000000
+#
+L3LU-EAR:4
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-EBR:4
+0000000000 16.000000
+0000000001 134217744.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 4 Corelet: 0 Unit: l3su Program START ============
+L3_SYNC | (35 << 10)
+L3_STMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_RETURN
+========== Core: 4 Corelet: 0 Unit: l3su Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3SU-LAR:4
+0000000000 0.000000
+#
+L3SU-LBR:4
+0000000000 12714.000000
+#
+L3SU-EAR:4
+0000000000 0.000000
+#
+L3SU-EBR:4
+0000000000 268435472.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 4 Corelet: 0 Unit: lxlu Program START ============
+LX_SYNC | (7 << 10)
+LX_SETDSTMASK | (0 << 19)
+LX_MVLOOPCNT | (4 << 10)
+LX_LDSTIU | (1 << 29) | (128 << 10) | (0 << 27) | (0 << 6)
+LX_LDSTIU | (1 << 31) | (1 << 29) | (128 << 10) | (0 << 27) | (1 << 6)
+LX_RETURN
+========== Core: 4 Corelet: 0 Unit: lxlu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXLU:4:0
+0000000000 1626240.000000
+0000000001 1625216.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 4 Corelet: 0 Unit: lxsu Program START ============
+LX_LDSTU | (1 << 16) | (4 << 17) | (1 << 29) | (0 << 6) | (1 << 10) | (0 << 27)
+LX_SYNC | (11 << 10)
+LX_RETURN
+========== Core: 4 Corelet: 0 Unit: lxsu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXSU:4:0
+0000000000 1627264.000000
+0000000001 128.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 4 Corelet: 0 Unit: sfp Program START ============
+SFP_MVLOOPCNT | (4UL << 11)
+SFP_FMA | (255UL << 36) | (0UL << 44) | (1UL << 6) | (1UL << 11) | (1UL << 16) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_FMA | (1UL << 35) | (255UL << 36) | (0UL << 44) | (9UL << 6) | (1UL << 11) | (10UL << 16) | (3UL << 24) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_RETURN
+========== Core: 4 Corelet: 0 Unit: sfp Program END ============
+===== END file: prog.txt =====
+===== START file: prog.txt =====
+========== Core: 5 Corelet: 0 Unit: l3lu Program START ============
+L3_LDMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_LDMU | (4 << 22) | (0 << 27) | (1 << 6) | (1 << 10) | (1 << 14) | (1 << 18)
+L3_SYNC | (19 << 10)
+L3_RETURN
+========== Core: 5 Corelet: 0 Unit: l3lu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3LU-LAR:5
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-LBR:5
+0000000000 12698.000000
+0000000001 12706.000000
+#
+L3LU-EAR:5
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-EBR:5
+0000000000 20.000000
+0000000001 134217748.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 5 Corelet: 0 Unit: l3su Program START ============
+L3_SYNC | (35 << 10)
+L3_STMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_RETURN
+========== Core: 5 Corelet: 0 Unit: l3su Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3SU-LAR:5
+0000000000 0.000000
+#
+L3SU-LBR:5
+0000000000 12714.000000
+#
+L3SU-EAR:5
+0000000000 0.000000
+#
+L3SU-EBR:5
+0000000000 268435476.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 5 Corelet: 0 Unit: lxlu Program START ============
+LX_SYNC | (7 << 10)
+LX_SETDSTMASK | (0 << 19)
+LX_MVLOOPCNT | (4 << 10)
+LX_LDSTIU | (1 << 29) | (128 << 10) | (0 << 27) | (0 << 6)
+LX_LDSTIU | (1 << 31) | (1 << 29) | (128 << 10) | (0 << 27) | (1 << 6)
+LX_RETURN
+========== Core: 5 Corelet: 0 Unit: lxlu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXLU:5:0
+0000000000 1626240.000000
+0000000001 1625216.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 5 Corelet: 0 Unit: lxsu Program START ============
+LX_LDSTU | (1 << 16) | (4 << 17) | (1 << 29) | (0 << 6) | (1 << 10) | (0 << 27)
+LX_SYNC | (11 << 10)
+LX_RETURN
+========== Core: 5 Corelet: 0 Unit: lxsu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXSU:5:0
+0000000000 1627264.000000
+0000000001 128.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 5 Corelet: 0 Unit: sfp Program START ============
+SFP_MVLOOPCNT | (4UL << 11)
+SFP_FMA | (255UL << 36) | (0UL << 44) | (1UL << 6) | (1UL << 11) | (1UL << 16) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_FMA | (1UL << 35) | (255UL << 36) | (0UL << 44) | (9UL << 6) | (1UL << 11) | (10UL << 16) | (3UL << 24) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_RETURN
+========== Core: 5 Corelet: 0 Unit: sfp Program END ============
+===== END file: prog.txt =====
+===== START file: prog.txt =====
+========== Core: 6 Corelet: 0 Unit: l3lu Program START ============
+L3_LDMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_LDMU | (4 << 22) | (0 << 27) | (1 << 6) | (1 << 10) | (1 << 14) | (1 << 18)
+L3_SYNC | (19 << 10)
+L3_RETURN
+========== Core: 6 Corelet: 0 Unit: l3lu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3LU-LAR:6
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-LBR:6
+0000000000 12698.000000
+0000000001 12706.000000
+#
+L3LU-EAR:6
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-EBR:6
+0000000000 24.000000
+0000000001 134217752.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 6 Corelet: 0 Unit: l3su Program START ============
+L3_SYNC | (35 << 10)
+L3_STMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_RETURN
+========== Core: 6 Corelet: 0 Unit: l3su Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3SU-LAR:6
+0000000000 0.000000
+#
+L3SU-LBR:6
+0000000000 12714.000000
+#
+L3SU-EAR:6
+0000000000 0.000000
+#
+L3SU-EBR:6
+0000000000 268435480.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 6 Corelet: 0 Unit: lxlu Program START ============
+LX_SYNC | (7 << 10)
+LX_SETDSTMASK | (0 << 19)
+LX_MVLOOPCNT | (4 << 10)
+LX_LDSTIU | (1 << 29) | (128 << 10) | (0 << 27) | (0 << 6)
+LX_LDSTIU | (1 << 31) | (1 << 29) | (128 << 10) | (0 << 27) | (1 << 6)
+LX_RETURN
+========== Core: 6 Corelet: 0 Unit: lxlu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXLU:6:0
+0000000000 1626240.000000
+0000000001 1625216.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 6 Corelet: 0 Unit: lxsu Program START ============
+LX_LDSTU | (1 << 16) | (4 << 17) | (1 << 29) | (0 << 6) | (1 << 10) | (0 << 27)
+LX_SYNC | (11 << 10)
+LX_RETURN
+========== Core: 6 Corelet: 0 Unit: lxsu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXSU:6:0
+0000000000 1627264.000000
+0000000001 128.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 6 Corelet: 0 Unit: sfp Program START ============
+SFP_MVLOOPCNT | (4UL << 11)
+SFP_FMA | (255UL << 36) | (0UL << 44) | (1UL << 6) | (1UL << 11) | (1UL << 16) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_FMA | (1UL << 35) | (255UL << 36) | (0UL << 44) | (9UL << 6) | (1UL << 11) | (10UL << 16) | (3UL << 24) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_RETURN
+========== Core: 6 Corelet: 0 Unit: sfp Program END ============
+===== END file: prog.txt =====
+===== START file: prog.txt =====
+========== Core: 7 Corelet: 0 Unit: l3lu Program START ============
+L3_LDMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_LDMU | (4 << 22) | (0 << 27) | (1 << 6) | (1 << 10) | (1 << 14) | (1 << 18)
+L3_SYNC | (19 << 10)
+L3_RETURN
+========== Core: 7 Corelet: 0 Unit: l3lu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3LU-LAR:7
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-LBR:7
+0000000000 12698.000000
+0000000001 12706.000000
+#
+L3LU-EAR:7
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-EBR:7
+0000000000 28.000000
+0000000001 134217756.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 7 Corelet: 0 Unit: l3su Program START ============
+L3_SYNC | (35 << 10)
+L3_STMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_RETURN
+========== Core: 7 Corelet: 0 Unit: l3su Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3SU-LAR:7
+0000000000 0.000000
+#
+L3SU-LBR:7
+0000000000 12714.000000
+#
+L3SU-EAR:7
+0000000000 0.000000
+#
+L3SU-EBR:7
+0000000000 268435484.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 7 Corelet: 0 Unit: lxlu Program START ============
+LX_SYNC | (7 << 10)
+LX_SETDSTMASK | (0 << 19)
+LX_MVLOOPCNT | (4 << 10)
+LX_LDSTIU | (1 << 29) | (128 << 10) | (0 << 27) | (0 << 6)
+LX_LDSTIU | (1 << 31) | (1 << 29) | (128 << 10) | (0 << 27) | (1 << 6)
+LX_RETURN
+========== Core: 7 Corelet: 0 Unit: lxlu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXLU:7:0
+0000000000 1626240.000000
+0000000001 1625216.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 7 Corelet: 0 Unit: lxsu Program START ============
+LX_LDSTU | (1 << 16) | (4 << 17) | (1 << 29) | (0 << 6) | (1 << 10) | (0 << 27)
+LX_SYNC | (11 << 10)
+LX_RETURN
+========== Core: 7 Corelet: 0 Unit: lxsu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXSU:7:0
+0000000000 1627264.000000
+0000000001 128.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 7 Corelet: 0 Unit: sfp Program START ============
+SFP_MVLOOPCNT | (4UL << 11)
+SFP_FMA | (255UL << 36) | (0UL << 44) | (1UL << 6) | (1UL << 11) | (1UL << 16) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_FMA | (1UL << 35) | (255UL << 36) | (0UL << 44) | (9UL << 6) | (1UL << 11) | (10UL << 16) | (3UL << 24) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_RETURN
+========== Core: 7 Corelet: 0 Unit: sfp Program END ============
+===== END file: prog.txt =====
+===== START file: prog.txt =====
+========== Core: 8 Corelet: 0 Unit: l3lu Program START ============
+L3_LDMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_LDMU | (4 << 22) | (0 << 27) | (1 << 6) | (1 << 10) | (1 << 14) | (1 << 18)
+L3_SYNC | (19 << 10)
+L3_RETURN
+========== Core: 8 Corelet: 0 Unit: l3lu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3LU-LAR:8
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-LBR:8
+0000000000 12698.000000
+0000000001 12706.000000
+#
+L3LU-EAR:8
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-EBR:8
+0000000000 32.000000
+0000000001 134217760.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 8 Corelet: 0 Unit: l3su Program START ============
+L3_SYNC | (35 << 10)
+L3_STMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_RETURN
+========== Core: 8 Corelet: 0 Unit: l3su Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3SU-LAR:8
+0000000000 0.000000
+#
+L3SU-LBR:8
+0000000000 12714.000000
+#
+L3SU-EAR:8
+0000000000 0.000000
+#
+L3SU-EBR:8
+0000000000 268435488.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 8 Corelet: 0 Unit: lxlu Program START ============
+LX_SYNC | (7 << 10)
+LX_SETDSTMASK | (0 << 19)
+LX_MVLOOPCNT | (4 << 10)
+LX_LDSTIU | (1 << 29) | (128 << 10) | (0 << 27) | (0 << 6)
+LX_LDSTIU | (1 << 31) | (1 << 29) | (128 << 10) | (0 << 27) | (1 << 6)
+LX_RETURN
+========== Core: 8 Corelet: 0 Unit: lxlu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXLU:8:0
+0000000000 1626240.000000
+0000000001 1625216.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 8 Corelet: 0 Unit: lxsu Program START ============
+LX_LDSTU | (1 << 16) | (4 << 17) | (1 << 29) | (0 << 6) | (1 << 10) | (0 << 27)
+LX_SYNC | (11 << 10)
+LX_RETURN
+========== Core: 8 Corelet: 0 Unit: lxsu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXSU:8:0
+0000000000 1627264.000000
+0000000001 128.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 8 Corelet: 0 Unit: sfp Program START ============
+SFP_MVLOOPCNT | (4UL << 11)
+SFP_FMA | (255UL << 36) | (0UL << 44) | (1UL << 6) | (1UL << 11) | (1UL << 16) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_FMA | (1UL << 35) | (255UL << 36) | (0UL << 44) | (9UL << 6) | (1UL << 11) | (10UL << 16) | (3UL << 24) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_RETURN
+========== Core: 8 Corelet: 0 Unit: sfp Program END ============
+===== END file: prog.txt =====
+===== START file: prog.txt =====
+========== Core: 9 Corelet: 0 Unit: l3lu Program START ============
+L3_LDMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_LDMU | (4 << 22) | (0 << 27) | (1 << 6) | (1 << 10) | (1 << 14) | (1 << 18)
+L3_SYNC | (19 << 10)
+L3_RETURN
+========== Core: 9 Corelet: 0 Unit: l3lu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3LU-LAR:9
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-LBR:9
+0000000000 12698.000000
+0000000001 12706.000000
+#
+L3LU-EAR:9
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-EBR:9
+0000000000 36.000000
+0000000001 134217764.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 9 Corelet: 0 Unit: l3su Program START ============
+L3_SYNC | (35 << 10)
+L3_STMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_RETURN
+========== Core: 9 Corelet: 0 Unit: l3su Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3SU-LAR:9
+0000000000 0.000000
+#
+L3SU-LBR:9
+0000000000 12714.000000
+#
+L3SU-EAR:9
+0000000000 0.000000
+#
+L3SU-EBR:9
+0000000000 268435492.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 9 Corelet: 0 Unit: lxlu Program START ============
+LX_SYNC | (7 << 10)
+LX_SETDSTMASK | (0 << 19)
+LX_MVLOOPCNT | (4 << 10)
+LX_LDSTIU | (1 << 29) | (128 << 10) | (0 << 27) | (0 << 6)
+LX_LDSTIU | (1 << 31) | (1 << 29) | (128 << 10) | (0 << 27) | (1 << 6)
+LX_RETURN
+========== Core: 9 Corelet: 0 Unit: lxlu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXLU:9:0
+0000000000 1626240.000000
+0000000001 1625216.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 9 Corelet: 0 Unit: lxsu Program START ============
+LX_LDSTU | (1 << 16) | (4 << 17) | (1 << 29) | (0 << 6) | (1 << 10) | (0 << 27)
+LX_SYNC | (11 << 10)
+LX_RETURN
+========== Core: 9 Corelet: 0 Unit: lxsu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXSU:9:0
+0000000000 1627264.000000
+0000000001 128.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 9 Corelet: 0 Unit: sfp Program START ============
+SFP_MVLOOPCNT | (4UL << 11)
+SFP_FMA | (255UL << 36) | (0UL << 44) | (1UL << 6) | (1UL << 11) | (1UL << 16) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_FMA | (1UL << 35) | (255UL << 36) | (0UL << 44) | (9UL << 6) | (1UL << 11) | (10UL << 16) | (3UL << 24) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_RETURN
+========== Core: 9 Corelet: 0 Unit: sfp Program END ============
+===== END file: prog.txt =====
+===== START file: prog.txt =====
+========== Core: 10 Corelet: 0 Unit: l3lu Program START ============
+L3_LDMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_LDMU | (4 << 22) | (0 << 27) | (1 << 6) | (1 << 10) | (1 << 14) | (1 << 18)
+L3_SYNC | (19 << 10)
+L3_RETURN
+========== Core: 10 Corelet: 0 Unit: l3lu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3LU-LAR:10
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-LBR:10
+0000000000 12698.000000
+0000000001 12706.000000
+#
+L3LU-EAR:10
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-EBR:10
+0000000000 40.000000
+0000000001 134217768.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 10 Corelet: 0 Unit: l3su Program START ============
+L3_SYNC | (35 << 10)
+L3_STMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_RETURN
+========== Core: 10 Corelet: 0 Unit: l3su Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3SU-LAR:10
+0000000000 0.000000
+#
+L3SU-LBR:10
+0000000000 12714.000000
+#
+L3SU-EAR:10
+0000000000 0.000000
+#
+L3SU-EBR:10
+0000000000 268435496.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 10 Corelet: 0 Unit: lxlu Program START ============
+LX_SYNC | (7 << 10)
+LX_SETDSTMASK | (0 << 19)
+LX_MVLOOPCNT | (4 << 10)
+LX_LDSTIU | (1 << 29) | (128 << 10) | (0 << 27) | (0 << 6)
+LX_LDSTIU | (1 << 31) | (1 << 29) | (128 << 10) | (0 << 27) | (1 << 6)
+LX_RETURN
+========== Core: 10 Corelet: 0 Unit: lxlu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXLU:10:0
+0000000000 1626240.000000
+0000000001 1625216.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 10 Corelet: 0 Unit: lxsu Program START ============
+LX_LDSTU | (1 << 16) | (4 << 17) | (1 << 29) | (0 << 6) | (1 << 10) | (0 << 27)
+LX_SYNC | (11 << 10)
+LX_RETURN
+========== Core: 10 Corelet: 0 Unit: lxsu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXSU:10:0
+0000000000 1627264.000000
+0000000001 128.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 10 Corelet: 0 Unit: sfp Program START ============
+SFP_MVLOOPCNT | (4UL << 11)
+SFP_FMA | (255UL << 36) | (0UL << 44) | (1UL << 6) | (1UL << 11) | (1UL << 16) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_FMA | (1UL << 35) | (255UL << 36) | (0UL << 44) | (9UL << 6) | (1UL << 11) | (10UL << 16) | (3UL << 24) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_RETURN
+========== Core: 10 Corelet: 0 Unit: sfp Program END ============
+===== END file: prog.txt =====
+===== START file: prog.txt =====
+========== Core: 11 Corelet: 0 Unit: l3lu Program START ============
+L3_LDMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_LDMU | (4 << 22) | (0 << 27) | (1 << 6) | (1 << 10) | (1 << 14) | (1 << 18)
+L3_SYNC | (19 << 10)
+L3_RETURN
+========== Core: 11 Corelet: 0 Unit: l3lu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3LU-LAR:11
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-LBR:11
+0000000000 12698.000000
+0000000001 12706.000000
+#
+L3LU-EAR:11
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-EBR:11
+0000000000 44.000000
+0000000001 134217772.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 11 Corelet: 0 Unit: l3su Program START ============
+L3_SYNC | (35 << 10)
+L3_STMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_RETURN
+========== Core: 11 Corelet: 0 Unit: l3su Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3SU-LAR:11
+0000000000 0.000000
+#
+L3SU-LBR:11
+0000000000 12714.000000
+#
+L3SU-EAR:11
+0000000000 0.000000
+#
+L3SU-EBR:11
+0000000000 268435500.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 11 Corelet: 0 Unit: lxlu Program START ============
+LX_SYNC | (7 << 10)
+LX_SETDSTMASK | (0 << 19)
+LX_MVLOOPCNT | (4 << 10)
+LX_LDSTIU | (1 << 29) | (128 << 10) | (0 << 27) | (0 << 6)
+LX_LDSTIU | (1 << 31) | (1 << 29) | (128 << 10) | (0 << 27) | (1 << 6)
+LX_RETURN
+========== Core: 11 Corelet: 0 Unit: lxlu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXLU:11:0
+0000000000 1626240.000000
+0000000001 1625216.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 11 Corelet: 0 Unit: lxsu Program START ============
+LX_LDSTU | (1 << 16) | (4 << 17) | (1 << 29) | (0 << 6) | (1 << 10) | (0 << 27)
+LX_SYNC | (11 << 10)
+LX_RETURN
+========== Core: 11 Corelet: 0 Unit: lxsu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXSU:11:0
+0000000000 1627264.000000
+0000000001 128.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 11 Corelet: 0 Unit: sfp Program START ============
+SFP_MVLOOPCNT | (4UL << 11)
+SFP_FMA | (255UL << 36) | (0UL << 44) | (1UL << 6) | (1UL << 11) | (1UL << 16) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_FMA | (1UL << 35) | (255UL << 36) | (0UL << 44) | (9UL << 6) | (1UL << 11) | (10UL << 16) | (3UL << 24) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_RETURN
+========== Core: 11 Corelet: 0 Unit: sfp Program END ============
+===== END file: prog.txt =====
+===== START file: prog.txt =====
+========== Core: 12 Corelet: 0 Unit: l3lu Program START ============
+L3_LDMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_LDMU | (4 << 22) | (0 << 27) | (1 << 6) | (1 << 10) | (1 << 14) | (1 << 18)
+L3_SYNC | (19 << 10)
+L3_RETURN
+========== Core: 12 Corelet: 0 Unit: l3lu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3LU-LAR:12
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-LBR:12
+0000000000 12698.000000
+0000000001 12706.000000
+#
+L3LU-EAR:12
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-EBR:12
+0000000000 48.000000
+0000000001 134217776.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 12 Corelet: 0 Unit: l3su Program START ============
+L3_SYNC | (35 << 10)
+L3_STMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_RETURN
+========== Core: 12 Corelet: 0 Unit: l3su Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3SU-LAR:12
+0000000000 0.000000
+#
+L3SU-LBR:12
+0000000000 12714.000000
+#
+L3SU-EAR:12
+0000000000 0.000000
+#
+L3SU-EBR:12
+0000000000 268435504.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 12 Corelet: 0 Unit: lxlu Program START ============
+LX_SYNC | (7 << 10)
+LX_SETDSTMASK | (0 << 19)
+LX_MVLOOPCNT | (4 << 10)
+LX_LDSTIU | (1 << 29) | (128 << 10) | (0 << 27) | (0 << 6)
+LX_LDSTIU | (1 << 31) | (1 << 29) | (128 << 10) | (0 << 27) | (1 << 6)
+LX_RETURN
+========== Core: 12 Corelet: 0 Unit: lxlu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXLU:12:0
+0000000000 1626240.000000
+0000000001 1625216.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 12 Corelet: 0 Unit: lxsu Program START ============
+LX_LDSTU | (1 << 16) | (4 << 17) | (1 << 29) | (0 << 6) | (1 << 10) | (0 << 27)
+LX_SYNC | (11 << 10)
+LX_RETURN
+========== Core: 12 Corelet: 0 Unit: lxsu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXSU:12:0
+0000000000 1627264.000000
+0000000001 128.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 12 Corelet: 0 Unit: sfp Program START ============
+SFP_MVLOOPCNT | (4UL << 11)
+SFP_FMA | (255UL << 36) | (0UL << 44) | (1UL << 6) | (1UL << 11) | (1UL << 16) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_FMA | (1UL << 35) | (255UL << 36) | (0UL << 44) | (9UL << 6) | (1UL << 11) | (10UL << 16) | (3UL << 24) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_RETURN
+========== Core: 12 Corelet: 0 Unit: sfp Program END ============
+===== END file: prog.txt =====
+===== START file: prog.txt =====
+========== Core: 13 Corelet: 0 Unit: l3lu Program START ============
+L3_LDMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_LDMU | (4 << 22) | (0 << 27) | (1 << 6) | (1 << 10) | (1 << 14) | (1 << 18)
+L3_SYNC | (19 << 10)
+L3_RETURN
+========== Core: 13 Corelet: 0 Unit: l3lu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3LU-LAR:13
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-LBR:13
+0000000000 12698.000000
+0000000001 12706.000000
+#
+L3LU-EAR:13
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-EBR:13
+0000000000 52.000000
+0000000001 134217780.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 13 Corelet: 0 Unit: l3su Program START ============
+L3_SYNC | (35 << 10)
+L3_STMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_RETURN
+========== Core: 13 Corelet: 0 Unit: l3su Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3SU-LAR:13
+0000000000 0.000000
+#
+L3SU-LBR:13
+0000000000 12714.000000
+#
+L3SU-EAR:13
+0000000000 0.000000
+#
+L3SU-EBR:13
+0000000000 268435508.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 13 Corelet: 0 Unit: lxlu Program START ============
+LX_SYNC | (7 << 10)
+LX_SETDSTMASK | (0 << 19)
+LX_MVLOOPCNT | (4 << 10)
+LX_LDSTIU | (1 << 29) | (128 << 10) | (0 << 27) | (0 << 6)
+LX_LDSTIU | (1 << 31) | (1 << 29) | (128 << 10) | (0 << 27) | (1 << 6)
+LX_RETURN
+========== Core: 13 Corelet: 0 Unit: lxlu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXLU:13:0
+0000000000 1626240.000000
+0000000001 1625216.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 13 Corelet: 0 Unit: lxsu Program START ============
+LX_LDSTU | (1 << 16) | (4 << 17) | (1 << 29) | (0 << 6) | (1 << 10) | (0 << 27)
+LX_SYNC | (11 << 10)
+LX_RETURN
+========== Core: 13 Corelet: 0 Unit: lxsu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXSU:13:0
+0000000000 1627264.000000
+0000000001 128.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 13 Corelet: 0 Unit: sfp Program START ============
+SFP_MVLOOPCNT | (4UL << 11)
+SFP_FMA | (255UL << 36) | (0UL << 44) | (1UL << 6) | (1UL << 11) | (1UL << 16) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_FMA | (1UL << 35) | (255UL << 36) | (0UL << 44) | (9UL << 6) | (1UL << 11) | (10UL << 16) | (3UL << 24) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_RETURN
+========== Core: 13 Corelet: 0 Unit: sfp Program END ============
+===== END file: prog.txt =====
+===== START file: prog.txt =====
+========== Core: 14 Corelet: 0 Unit: l3lu Program START ============
+L3_LDMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_LDMU | (4 << 22) | (0 << 27) | (1 << 6) | (1 << 10) | (1 << 14) | (1 << 18)
+L3_SYNC | (19 << 10)
+L3_RETURN
+========== Core: 14 Corelet: 0 Unit: l3lu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3LU-LAR:14
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-LBR:14
+0000000000 12698.000000
+0000000001 12706.000000
+#
+L3LU-EAR:14
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-EBR:14
+0000000000 56.000000
+0000000001 134217784.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 14 Corelet: 0 Unit: l3su Program START ============
+L3_SYNC | (35 << 10)
+L3_STMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_RETURN
+========== Core: 14 Corelet: 0 Unit: l3su Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3SU-LAR:14
+0000000000 0.000000
+#
+L3SU-LBR:14
+0000000000 12714.000000
+#
+L3SU-EAR:14
+0000000000 0.000000
+#
+L3SU-EBR:14
+0000000000 268435512.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 14 Corelet: 0 Unit: lxlu Program START ============
+LX_SYNC | (7 << 10)
+LX_SETDSTMASK | (0 << 19)
+LX_MVLOOPCNT | (4 << 10)
+LX_LDSTIU | (1 << 29) | (128 << 10) | (0 << 27) | (0 << 6)
+LX_LDSTIU | (1 << 31) | (1 << 29) | (128 << 10) | (0 << 27) | (1 << 6)
+LX_RETURN
+========== Core: 14 Corelet: 0 Unit: lxlu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXLU:14:0
+0000000000 1626240.000000
+0000000001 1625216.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 14 Corelet: 0 Unit: lxsu Program START ============
+LX_LDSTU | (1 << 16) | (4 << 17) | (1 << 29) | (0 << 6) | (1 << 10) | (0 << 27)
+LX_SYNC | (11 << 10)
+LX_RETURN
+========== Core: 14 Corelet: 0 Unit: lxsu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXSU:14:0
+0000000000 1627264.000000
+0000000001 128.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 14 Corelet: 0 Unit: sfp Program START ============
+SFP_MVLOOPCNT | (4UL << 11)
+SFP_FMA | (255UL << 36) | (0UL << 44) | (1UL << 6) | (1UL << 11) | (1UL << 16) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_FMA | (1UL << 35) | (255UL << 36) | (0UL << 44) | (9UL << 6) | (1UL << 11) | (10UL << 16) | (3UL << 24) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_RETURN
+========== Core: 14 Corelet: 0 Unit: sfp Program END ============
+===== END file: prog.txt =====
+===== START file: prog.txt =====
+========== Core: 15 Corelet: 0 Unit: l3lu Program START ============
+L3_LDMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_LDMU | (4 << 22) | (0 << 27) | (1 << 6) | (1 << 10) | (1 << 14) | (1 << 18)
+L3_SYNC | (19 << 10)
+L3_RETURN
+========== Core: 15 Corelet: 0 Unit: l3lu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3LU-LAR:15
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-LBR:15
+0000000000 12698.000000
+0000000001 12706.000000
+#
+L3LU-EAR:15
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-EBR:15
+0000000000 60.000000
+0000000001 134217788.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 15 Corelet: 0 Unit: l3su Program START ============
+L3_SYNC | (35 << 10)
+L3_STMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_RETURN
+========== Core: 15 Corelet: 0 Unit: l3su Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3SU-LAR:15
+0000000000 0.000000
+#
+L3SU-LBR:15
+0000000000 12714.000000
+#
+L3SU-EAR:15
+0000000000 0.000000
+#
+L3SU-EBR:15
+0000000000 268435516.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 15 Corelet: 0 Unit: lxlu Program START ============
+LX_SYNC | (7 << 10)
+LX_SETDSTMASK | (0 << 19)
+LX_MVLOOPCNT | (4 << 10)
+LX_LDSTIU | (1 << 29) | (128 << 10) | (0 << 27) | (0 << 6)
+LX_LDSTIU | (1 << 31) | (1 << 29) | (128 << 10) | (0 << 27) | (1 << 6)
+LX_RETURN
+========== Core: 15 Corelet: 0 Unit: lxlu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXLU:15:0
+0000000000 1626240.000000
+0000000001 1625216.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 15 Corelet: 0 Unit: lxsu Program START ============
+LX_LDSTU | (1 << 16) | (4 << 17) | (1 << 29) | (0 << 6) | (1 << 10) | (0 << 27)
+LX_SYNC | (11 << 10)
+LX_RETURN
+========== Core: 15 Corelet: 0 Unit: lxsu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXSU:15:0
+0000000000 1627264.000000
+0000000001 128.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 15 Corelet: 0 Unit: sfp Program START ============
+SFP_MVLOOPCNT | (4UL << 11)
+SFP_FMA | (255UL << 36) | (0UL << 44) | (1UL << 6) | (1UL << 11) | (1UL << 16) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_FMA | (1UL << 35) | (255UL << 36) | (0UL << 44) | (9UL << 6) | (1UL << 11) | (10UL << 16) | (3UL << 24) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_RETURN
+========== Core: 15 Corelet: 0 Unit: sfp Program END ============
+===== END file: prog.txt =====
+===== START file: prog.txt =====
+========== Core: 16 Corelet: 0 Unit: l3lu Program START ============
+L3_LDMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_LDMU | (4 << 22) | (0 << 27) | (1 << 6) | (1 << 10) | (1 << 14) | (1 << 18)
+L3_SYNC | (19 << 10)
+L3_RETURN
+========== Core: 16 Corelet: 0 Unit: l3lu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3LU-LAR:16
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-LBR:16
+0000000000 12698.000000
+0000000001 12706.000000
+#
+L3LU-EAR:16
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-EBR:16
+0000000000 64.000000
+0000000001 134217792.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 16 Corelet: 0 Unit: l3su Program START ============
+L3_SYNC | (35 << 10)
+L3_STMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_RETURN
+========== Core: 16 Corelet: 0 Unit: l3su Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3SU-LAR:16
+0000000000 0.000000
+#
+L3SU-LBR:16
+0000000000 12714.000000
+#
+L3SU-EAR:16
+0000000000 0.000000
+#
+L3SU-EBR:16
+0000000000 268435520.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 16 Corelet: 0 Unit: lxlu Program START ============
+LX_SYNC | (7 << 10)
+LX_SETDSTMASK | (0 << 19)
+LX_MVLOOPCNT | (4 << 10)
+LX_LDSTIU | (1 << 29) | (128 << 10) | (0 << 27) | (0 << 6)
+LX_LDSTIU | (1 << 31) | (1 << 29) | (128 << 10) | (0 << 27) | (1 << 6)
+LX_RETURN
+========== Core: 16 Corelet: 0 Unit: lxlu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXLU:16:0
+0000000000 1626240.000000
+0000000001 1625216.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 16 Corelet: 0 Unit: lxsu Program START ============
+LX_LDSTU | (1 << 16) | (4 << 17) | (1 << 29) | (0 << 6) | (1 << 10) | (0 << 27)
+LX_SYNC | (11 << 10)
+LX_RETURN
+========== Core: 16 Corelet: 0 Unit: lxsu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXSU:16:0
+0000000000 1627264.000000
+0000000001 128.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 16 Corelet: 0 Unit: sfp Program START ============
+SFP_MVLOOPCNT | (4UL << 11)
+SFP_FMA | (255UL << 36) | (0UL << 44) | (1UL << 6) | (1UL << 11) | (1UL << 16) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_FMA | (1UL << 35) | (255UL << 36) | (0UL << 44) | (9UL << 6) | (1UL << 11) | (10UL << 16) | (3UL << 24) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_RETURN
+========== Core: 16 Corelet: 0 Unit: sfp Program END ============
+===== END file: prog.txt =====
+===== START file: prog.txt =====
+========== Core: 17 Corelet: 0 Unit: l3lu Program START ============
+L3_LDMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_LDMU | (4 << 22) | (0 << 27) | (1 << 6) | (1 << 10) | (1 << 14) | (1 << 18)
+L3_SYNC | (19 << 10)
+L3_RETURN
+========== Core: 17 Corelet: 0 Unit: l3lu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3LU-LAR:17
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-LBR:17
+0000000000 12698.000000
+0000000001 12706.000000
+#
+L3LU-EAR:17
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-EBR:17
+0000000000 68.000000
+0000000001 134217796.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 17 Corelet: 0 Unit: l3su Program START ============
+L3_SYNC | (35 << 10)
+L3_STMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_RETURN
+========== Core: 17 Corelet: 0 Unit: l3su Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3SU-LAR:17
+0000000000 0.000000
+#
+L3SU-LBR:17
+0000000000 12714.000000
+#
+L3SU-EAR:17
+0000000000 0.000000
+#
+L3SU-EBR:17
+0000000000 268435524.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 17 Corelet: 0 Unit: lxlu Program START ============
+LX_SYNC | (7 << 10)
+LX_SETDSTMASK | (0 << 19)
+LX_MVLOOPCNT | (4 << 10)
+LX_LDSTIU | (1 << 29) | (128 << 10) | (0 << 27) | (0 << 6)
+LX_LDSTIU | (1 << 31) | (1 << 29) | (128 << 10) | (0 << 27) | (1 << 6)
+LX_RETURN
+========== Core: 17 Corelet: 0 Unit: lxlu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXLU:17:0
+0000000000 1626240.000000
+0000000001 1625216.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 17 Corelet: 0 Unit: lxsu Program START ============
+LX_LDSTU | (1 << 16) | (4 << 17) | (1 << 29) | (0 << 6) | (1 << 10) | (0 << 27)
+LX_SYNC | (11 << 10)
+LX_RETURN
+========== Core: 17 Corelet: 0 Unit: lxsu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXSU:17:0
+0000000000 1627264.000000
+0000000001 128.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 17 Corelet: 0 Unit: sfp Program START ============
+SFP_MVLOOPCNT | (4UL << 11)
+SFP_FMA | (255UL << 36) | (0UL << 44) | (1UL << 6) | (1UL << 11) | (1UL << 16) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_FMA | (1UL << 35) | (255UL << 36) | (0UL << 44) | (9UL << 6) | (1UL << 11) | (10UL << 16) | (3UL << 24) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_RETURN
+========== Core: 17 Corelet: 0 Unit: sfp Program END ============
+===== END file: prog.txt =====
+===== START file: prog.txt =====
+========== Core: 18 Corelet: 0 Unit: l3lu Program START ============
+L3_LDMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_LDMU | (4 << 22) | (0 << 27) | (1 << 6) | (1 << 10) | (1 << 14) | (1 << 18)
+L3_SYNC | (19 << 10)
+L3_RETURN
+========== Core: 18 Corelet: 0 Unit: l3lu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3LU-LAR:18
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-LBR:18
+0000000000 12698.000000
+0000000001 12706.000000
+#
+L3LU-EAR:18
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-EBR:18
+0000000000 72.000000
+0000000001 134217800.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 18 Corelet: 0 Unit: l3su Program START ============
+L3_SYNC | (35 << 10)
+L3_STMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_RETURN
+========== Core: 18 Corelet: 0 Unit: l3su Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3SU-LAR:18
+0000000000 0.000000
+#
+L3SU-LBR:18
+0000000000 12714.000000
+#
+L3SU-EAR:18
+0000000000 0.000000
+#
+L3SU-EBR:18
+0000000000 268435528.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 18 Corelet: 0 Unit: lxlu Program START ============
+LX_SYNC | (7 << 10)
+LX_SETDSTMASK | (0 << 19)
+LX_MVLOOPCNT | (4 << 10)
+LX_LDSTIU | (1 << 29) | (128 << 10) | (0 << 27) | (0 << 6)
+LX_LDSTIU | (1 << 31) | (1 << 29) | (128 << 10) | (0 << 27) | (1 << 6)
+LX_RETURN
+========== Core: 18 Corelet: 0 Unit: lxlu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXLU:18:0
+0000000000 1626240.000000
+0000000001 1625216.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 18 Corelet: 0 Unit: lxsu Program START ============
+LX_LDSTU | (1 << 16) | (4 << 17) | (1 << 29) | (0 << 6) | (1 << 10) | (0 << 27)
+LX_SYNC | (11 << 10)
+LX_RETURN
+========== Core: 18 Corelet: 0 Unit: lxsu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXSU:18:0
+0000000000 1627264.000000
+0000000001 128.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 18 Corelet: 0 Unit: sfp Program START ============
+SFP_MVLOOPCNT | (4UL << 11)
+SFP_FMA | (255UL << 36) | (0UL << 44) | (1UL << 6) | (1UL << 11) | (1UL << 16) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_FMA | (1UL << 35) | (255UL << 36) | (0UL << 44) | (9UL << 6) | (1UL << 11) | (10UL << 16) | (3UL << 24) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_RETURN
+========== Core: 18 Corelet: 0 Unit: sfp Program END ============
+===== END file: prog.txt =====
+===== START file: prog.txt =====
+========== Core: 19 Corelet: 0 Unit: l3lu Program START ============
+L3_LDMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_LDMU | (4 << 22) | (0 << 27) | (1 << 6) | (1 << 10) | (1 << 14) | (1 << 18)
+L3_SYNC | (19 << 10)
+L3_RETURN
+========== Core: 19 Corelet: 0 Unit: l3lu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3LU-LAR:19
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-LBR:19
+0000000000 12698.000000
+0000000001 12706.000000
+#
+L3LU-EAR:19
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-EBR:19
+0000000000 76.000000
+0000000001 134217804.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 19 Corelet: 0 Unit: l3su Program START ============
+L3_SYNC | (35 << 10)
+L3_STMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_RETURN
+========== Core: 19 Corelet: 0 Unit: l3su Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3SU-LAR:19
+0000000000 0.000000
+#
+L3SU-LBR:19
+0000000000 12714.000000
+#
+L3SU-EAR:19
+0000000000 0.000000
+#
+L3SU-EBR:19
+0000000000 268435532.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 19 Corelet: 0 Unit: lxlu Program START ============
+LX_SYNC | (7 << 10)
+LX_SETDSTMASK | (0 << 19)
+LX_MVLOOPCNT | (4 << 10)
+LX_LDSTIU | (1 << 29) | (128 << 10) | (0 << 27) | (0 << 6)
+LX_LDSTIU | (1 << 31) | (1 << 29) | (128 << 10) | (0 << 27) | (1 << 6)
+LX_RETURN
+========== Core: 19 Corelet: 0 Unit: lxlu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXLU:19:0
+0000000000 1626240.000000
+0000000001 1625216.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 19 Corelet: 0 Unit: lxsu Program START ============
+LX_LDSTU | (1 << 16) | (4 << 17) | (1 << 29) | (0 << 6) | (1 << 10) | (0 << 27)
+LX_SYNC | (11 << 10)
+LX_RETURN
+========== Core: 19 Corelet: 0 Unit: lxsu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXSU:19:0
+0000000000 1627264.000000
+0000000001 128.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 19 Corelet: 0 Unit: sfp Program START ============
+SFP_MVLOOPCNT | (4UL << 11)
+SFP_FMA | (255UL << 36) | (0UL << 44) | (1UL << 6) | (1UL << 11) | (1UL << 16) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_FMA | (1UL << 35) | (255UL << 36) | (0UL << 44) | (9UL << 6) | (1UL << 11) | (10UL << 16) | (3UL << 24) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_RETURN
+========== Core: 19 Corelet: 0 Unit: sfp Program END ============
+===== END file: prog.txt =====
+===== START file: prog.txt =====
+========== Core: 20 Corelet: 0 Unit: l3lu Program START ============
+L3_LDMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_LDMU | (4 << 22) | (0 << 27) | (1 << 6) | (1 << 10) | (1 << 14) | (1 << 18)
+L3_SYNC | (19 << 10)
+L3_RETURN
+========== Core: 20 Corelet: 0 Unit: l3lu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3LU-LAR:20
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-LBR:20
+0000000000 12698.000000
+0000000001 12706.000000
+#
+L3LU-EAR:20
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-EBR:20
+0000000000 80.000000
+0000000001 134217808.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 20 Corelet: 0 Unit: l3su Program START ============
+L3_SYNC | (35 << 10)
+L3_STMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_RETURN
+========== Core: 20 Corelet: 0 Unit: l3su Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3SU-LAR:20
+0000000000 0.000000
+#
+L3SU-LBR:20
+0000000000 12714.000000
+#
+L3SU-EAR:20
+0000000000 0.000000
+#
+L3SU-EBR:20
+0000000000 268435536.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 20 Corelet: 0 Unit: lxlu Program START ============
+LX_SYNC | (7 << 10)
+LX_SETDSTMASK | (0 << 19)
+LX_MVLOOPCNT | (4 << 10)
+LX_LDSTIU | (1 << 29) | (128 << 10) | (0 << 27) | (0 << 6)
+LX_LDSTIU | (1 << 31) | (1 << 29) | (128 << 10) | (0 << 27) | (1 << 6)
+LX_RETURN
+========== Core: 20 Corelet: 0 Unit: lxlu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXLU:20:0
+0000000000 1626240.000000
+0000000001 1625216.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 20 Corelet: 0 Unit: lxsu Program START ============
+LX_LDSTU | (1 << 16) | (4 << 17) | (1 << 29) | (0 << 6) | (1 << 10) | (0 << 27)
+LX_SYNC | (11 << 10)
+LX_RETURN
+========== Core: 20 Corelet: 0 Unit: lxsu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXSU:20:0
+0000000000 1627264.000000
+0000000001 128.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 20 Corelet: 0 Unit: sfp Program START ============
+SFP_MVLOOPCNT | (4UL << 11)
+SFP_FMA | (255UL << 36) | (0UL << 44) | (1UL << 6) | (1UL << 11) | (1UL << 16) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_FMA | (1UL << 35) | (255UL << 36) | (0UL << 44) | (9UL << 6) | (1UL << 11) | (10UL << 16) | (3UL << 24) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_RETURN
+========== Core: 20 Corelet: 0 Unit: sfp Program END ============
+===== END file: prog.txt =====
+===== START file: prog.txt =====
+========== Core: 21 Corelet: 0 Unit: l3lu Program START ============
+L3_LDMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_LDMU | (4 << 22) | (0 << 27) | (1 << 6) | (1 << 10) | (1 << 14) | (1 << 18)
+L3_SYNC | (19 << 10)
+L3_RETURN
+========== Core: 21 Corelet: 0 Unit: l3lu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3LU-LAR:21
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-LBR:21
+0000000000 12698.000000
+0000000001 12706.000000
+#
+L3LU-EAR:21
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-EBR:21
+0000000000 84.000000
+0000000001 134217812.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 21 Corelet: 0 Unit: l3su Program START ============
+L3_SYNC | (35 << 10)
+L3_STMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_RETURN
+========== Core: 21 Corelet: 0 Unit: l3su Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3SU-LAR:21
+0000000000 0.000000
+#
+L3SU-LBR:21
+0000000000 12714.000000
+#
+L3SU-EAR:21
+0000000000 0.000000
+#
+L3SU-EBR:21
+0000000000 268435540.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 21 Corelet: 0 Unit: lxlu Program START ============
+LX_SYNC | (7 << 10)
+LX_SETDSTMASK | (0 << 19)
+LX_MVLOOPCNT | (4 << 10)
+LX_LDSTIU | (1 << 29) | (128 << 10) | (0 << 27) | (0 << 6)
+LX_LDSTIU | (1 << 31) | (1 << 29) | (128 << 10) | (0 << 27) | (1 << 6)
+LX_RETURN
+========== Core: 21 Corelet: 0 Unit: lxlu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXLU:21:0
+0000000000 1626240.000000
+0000000001 1625216.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 21 Corelet: 0 Unit: lxsu Program START ============
+LX_LDSTU | (1 << 16) | (4 << 17) | (1 << 29) | (0 << 6) | (1 << 10) | (0 << 27)
+LX_SYNC | (11 << 10)
+LX_RETURN
+========== Core: 21 Corelet: 0 Unit: lxsu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXSU:21:0
+0000000000 1627264.000000
+0000000001 128.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 21 Corelet: 0 Unit: sfp Program START ============
+SFP_MVLOOPCNT | (4UL << 11)
+SFP_FMA | (255UL << 36) | (0UL << 44) | (1UL << 6) | (1UL << 11) | (1UL << 16) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_FMA | (1UL << 35) | (255UL << 36) | (0UL << 44) | (9UL << 6) | (1UL << 11) | (10UL << 16) | (3UL << 24) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_RETURN
+========== Core: 21 Corelet: 0 Unit: sfp Program END ============
+===== END file: prog.txt =====
+===== START file: prog.txt =====
+========== Core: 22 Corelet: 0 Unit: l3lu Program START ============
+L3_LDMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_LDMU | (4 << 22) | (0 << 27) | (1 << 6) | (1 << 10) | (1 << 14) | (1 << 18)
+L3_SYNC | (19 << 10)
+L3_RETURN
+========== Core: 22 Corelet: 0 Unit: l3lu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3LU-LAR:22
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-LBR:22
+0000000000 12698.000000
+0000000001 12706.000000
+#
+L3LU-EAR:22
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-EBR:22
+0000000000 88.000000
+0000000001 134217816.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 22 Corelet: 0 Unit: l3su Program START ============
+L3_SYNC | (35 << 10)
+L3_STMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_RETURN
+========== Core: 22 Corelet: 0 Unit: l3su Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3SU-LAR:22
+0000000000 0.000000
+#
+L3SU-LBR:22
+0000000000 12714.000000
+#
+L3SU-EAR:22
+0000000000 0.000000
+#
+L3SU-EBR:22
+0000000000 268435544.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 22 Corelet: 0 Unit: lxlu Program START ============
+LX_SYNC | (7 << 10)
+LX_SETDSTMASK | (0 << 19)
+LX_MVLOOPCNT | (4 << 10)
+LX_LDSTIU | (1 << 29) | (128 << 10) | (0 << 27) | (0 << 6)
+LX_LDSTIU | (1 << 31) | (1 << 29) | (128 << 10) | (0 << 27) | (1 << 6)
+LX_RETURN
+========== Core: 22 Corelet: 0 Unit: lxlu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXLU:22:0
+0000000000 1626240.000000
+0000000001 1625216.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 22 Corelet: 0 Unit: lxsu Program START ============
+LX_LDSTU | (1 << 16) | (4 << 17) | (1 << 29) | (0 << 6) | (1 << 10) | (0 << 27)
+LX_SYNC | (11 << 10)
+LX_RETURN
+========== Core: 22 Corelet: 0 Unit: lxsu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXSU:22:0
+0000000000 1627264.000000
+0000000001 128.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 22 Corelet: 0 Unit: sfp Program START ============
+SFP_MVLOOPCNT | (4UL << 11)
+SFP_FMA | (255UL << 36) | (0UL << 44) | (1UL << 6) | (1UL << 11) | (1UL << 16) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_FMA | (1UL << 35) | (255UL << 36) | (0UL << 44) | (9UL << 6) | (1UL << 11) | (10UL << 16) | (3UL << 24) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_RETURN
+========== Core: 22 Corelet: 0 Unit: sfp Program END ============
+===== END file: prog.txt =====
+===== START file: prog.txt =====
+========== Core: 23 Corelet: 0 Unit: l3lu Program START ============
+L3_LDMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_LDMU | (4 << 22) | (0 << 27) | (1 << 6) | (1 << 10) | (1 << 14) | (1 << 18)
+L3_SYNC | (19 << 10)
+L3_RETURN
+========== Core: 23 Corelet: 0 Unit: l3lu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3LU-LAR:23
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-LBR:23
+0000000000 12698.000000
+0000000001 12706.000000
+#
+L3LU-EAR:23
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-EBR:23
+0000000000 92.000000
+0000000001 134217820.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 23 Corelet: 0 Unit: l3su Program START ============
+L3_SYNC | (35 << 10)
+L3_STMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_RETURN
+========== Core: 23 Corelet: 0 Unit: l3su Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3SU-LAR:23
+0000000000 0.000000
+#
+L3SU-LBR:23
+0000000000 12714.000000
+#
+L3SU-EAR:23
+0000000000 0.000000
+#
+L3SU-EBR:23
+0000000000 268435548.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 23 Corelet: 0 Unit: lxlu Program START ============
+LX_SYNC | (7 << 10)
+LX_SETDSTMASK | (0 << 19)
+LX_MVLOOPCNT | (4 << 10)
+LX_LDSTIU | (1 << 29) | (128 << 10) | (0 << 27) | (0 << 6)
+LX_LDSTIU | (1 << 31) | (1 << 29) | (128 << 10) | (0 << 27) | (1 << 6)
+LX_RETURN
+========== Core: 23 Corelet: 0 Unit: lxlu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXLU:23:0
+0000000000 1626240.000000
+0000000001 1625216.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 23 Corelet: 0 Unit: lxsu Program START ============
+LX_LDSTU | (1 << 16) | (4 << 17) | (1 << 29) | (0 << 6) | (1 << 10) | (0 << 27)
+LX_SYNC | (11 << 10)
+LX_RETURN
+========== Core: 23 Corelet: 0 Unit: lxsu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXSU:23:0
+0000000000 1627264.000000
+0000000001 128.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 23 Corelet: 0 Unit: sfp Program START ============
+SFP_MVLOOPCNT | (4UL << 11)
+SFP_FMA | (255UL << 36) | (0UL << 44) | (1UL << 6) | (1UL << 11) | (1UL << 16) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_FMA | (1UL << 35) | (255UL << 36) | (0UL << 44) | (9UL << 6) | (1UL << 11) | (10UL << 16) | (3UL << 24) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_RETURN
+========== Core: 23 Corelet: 0 Unit: sfp Program END ============
+===== END file: prog.txt =====
+===== START file: prog.txt =====
+========== Core: 24 Corelet: 0 Unit: l3lu Program START ============
+L3_LDMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_LDMU | (4 << 22) | (0 << 27) | (1 << 6) | (1 << 10) | (1 << 14) | (1 << 18)
+L3_SYNC | (19 << 10)
+L3_RETURN
+========== Core: 24 Corelet: 0 Unit: l3lu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3LU-LAR:24
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-LBR:24
+0000000000 12698.000000
+0000000001 12706.000000
+#
+L3LU-EAR:24
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-EBR:24
+0000000000 96.000000
+0000000001 134217824.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 24 Corelet: 0 Unit: l3su Program START ============
+L3_SYNC | (35 << 10)
+L3_STMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_RETURN
+========== Core: 24 Corelet: 0 Unit: l3su Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3SU-LAR:24
+0000000000 0.000000
+#
+L3SU-LBR:24
+0000000000 12714.000000
+#
+L3SU-EAR:24
+0000000000 0.000000
+#
+L3SU-EBR:24
+0000000000 268435552.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 24 Corelet: 0 Unit: lxlu Program START ============
+LX_SYNC | (7 << 10)
+LX_SETDSTMASK | (0 << 19)
+LX_MVLOOPCNT | (4 << 10)
+LX_LDSTIU | (1 << 29) | (128 << 10) | (0 << 27) | (0 << 6)
+LX_LDSTIU | (1 << 31) | (1 << 29) | (128 << 10) | (0 << 27) | (1 << 6)
+LX_RETURN
+========== Core: 24 Corelet: 0 Unit: lxlu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXLU:24:0
+0000000000 1626240.000000
+0000000001 1625216.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 24 Corelet: 0 Unit: lxsu Program START ============
+LX_LDSTU | (1 << 16) | (4 << 17) | (1 << 29) | (0 << 6) | (1 << 10) | (0 << 27)
+LX_SYNC | (11 << 10)
+LX_RETURN
+========== Core: 24 Corelet: 0 Unit: lxsu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXSU:24:0
+0000000000 1627264.000000
+0000000001 128.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 24 Corelet: 0 Unit: sfp Program START ============
+SFP_MVLOOPCNT | (4UL << 11)
+SFP_FMA | (255UL << 36) | (0UL << 44) | (1UL << 6) | (1UL << 11) | (1UL << 16) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_FMA | (1UL << 35) | (255UL << 36) | (0UL << 44) | (9UL << 6) | (1UL << 11) | (10UL << 16) | (3UL << 24) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_RETURN
+========== Core: 24 Corelet: 0 Unit: sfp Program END ============
+===== END file: prog.txt =====
+===== START file: prog.txt =====
+========== Core: 25 Corelet: 0 Unit: l3lu Program START ============
+L3_LDMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_LDMU | (4 << 22) | (0 << 27) | (1 << 6) | (1 << 10) | (1 << 14) | (1 << 18)
+L3_SYNC | (19 << 10)
+L3_RETURN
+========== Core: 25 Corelet: 0 Unit: l3lu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3LU-LAR:25
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-LBR:25
+0000000000 12698.000000
+0000000001 12706.000000
+#
+L3LU-EAR:25
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-EBR:25
+0000000000 100.000000
+0000000001 134217828.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 25 Corelet: 0 Unit: l3su Program START ============
+L3_SYNC | (35 << 10)
+L3_STMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_RETURN
+========== Core: 25 Corelet: 0 Unit: l3su Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3SU-LAR:25
+0000000000 0.000000
+#
+L3SU-LBR:25
+0000000000 12714.000000
+#
+L3SU-EAR:25
+0000000000 0.000000
+#
+L3SU-EBR:25
+0000000000 268435556.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 25 Corelet: 0 Unit: lxlu Program START ============
+LX_SYNC | (7 << 10)
+LX_SETDSTMASK | (0 << 19)
+LX_MVLOOPCNT | (4 << 10)
+LX_LDSTIU | (1 << 29) | (128 << 10) | (0 << 27) | (0 << 6)
+LX_LDSTIU | (1 << 31) | (1 << 29) | (128 << 10) | (0 << 27) | (1 << 6)
+LX_RETURN
+========== Core: 25 Corelet: 0 Unit: lxlu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXLU:25:0
+0000000000 1626240.000000
+0000000001 1625216.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 25 Corelet: 0 Unit: lxsu Program START ============
+LX_LDSTU | (1 << 16) | (4 << 17) | (1 << 29) | (0 << 6) | (1 << 10) | (0 << 27)
+LX_SYNC | (11 << 10)
+LX_RETURN
+========== Core: 25 Corelet: 0 Unit: lxsu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXSU:25:0
+0000000000 1627264.000000
+0000000001 128.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 25 Corelet: 0 Unit: sfp Program START ============
+SFP_MVLOOPCNT | (4UL << 11)
+SFP_FMA | (255UL << 36) | (0UL << 44) | (1UL << 6) | (1UL << 11) | (1UL << 16) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_FMA | (1UL << 35) | (255UL << 36) | (0UL << 44) | (9UL << 6) | (1UL << 11) | (10UL << 16) | (3UL << 24) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_RETURN
+========== Core: 25 Corelet: 0 Unit: sfp Program END ============
+===== END file: prog.txt =====
+===== START file: prog.txt =====
+========== Core: 26 Corelet: 0 Unit: l3lu Program START ============
+L3_LDMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_LDMU | (4 << 22) | (0 << 27) | (1 << 6) | (1 << 10) | (1 << 14) | (1 << 18)
+L3_SYNC | (19 << 10)
+L3_RETURN
+========== Core: 26 Corelet: 0 Unit: l3lu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3LU-LAR:26
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-LBR:26
+0000000000 12698.000000
+0000000001 12706.000000
+#
+L3LU-EAR:26
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-EBR:26
+0000000000 104.000000
+0000000001 134217832.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 26 Corelet: 0 Unit: l3su Program START ============
+L3_SYNC | (35 << 10)
+L3_STMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_RETURN
+========== Core: 26 Corelet: 0 Unit: l3su Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3SU-LAR:26
+0000000000 0.000000
+#
+L3SU-LBR:26
+0000000000 12714.000000
+#
+L3SU-EAR:26
+0000000000 0.000000
+#
+L3SU-EBR:26
+0000000000 268435560.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 26 Corelet: 0 Unit: lxlu Program START ============
+LX_SYNC | (7 << 10)
+LX_SETDSTMASK | (0 << 19)
+LX_MVLOOPCNT | (4 << 10)
+LX_LDSTIU | (1 << 29) | (128 << 10) | (0 << 27) | (0 << 6)
+LX_LDSTIU | (1 << 31) | (1 << 29) | (128 << 10) | (0 << 27) | (1 << 6)
+LX_RETURN
+========== Core: 26 Corelet: 0 Unit: lxlu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXLU:26:0
+0000000000 1626240.000000
+0000000001 1625216.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 26 Corelet: 0 Unit: lxsu Program START ============
+LX_LDSTU | (1 << 16) | (4 << 17) | (1 << 29) | (0 << 6) | (1 << 10) | (0 << 27)
+LX_SYNC | (11 << 10)
+LX_RETURN
+========== Core: 26 Corelet: 0 Unit: lxsu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXSU:26:0
+0000000000 1627264.000000
+0000000001 128.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 26 Corelet: 0 Unit: sfp Program START ============
+SFP_MVLOOPCNT | (4UL << 11)
+SFP_FMA | (255UL << 36) | (0UL << 44) | (1UL << 6) | (1UL << 11) | (1UL << 16) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_FMA | (1UL << 35) | (255UL << 36) | (0UL << 44) | (9UL << 6) | (1UL << 11) | (10UL << 16) | (3UL << 24) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_RETURN
+========== Core: 26 Corelet: 0 Unit: sfp Program END ============
+===== END file: prog.txt =====
+===== START file: prog.txt =====
+========== Core: 27 Corelet: 0 Unit: l3lu Program START ============
+L3_LDMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_LDMU | (4 << 22) | (0 << 27) | (1 << 6) | (1 << 10) | (1 << 14) | (1 << 18)
+L3_SYNC | (19 << 10)
+L3_RETURN
+========== Core: 27 Corelet: 0 Unit: l3lu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3LU-LAR:27
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-LBR:27
+0000000000 12698.000000
+0000000001 12706.000000
+#
+L3LU-EAR:27
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-EBR:27
+0000000000 108.000000
+0000000001 134217836.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 27 Corelet: 0 Unit: l3su Program START ============
+L3_SYNC | (35 << 10)
+L3_STMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_RETURN
+========== Core: 27 Corelet: 0 Unit: l3su Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3SU-LAR:27
+0000000000 0.000000
+#
+L3SU-LBR:27
+0000000000 12714.000000
+#
+L3SU-EAR:27
+0000000000 0.000000
+#
+L3SU-EBR:27
+0000000000 268435564.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 27 Corelet: 0 Unit: lxlu Program START ============
+LX_SYNC | (7 << 10)
+LX_SETDSTMASK | (0 << 19)
+LX_MVLOOPCNT | (4 << 10)
+LX_LDSTIU | (1 << 29) | (128 << 10) | (0 << 27) | (0 << 6)
+LX_LDSTIU | (1 << 31) | (1 << 29) | (128 << 10) | (0 << 27) | (1 << 6)
+LX_RETURN
+========== Core: 27 Corelet: 0 Unit: lxlu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXLU:27:0
+0000000000 1626240.000000
+0000000001 1625216.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 27 Corelet: 0 Unit: lxsu Program START ============
+LX_LDSTU | (1 << 16) | (4 << 17) | (1 << 29) | (0 << 6) | (1 << 10) | (0 << 27)
+LX_SYNC | (11 << 10)
+LX_RETURN
+========== Core: 27 Corelet: 0 Unit: lxsu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXSU:27:0
+0000000000 1627264.000000
+0000000001 128.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 27 Corelet: 0 Unit: sfp Program START ============
+SFP_MVLOOPCNT | (4UL << 11)
+SFP_FMA | (255UL << 36) | (0UL << 44) | (1UL << 6) | (1UL << 11) | (1UL << 16) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_FMA | (1UL << 35) | (255UL << 36) | (0UL << 44) | (9UL << 6) | (1UL << 11) | (10UL << 16) | (3UL << 24) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_RETURN
+========== Core: 27 Corelet: 0 Unit: sfp Program END ============
+===== END file: prog.txt =====
+===== START file: prog.txt =====
+========== Core: 28 Corelet: 0 Unit: l3lu Program START ============
+L3_LDMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_LDMU | (4 << 22) | (0 << 27) | (1 << 6) | (1 << 10) | (1 << 14) | (1 << 18)
+L3_SYNC | (19 << 10)
+L3_RETURN
+========== Core: 28 Corelet: 0 Unit: l3lu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3LU-LAR:28
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-LBR:28
+0000000000 12698.000000
+0000000001 12706.000000
+#
+L3LU-EAR:28
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-EBR:28
+0000000000 112.000000
+0000000001 134217840.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 28 Corelet: 0 Unit: l3su Program START ============
+L3_SYNC | (35 << 10)
+L3_STMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_RETURN
+========== Core: 28 Corelet: 0 Unit: l3su Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3SU-LAR:28
+0000000000 0.000000
+#
+L3SU-LBR:28
+0000000000 12714.000000
+#
+L3SU-EAR:28
+0000000000 0.000000
+#
+L3SU-EBR:28
+0000000000 268435568.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 28 Corelet: 0 Unit: lxlu Program START ============
+LX_SYNC | (7 << 10)
+LX_SETDSTMASK | (0 << 19)
+LX_MVLOOPCNT | (4 << 10)
+LX_LDSTIU | (1 << 29) | (128 << 10) | (0 << 27) | (0 << 6)
+LX_LDSTIU | (1 << 31) | (1 << 29) | (128 << 10) | (0 << 27) | (1 << 6)
+LX_RETURN
+========== Core: 28 Corelet: 0 Unit: lxlu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXLU:28:0
+0000000000 1626240.000000
+0000000001 1625216.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 28 Corelet: 0 Unit: lxsu Program START ============
+LX_LDSTU | (1 << 16) | (4 << 17) | (1 << 29) | (0 << 6) | (1 << 10) | (0 << 27)
+LX_SYNC | (11 << 10)
+LX_RETURN
+========== Core: 28 Corelet: 0 Unit: lxsu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXSU:28:0
+0000000000 1627264.000000
+0000000001 128.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 28 Corelet: 0 Unit: sfp Program START ============
+SFP_MVLOOPCNT | (4UL << 11)
+SFP_FMA | (255UL << 36) | (0UL << 44) | (1UL << 6) | (1UL << 11) | (1UL << 16) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_FMA | (1UL << 35) | (255UL << 36) | (0UL << 44) | (9UL << 6) | (1UL << 11) | (10UL << 16) | (3UL << 24) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_RETURN
+========== Core: 28 Corelet: 0 Unit: sfp Program END ============
+===== END file: prog.txt =====
+===== START file: prog.txt =====
+========== Core: 29 Corelet: 0 Unit: l3lu Program START ============
+L3_LDMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_LDMU | (4 << 22) | (0 << 27) | (1 << 6) | (1 << 10) | (1 << 14) | (1 << 18)
+L3_SYNC | (19 << 10)
+L3_RETURN
+========== Core: 29 Corelet: 0 Unit: l3lu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3LU-LAR:29
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-LBR:29
+0000000000 12698.000000
+0000000001 12706.000000
+#
+L3LU-EAR:29
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-EBR:29
+0000000000 116.000000
+0000000001 134217844.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 29 Corelet: 0 Unit: l3su Program START ============
+L3_SYNC | (35 << 10)
+L3_STMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_RETURN
+========== Core: 29 Corelet: 0 Unit: l3su Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3SU-LAR:29
+0000000000 0.000000
+#
+L3SU-LBR:29
+0000000000 12714.000000
+#
+L3SU-EAR:29
+0000000000 0.000000
+#
+L3SU-EBR:29
+0000000000 268435572.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 29 Corelet: 0 Unit: lxlu Program START ============
+LX_SYNC | (7 << 10)
+LX_SETDSTMASK | (0 << 19)
+LX_MVLOOPCNT | (4 << 10)
+LX_LDSTIU | (1 << 29) | (128 << 10) | (0 << 27) | (0 << 6)
+LX_LDSTIU | (1 << 31) | (1 << 29) | (128 << 10) | (0 << 27) | (1 << 6)
+LX_RETURN
+========== Core: 29 Corelet: 0 Unit: lxlu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXLU:29:0
+0000000000 1626240.000000
+0000000001 1625216.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 29 Corelet: 0 Unit: lxsu Program START ============
+LX_LDSTU | (1 << 16) | (4 << 17) | (1 << 29) | (0 << 6) | (1 << 10) | (0 << 27)
+LX_SYNC | (11 << 10)
+LX_RETURN
+========== Core: 29 Corelet: 0 Unit: lxsu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXSU:29:0
+0000000000 1627264.000000
+0000000001 128.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 29 Corelet: 0 Unit: sfp Program START ============
+SFP_MVLOOPCNT | (4UL << 11)
+SFP_FMA | (255UL << 36) | (0UL << 44) | (1UL << 6) | (1UL << 11) | (1UL << 16) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_FMA | (1UL << 35) | (255UL << 36) | (0UL << 44) | (9UL << 6) | (1UL << 11) | (10UL << 16) | (3UL << 24) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_RETURN
+========== Core: 29 Corelet: 0 Unit: sfp Program END ============
+===== END file: prog.txt =====
+===== START file: prog.txt =====
+========== Core: 30 Corelet: 0 Unit: l3lu Program START ============
+L3_LDMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_LDMU | (4 << 22) | (0 << 27) | (1 << 6) | (1 << 10) | (1 << 14) | (1 << 18)
+L3_SYNC | (19 << 10)
+L3_RETURN
+========== Core: 30 Corelet: 0 Unit: l3lu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3LU-LAR:30
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-LBR:30
+0000000000 12698.000000
+0000000001 12706.000000
+#
+L3LU-EAR:30
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-EBR:30
+0000000000 120.000000
+0000000001 134217848.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 30 Corelet: 0 Unit: l3su Program START ============
+L3_SYNC | (35 << 10)
+L3_STMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_RETURN
+========== Core: 30 Corelet: 0 Unit: l3su Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3SU-LAR:30
+0000000000 0.000000
+#
+L3SU-LBR:30
+0000000000 12714.000000
+#
+L3SU-EAR:30
+0000000000 0.000000
+#
+L3SU-EBR:30
+0000000000 268435576.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 30 Corelet: 0 Unit: lxlu Program START ============
+LX_SYNC | (7 << 10)
+LX_SETDSTMASK | (0 << 19)
+LX_MVLOOPCNT | (4 << 10)
+LX_LDSTIU | (1 << 29) | (128 << 10) | (0 << 27) | (0 << 6)
+LX_LDSTIU | (1 << 31) | (1 << 29) | (128 << 10) | (0 << 27) | (1 << 6)
+LX_RETURN
+========== Core: 30 Corelet: 0 Unit: lxlu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXLU:30:0
+0000000000 1626240.000000
+0000000001 1625216.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 30 Corelet: 0 Unit: lxsu Program START ============
+LX_LDSTU | (1 << 16) | (4 << 17) | (1 << 29) | (0 << 6) | (1 << 10) | (0 << 27)
+LX_SYNC | (11 << 10)
+LX_RETURN
+========== Core: 30 Corelet: 0 Unit: lxsu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXSU:30:0
+0000000000 1627264.000000
+0000000001 128.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 30 Corelet: 0 Unit: sfp Program START ============
+SFP_MVLOOPCNT | (4UL << 11)
+SFP_FMA | (255UL << 36) | (0UL << 44) | (1UL << 6) | (1UL << 11) | (1UL << 16) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_FMA | (1UL << 35) | (255UL << 36) | (0UL << 44) | (9UL << 6) | (1UL << 11) | (10UL << 16) | (3UL << 24) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_RETURN
+========== Core: 30 Corelet: 0 Unit: sfp Program END ============
+===== END file: prog.txt =====
+===== START file: prog.txt =====
+========== Core: 31 Corelet: 0 Unit: l3lu Program START ============
+L3_LDMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_LDMU | (4 << 22) | (0 << 27) | (1 << 6) | (1 << 10) | (1 << 14) | (1 << 18)
+L3_SYNC | (19 << 10)
+L3_RETURN
+========== Core: 31 Corelet: 0 Unit: l3lu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3LU-LAR:31
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-LBR:31
+0000000000 12698.000000
+0000000001 12706.000000
+#
+L3LU-EAR:31
+0000000000 0.000000
+0000000001 0.000000
+#
+L3LU-EBR:31
+0000000000 124.000000
+0000000001 134217852.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 31 Corelet: 0 Unit: l3su Program START ============
+L3_SYNC | (35 << 10)
+L3_STMU | (4 << 22) | (0 << 27) | (0 << 6) | (0 << 10) | (0 << 14) | (0 << 18)
+L3_RETURN
+========== Core: 31 Corelet: 0 Unit: l3su Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+L3SU-LAR:31
+0000000000 0.000000
+#
+L3SU-LBR:31
+0000000000 12714.000000
+#
+L3SU-EAR:31
+0000000000 0.000000
+#
+L3SU-EBR:31
+0000000000 268435580.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 31 Corelet: 0 Unit: lxlu Program START ============
+LX_SYNC | (7 << 10)
+LX_SETDSTMASK | (0 << 19)
+LX_MVLOOPCNT | (4 << 10)
+LX_LDSTIU | (1 << 29) | (128 << 10) | (0 << 27) | (0 << 6)
+LX_LDSTIU | (1 << 31) | (1 << 29) | (128 << 10) | (0 << 27) | (1 << 6)
+LX_RETURN
+========== Core: 31 Corelet: 0 Unit: lxlu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXLU:31:0
+0000000000 1626240.000000
+0000000001 1625216.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 31 Corelet: 0 Unit: lxsu Program START ============
+LX_LDSTU | (1 << 16) | (4 << 17) | (1 << 29) | (0 << 6) | (1 << 10) | (0 << 27)
+LX_SYNC | (11 << 10)
+LX_RETURN
+========== Core: 31 Corelet: 0 Unit: lxsu Program END ============
+===== END file: prog.txt =====
+===== START file: reg_initial.txt =====
+#
+LXSU:31:0
+0000000000 1627264.000000
+0000000001 128.000000
+===== END file: reg_initial.txt =====
+===== START file: prog.txt =====
+========== Core: 31 Corelet: 0 Unit: sfp Program START ============
+SFP_MVLOOPCNT | (4UL << 11)
+SFP_FMA | (255UL << 36) | (0UL << 44) | (1UL << 6) | (1UL << 11) | (1UL << 16) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_FMA | (1UL << 35) | (255UL << 36) | (0UL << 44) | (9UL << 6) | (1UL << 11) | (10UL << 16) | (3UL << 24) | (15UL << 30) | (0UL << 47) | (0UL << 48) | (0UL << 49) | (0UL << 50) | (0UL << 45)
+SFP_RETURN
+========== Core: 31 Corelet: 0 Unit: sfp Program END ============
+===== END file: prog.txt =====

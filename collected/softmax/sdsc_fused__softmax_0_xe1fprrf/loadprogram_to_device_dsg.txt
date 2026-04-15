@@ -1,0 +1,6 @@
+N 0 SenProgSend sdsc_fused__softmax_0_xe1fprrf-SenProgSend
+A dev_ptr 6 120259084288
+A size 6 2688
+I { }
+O { }
+T { }

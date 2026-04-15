@@ -1,0 +1,3271 @@
+{
+  "meannonstick" : {
+    "sdscFoldProps_" : [
+      {"factor_" : 1, "label_" : "time"}
+    ],
+    "sdscFolds_" :  {
+      "dim_prop_func" : [
+        { "Affine" : {"alpha_" : 1, "beta_" : 0} }
+      ],
+      "dim_prop_attr" : [
+        { "factor_" : 1, "label_" : "time" }
+      ],
+      "data_" : {
+        "[0]" :"0"
+      }
+    },
+    "coreFoldProp_" : {"factor_" : 1, "label_" : "core"},
+    "coreletFoldProp_" : {"factor_" : 1, "label_" : "corelet"},
+    "folded_sdsc_name_" : "",
+    "fold_coord_" : [  ],
+    "numCoresUsed_" : 1,
+    "unpadN_" : {"name_" : "unpadn", "in_" : -1, "out_" : -1, "mb_" : -1, "i_" : -1, "j_" : -1, "ki_" : -1, "kj_" : -1, "x_" : -1, "x1_" : -1, "y_" : -1, "r_" : -1, "c_" : -1, "ij_" : -1, "rc_" : -1, "kij_" : -1, "sij_" : -1, "zij_" : -1, "si_" : -1, "sj_" : -1, "zi_" : -1, "zj_" : -1, "symbolicDimInfo_" : {}, "maxSymbolicVolume_" : {}, "coreletSplit_" : {}, "rowSplit_" : {}, "peSfpSplit_" : {}, "paddingSizes_" : {}},
+    "N_" : {"name_" : "n", "in_" : -1, "out_" : -1, "mb_" : -1, "i_" : -1, "j_" : -1, "ki_" : -1, "kj_" : -1, "x_" : -1, "x1_" : -1, "y_" : -1, "r_" : -1, "c_" : -1, "ij_" : -1, "rc_" : -1, "kij_" : -1, "sij_" : -1, "zij_" : -1, "si_" : -1, "sj_" : -1, "zi_" : -1, "zj_" : -1, "symbolicDimInfo_" : {}, "maxSymbolicVolume_" : {}, "coreletSplit_" : {}, "rowSplit_" : {}, "peSfpSplit_" : {}, "paddingSizes_" : {}},
+    "coreIdToDsc_" : { 
+      "0" : 0
+    }, 
+    "numWkSlicesPerDim_" : { "out" : 1, "mb" : 1 },
+    "coreIdToWkSlice_" : { 
+      "0" : { "out" : 0, "mb" : 0 }
+    }, 
+    "opFuncsUsed_" : [  ], 
+    "ldsShareInfo_" : [
+    ],
+    "prodConsList" : {
+    },
+    "coreIdToDscSchedule" : {
+      "0" : [[-1 ,0 ,0 ,0] ]
+    },
+    "target_" : "sentient",
+    "dscs_" : [ 
+      {
+        "meannonstick" : {
+          "numCoresUsed_" : 1,
+          "numCoreletsUsed_" : 1,
+          "coreIdsUsed_" : [ 0 ],
+          "unpadN_" : {"name_" : "unpadn", "in_" : -1, "out_" : -1, "mb_" : -1, "i_" : -1, "j_" : -1, "ki_" : -1, "kj_" : -1, "x_" : -1, "x1_" : -1, "y_" : -1, "r_" : -1, "c_" : -1, "ij_" : -1, "rc_" : -1, "kij_" : -1, "sij_" : -1, "zij_" : -1, "si_" : -1, "sj_" : -1, "zi_" : -1, "zj_" : -1, "symbolicDimInfo_" : {}, "maxSymbolicVolume_" : {}, "coreletSplit_" : {}, "rowSplit_" : {}, "peSfpSplit_" : {}, "paddingSizes_" : {}},
+          "N_" : {"name_" : "n", "in_" : -1, "out_" : 64, "mb_" : 128, "i_" : -1, "j_" : -1, "ki_" : -1, "kj_" : -1, "x_" : -1, "x1_" : -1, "y_" : -1, "r_" : -1, "c_" : -1, "ij_" : -1, "rc_" : -1, "kij_" : -1, "sij_" : -1, "zij_" : -1, "si_" : -1, "sj_" : -1, "zi_" : -1, "zj_" : -1, "symbolicDimInfo_" : {}, "maxSymbolicVolume_" : {}, "coreletSplit_" : {}, "rowSplit_" : {}, "peSfpSplit_" : {}, "paddingSizes_" : {}},
+          "dscN_" : {"name_" : "dscn", "in_" : -1, "out_" : -1, "mb_" : -1, "i_" : -1, "j_" : -1, "ki_" : -1, "kj_" : -1, "x_" : -1, "x1_" : -1, "y_" : -1, "r_" : -1, "c_" : -1, "ij_" : -1, "rc_" : -1, "kij_" : -1, "sij_" : -1, "zij_" : -1, "si_" : -1, "sj_" : -1, "zi_" : -1, "zj_" : -1, "symbolicDimInfo_" : {}, "maxSymbolicVolume_" : {}, "coreletSplit_" : {}, "rowSplit_" : {}, "peSfpSplit_" : {}, "paddingSizes_" : {}},
+          "ChipD_" : {"name_" : "chipd", "in_" : -1, "out_" : -1, "mb_" : -1, "i_" : -1, "j_" : -1, "ki_" : -1, "kj_" : -1, "x_" : -1, "x1_" : -1, "y_" : -1, "r_" : -1, "c_" : -1, "ij_" : -1, "rc_" : -1, "kij_" : -1, "sij_" : -1, "zij_" : -1, "si_" : -1, "sj_" : -1, "zi_" : -1, "zj_" : -1, "symbolicDimInfo_" : {}, "maxSymbolicVolume_" : {}, "coreletSplit_" : {}, "rowSplit_" : {}, "peSfpSplit_" : {}, "paddingSizes_" : {}},
+          "ChipletD_" : {"name_" : "chipletd", "in_" : -1, "out_" : -1, "mb_" : -1, "i_" : -1, "j_" : -1, "ki_" : -1, "kj_" : -1, "x_" : -1, "x1_" : -1, "y_" : -1, "r_" : -1, "c_" : -1, "ij_" : -1, "rc_" : -1, "kij_" : -1, "sij_" : -1, "zij_" : -1, "si_" : -1, "sj_" : -1, "zi_" : -1, "zj_" : -1, "symbolicDimInfo_" : {}, "maxSymbolicVolume_" : {}, "coreletSplit_" : {}, "rowSplit_" : {}, "peSfpSplit_" : {}, "paddingSizes_" : {}},
+          "CoreD_" : {"name_" : "d", "in_" : -1, "out_" : -1, "mb_" : -1, "i_" : -1, "j_" : -1, "ki_" : -1, "kj_" : -1, "x_" : -1, "x1_" : -1, "y_" : -1, "r_" : -1, "c_" : -1, "ij_" : -1, "rc_" : -1, "kij_" : -1, "sij_" : -1, "zij_" : -1, "si_" : -1, "sj_" : -1, "zi_" : -1, "zj_" : -1, "symbolicDimInfo_" : {}, "maxSymbolicVolume_" : {}, "coreletSplit_" : {}, "rowSplit_" : {}, "peSfpSplit_" : {}, "paddingSizes_" : {}},
+          "CoreletD_" : {"name_" : "coreletd", "in_" : -1, "out_" : -1, "mb_" : -1, "i_" : -1, "j_" : -1, "ki_" : -1, "kj_" : -1, "x_" : -1, "x1_" : -1, "y_" : -1, "r_" : -1, "c_" : -1, "ij_" : -1, "rc_" : -1, "kij_" : -1, "sij_" : -1, "zij_" : -1, "si_" : -1, "sj_" : -1, "zi_" : -1, "zj_" : -1, "symbolicDimInfo_" : {}, "maxSymbolicVolume_" : {}, "coreletSplit_" : {}, "rowSplit_" : {}, "peSfpSplit_" : {}, "paddingSizes_" : {}},
+          "B_" : {"name_" : "b", "in_" : -1, "out_" : -1, "mb_" : -1, "i_" : -1, "j_" : -1, "ki_" : -1, "kj_" : -1, "x_" : -1, "x1_" : -1, "y_" : -1, "r_" : -1, "c_" : -1, "ij_" : -1, "rc_" : -1, "kij_" : -1, "sij_" : -1, "zij_" : -1, "si_" : -1, "sj_" : -1, "zi_" : -1, "zj_" : -1, "symbolicDimInfo_" : {}, "maxSymbolicVolume_" : {}, "coreletSplit_" : {}, "rowSplit_" : {}, "peSfpSplit_" : {}, "paddingSizes_" : {}},
+          "T_" : {"name_" : "t", "in_" : -1, "out_" : -1, "mb_" : -1, "i_" : -1, "j_" : -1, "ki_" : -1, "kj_" : -1, "x_" : -1, "x1_" : -1, "y_" : -1, "r_" : -1, "c_" : -1, "ij_" : -1, "rc_" : -1, "kij_" : -1, "sij_" : -1, "zij_" : -1, "si_" : -1, "sj_" : -1, "zi_" : -1, "zj_" : -1, "symbolicDimInfo_" : {}, "maxSymbolicVolume_" : {}, "coreletSplit_" : {}, "rowSplit_" : {}, "peSfpSplit_" : {}, "paddingSizes_" : {}},
+          "Tel_" : {"name_" : "tel", "in_" : -1, "out_" : -1, "mb_" : -1, "i_" : -1, "j_" : -1, "ki_" : -1, "kj_" : -1, "x_" : -1, "x1_" : -1, "y_" : -1, "r_" : -1, "c_" : -1, "ij_" : -1, "rc_" : -1, "kij_" : -1, "sij_" : -1, "zij_" : -1, "si_" : -1, "sj_" : -1, "zi_" : -1, "zj_" : -1, "symbolicDimInfo_" : {}, "maxSymbolicVolume_" : {}, "coreletSplit_" : {}, "rowSplit_" : {}, "peSfpSplit_" : {}, "paddingSizes_" : {}},
+          "P_" : {"name_" : "p", "in_" : -1, "out_" : -1, "mb_" : -1, "i_" : -1, "j_" : -1, "ki_" : -1, "kj_" : -1, "x_" : -1, "x1_" : -1, "y_" : -1, "r_" : -1, "c_" : -1, "ij_" : -1, "rc_" : -1, "kij_" : -1, "sij_" : -1, "zij_" : -1, "si_" : -1, "sj_" : -1, "zi_" : -1, "zj_" : -1, "symbolicDimInfo_" : {}, "maxSymbolicVolume_" : {}, "coreletSplit_" : {}, "rowSplit_" : {}, "peSfpSplit_" : {}, "paddingSizes_" : {}},
+          "Pel_" : {"name_" : "pel", "in_" : -1, "out_" : -1, "mb_" : -1, "i_" : -1, "j_" : -1, "ki_" : -1, "kj_" : -1, "x_" : -1, "x1_" : -1, "y_" : -1, "r_" : -1, "c_" : -1, "ij_" : -1, "rc_" : -1, "kij_" : -1, "sij_" : -1, "zij_" : -1, "si_" : -1, "sj_" : -1, "zi_" : -1, "zj_" : -1, "symbolicDimInfo_" : {}, "maxSymbolicVolume_" : {}, "coreletSplit_" : {}, "rowSplit_" : {}, "peSfpSplit_" : {}, "paddingSizes_" : {}},
+          "loopOrder_" : [],
+          "loopProperties_" : {
+          },
+          "auxLoopOrder_" : {
+          },
+          "coordinateMasking_" : {  },
+          "maskingConstId_" : -1,
+          "dimToSymbolMapping_" : {},
+          "numCoreletsUsed_DSC2_" : 1,
+          "dataStageParam_" : {
+            "0" : {
+              "ss_" : {"name_" : "core", "in_" : -1, "out_" : 64, "mb_" : 128, "i_" : -1, "j_" : -1, "ki_" : -1, "kj_" : -1, "x_" : -1, "x1_" : -1, "y_" : -1, "symbolicDimInfo_" : {}, "maxSymbolicVolume_" : {}, "coreletSplit_" : {}, "rowSplit_" : {}, "peSfpSplit_" : {}, "paddingSizes_" : {}},
+              "el_" : {"name_" : "core", "in_" : -1, "out_" : 64, "mb_" : 128, "i_" : -1, "j_" : -1, "ki_" : -1, "kj_" : -1, "x_" : -1, "x1_" : -1, "y_" : -1, "symbolicDimInfo_" : {}, "maxSymbolicVolume_" : {}, "coreletSplit_" : {}, "rowSplit_" : {}, "peSfpSplit_" : {}, "paddingSizes_" : {}}
+            },
+            "1" : {
+              "ss_" : {"name_" : "chunk", "in_" : -1, "out_" : 64, "mb_" : 32, "i_" : -1, "j_" : -1, "ki_" : -1, "kj_" : -1, "x_" : -1, "x1_" : -1, "y_" : -1, "symbolicDimInfo_" : {}, "maxSymbolicVolume_" : {}, "coreletSplit_" : {}, "rowSplit_" : {}, "peSfpSplit_" : {}, "paddingSizes_" : {}},
+              "el_" : {"name_" : "chunk", "in_" : -1, "out_" : 64, "mb_" : 32, "i_" : -1, "j_" : -1, "ki_" : -1, "kj_" : -1, "x_" : -1, "x1_" : -1, "y_" : -1, "symbolicDimInfo_" : {}, "maxSymbolicVolume_" : {}, "coreletSplit_" : {}, "rowSplit_" : {}, "peSfpSplit_" : {}, "paddingSizes_" : {}}
+            },
+            "2" : {
+              "ss_" : {"name_" : "2", "in_" : -1, "out_" : 64, "mb_" : -1, "i_" : -1, "j_" : -1, "ki_" : -1, "kj_" : -1, "x_" : -1, "x1_" : -1, "y_" : -1, "symbolicDimInfo_" : {}, "maxSymbolicVolume_" : {}, "coreletSplit_" : {}, "rowSplit_" : {}, "peSfpSplit_" : {}, "paddingSizes_" : {}},
+              "el_" : {"name_" : "2el", "in_" : -1, "out_" : 64, "mb_" : -1, "i_" : -1, "j_" : -1, "ki_" : -1, "kj_" : -1, "x_" : -1, "x1_" : -1, "y_" : -1, "symbolicDimInfo_" : {}, "maxSymbolicVolume_" : {}, "coreletSplit_" : {}, "rowSplit_" : {}, "peSfpSplit_" : {}, "paddingSizes_" : {}}
+            },
+            "3" : {
+              "ss_" : {"name_" : "3", "in_" : -1, "out_" : 64, "mb_" : 1, "i_" : -1, "j_" : -1, "ki_" : -1, "kj_" : -1, "x_" : -1, "x1_" : -1, "y_" : -1, "symbolicDimInfo_" : {}, "maxSymbolicVolume_" : {}, "coreletSplit_" : {}, "rowSplit_" : {}, "peSfpSplit_" : {}, "paddingSizes_" : {}},
+              "el_" : {"name_" : "3el", "in_" : -1, "out_" : 64, "mb_" : 1, "i_" : -1, "j_" : -1, "ki_" : -1, "kj_" : -1, "x_" : -1, "x1_" : -1, "y_" : -1, "symbolicDimInfo_" : {}, "maxSymbolicVolume_" : {}, "coreletSplit_" : {}, "rowSplit_" : {}, "peSfpSplit_" : {}, "paddingSizes_" : {}}
+            }
+          },
+          "constantInfo_" : {
+            "0" : {
+              "dataFormat_" : "SEN169_FP16",
+              "name_" : "scaling_factor",
+              "data_" :  {
+                "dim_prop_func" : [
+                  { "Const" : {} },
+                  { "Const" : {} },
+                  { "Map" : {} }
+                ],
+                "dim_prop_attr" : [
+                  { "factor_" : 1, "label_" : "core" },
+                  { "factor_" : 1, "label_" : "corelet" },
+                  { "factor_" : 1, "label_" : "time" }
+                ],
+                "data_" : {
+                  "[0, 0, 0]" :[12288]
+                }
+              },
+              "allocations_" : { "pelrf" : "allocate_const0_pelrf" }
+            },
+            "1" : {
+              "dataFormat_" : "SEN169_FP16",
+              "name_" : "zero",
+              "data_" :  {
+                "dim_prop_func" : [
+                  { "Const" : {} },
+                  { "Const" : {} },
+                  { "Const" : {} }
+                ],
+                "dim_prop_attr" : [
+                  { "factor_" : 1, "label_" : "core" },
+                  { "factor_" : 1, "label_" : "corelet" },
+                  { "factor_" : 1, "label_" : "time" }
+                ],
+                "data_" : {
+                  "[0, 0, 0]" :[0]
+                }
+              },
+              "allocations_" : { "pelrf" : "allocate_const1_pelrf" }
+            }
+          },
+          "gtrIdsUsed_" : [],
+          "l0TetheredMode_" : 0,
+          "scheduleTreeHeadDenId_" : 0,
+          "scheduleTree_" : [
+            {
+              "nodeType_" : "block",
+              "name_" : "root_level_operations",
+              "prev_" : "",
+              "relevantComps_" : {
+                "pe" : {"0":[0]}
+              },
+              "next_" : ["allocate_const1_pelrf", "transfer_lds-1_src:constant_dst:pe", "allocate_const0_pelrf", "transfer_lds-1_src:constant_dst:pe__1"]
+            },
+            {
+              "nodeType_" : "allocate",
+              "name_" : "allocate_const1_pelrf",
+              "prev_" : "root_level_operations",
+              "relevantComps_" : {
+              },
+              "ldsIdx_" : -1,
+              "constIdx_" : 1,
+              "tempStorageForCompute_" : "",
+              "component_" : "pelrf",
+              "padding_" : {},
+              "layoutDimOrder_" : [],
+              "maxDimSizes_" : [],
+              "numBuffers_" : 1,
+              "startAddressCoreCorelet_" :  {
+                "dim_prop_func" : [
+                  { "Const" : {} },
+                  { "Const" : {} },
+                  { "Const" : {} }
+                ],
+                "dim_prop_attr" : [
+                  { "factor_" : 1, "label_" : "core" },
+                  { "factor_" : 1, "label_" : "corelet" },
+                  { "factor_" : 1, "label_" : "time" }
+                ],
+                "data_" : {
+                  "[0, 0, 0]" :"256"
+                }
+              },
+              "isStartAddrSymbolic_" : 0,
+              "bufferOffsetCoreCorelet_" : {"0":{"0":"128"}},
+              "backGapCore_" : {},
+              "indirectAllocType_" : "no_indirection",
+              "ignoreSymbolicVolumeLimits_" : 0,
+              "nonUnifiedAllocInHBM_" : 0,
+              "gapStickSpread_" : {},
+              "allocUsers_" : { "compute_pe_fma16" : 1, "transfer_lds-1_src:constant_dst:pe" : 1 }
+            },
+            {
+              "nodeType_" : "transfer",
+              "name_" : "transfer_lds-1_src:constant_dst:pe",
+              "prev_" : "root_level_operations",
+              "relevantComps_" : {
+                "pe" : {"0":[0]}
+              },
+              "src_" : {"unit_" : "constant", "storage_" : "pe"},
+              "dstVias_" : [
+                {
+                  "loc_" : {"unit_" : "pe", "storage_" : "pelrf"},
+                  "via_" : []
+                }
+              ],
+              "lastFusableParentLoopSrc_" : "",
+              "lastFusableParentLoopDst_" : [""],
+              "srcLdsAndLoopOffsets_" : {
+                "myLdsIdx_" : -1,
+                "startAddr_" : "0",
+                "isStartAddrSymbolic_" : 0,
+                "latchDataId_" : -1,
+                "constantId_" : 1,
+                "constEleOffsets_" : {
+                },
+                "loopEleOffsets_" : {
+                },
+                "bufferAddrOffset_" : {},
+                "bufferSwitchPosition_" : "",
+                "dataConnect_" : "zero_connect"
+              },
+              "dstLdsAndLoopOffsets_" : [
+                {
+                  "myLdsIdx_" : -1,
+                  "startAddr_" :  {
+                    "dim_prop_func" : [
+                      { "Const" : {} },
+                      { "Const" : {} },
+                      { "Const" : {} }
+                    ],
+                    "dim_prop_attr" : [
+                      { "factor_" : 1, "label_" : "core" },
+                      { "factor_" : 1, "label_" : "corelet" },
+                      { "factor_" : 1, "label_" : "time" }
+                    ],
+                    "data_" : {
+                      "[0, 0, 0]" :"2"
+                    }
+                  },
+                  "isStartAddrSymbolic_" : 0,
+                  "latchDataId_" : -1,
+                  "constantId_" : 1,
+                  "constEleOffsets_" : {
+                  },
+                  "loopEleOffsets_" : {
+                  },
+                  "bufferAddrOffset_" : {},
+                  "bufferSwitchPosition_" : "",
+                  "dataConnect_" : "zero_pe_lrf"
+                }
+              ],
+              "replicationFactor_" : 64,
+              "unitTimeTransferChunkSize_" : [
+              ],
+              "unitTimeTransferNumChunks_" : 1,
+              "unitTimeTransferChunkStride_" : [
+              ],
+              "rotateNumElements_" : 0,
+              "coreIdToGTRInfo_" : {
+              },
+              "transferSize_" : {},
+              "coreletViews_" : {
+                "0" : {
+                  "srcLoopsAndSize_" : {
+                    "sizesNoGaps_" : [
+                    ],
+                    "compositeLoops_" : [
+                    ],
+                    "outerLoops_" : [
+                    ],
+                    "sizesWithGaps_" : {
+                    }
+                  },
+                  "dstLoopsAndSizes_" : [
+                    {
+                      "sizesNoGaps_" : [
+                      ],
+                      "compositeLoops_" : [
+                      ],
+                      "outerLoops_" : [
+                      ],
+                      "sizesWithGaps_" : {
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "nodeType_" : "allocate",
+              "name_" : "allocate_const0_pelrf",
+              "prev_" : "root_level_operations",
+              "relevantComps_" : {
+              },
+              "ldsIdx_" : -1,
+              "constIdx_" : 0,
+              "tempStorageForCompute_" : "",
+              "component_" : "pelrf",
+              "padding_" : {},
+              "layoutDimOrder_" : [],
+              "maxDimSizes_" : [],
+              "numBuffers_" : 1,
+              "startAddressCoreCorelet_" :  {
+                "dim_prop_func" : [
+                  { "Const" : {} },
+                  { "Const" : {} },
+                  { "Const" : {} }
+                ],
+                "dim_prop_attr" : [
+                  { "factor_" : 1, "label_" : "core" },
+                  { "factor_" : 1, "label_" : "corelet" },
+                  { "factor_" : 1, "label_" : "time" }
+                ],
+                "data_" : {
+                  "[0, 0, 0]" :"128"
+                }
+              },
+              "isStartAddrSymbolic_" : 0,
+              "bufferOffsetCoreCorelet_" : {"0":{"0":"128"}},
+              "backGapCore_" : {},
+              "indirectAllocType_" : "no_indirection",
+              "ignoreSymbolicVolumeLimits_" : 0,
+              "nonUnifiedAllocInHBM_" : 0,
+              "gapStickSpread_" : {},
+              "allocUsers_" : { "compute_pe_fma16__1" : 1, "transfer_lds-1_src:constant_dst:pe__1" : 1 }
+            },
+            {
+              "nodeType_" : "transfer",
+              "name_" : "transfer_lds-1_src:constant_dst:pe__1",
+              "prev_" : "root_level_operations",
+              "relevantComps_" : {
+                "pe" : {"0":[0]}
+              },
+              "src_" : {"unit_" : "constant", "storage_" : "pe"},
+              "dstVias_" : [
+                {
+                  "loc_" : {"unit_" : "pe", "storage_" : "pelrf"},
+                  "via_" : []
+                }
+              ],
+              "lastFusableParentLoopSrc_" : "",
+              "lastFusableParentLoopDst_" : [""],
+              "srcLdsAndLoopOffsets_" : {
+                "myLdsIdx_" : -1,
+                "startAddr_" : "0",
+                "isStartAddrSymbolic_" : 0,
+                "latchDataId_" : -1,
+                "constantId_" : 0,
+                "constEleOffsets_" : {
+                },
+                "loopEleOffsets_" : {
+                },
+                "bufferAddrOffset_" : {},
+                "bufferSwitchPosition_" : "",
+                "dataConnect_" : "scaling_factor_connect"
+              },
+              "dstLdsAndLoopOffsets_" : [
+                {
+                  "myLdsIdx_" : -1,
+                  "startAddr_" :  {
+                    "dim_prop_func" : [
+                      { "Const" : {} },
+                      { "Const" : {} },
+                      { "Const" : {} }
+                    ],
+                    "dim_prop_attr" : [
+                      { "factor_" : 1, "label_" : "core" },
+                      { "factor_" : 1, "label_" : "corelet" },
+                      { "factor_" : 1, "label_" : "time" }
+                    ],
+                    "data_" : {
+                      "[0, 0, 0]" :"1"
+                    }
+                  },
+                  "isStartAddrSymbolic_" : 0,
+                  "latchDataId_" : -1,
+                  "constantId_" : 0,
+                  "constEleOffsets_" : {
+                  },
+                  "loopEleOffsets_" : {
+                  },
+                  "bufferAddrOffset_" : {},
+                  "bufferSwitchPosition_" : "",
+                  "dataConnect_" : "scaling_factor_pe_lrf"
+                }
+              ],
+              "replicationFactor_" : 64,
+              "unitTimeTransferChunkSize_" : [
+              ],
+              "unitTimeTransferNumChunks_" : 1,
+              "unitTimeTransferChunkStride_" : [
+              ],
+              "rotateNumElements_" : 0,
+              "coreIdToGTRInfo_" : {
+              },
+              "transferSize_" : {},
+              "coreletViews_" : {
+                "0" : {
+                  "srcLoopsAndSize_" : {
+                    "sizesNoGaps_" : [
+                    ],
+                    "compositeLoops_" : [
+                    ],
+                    "outerLoops_" : [
+                    ],
+                    "sizesWithGaps_" : {
+                    }
+                  },
+                  "dstLoopsAndSizes_" : [
+                    {
+                      "sizesNoGaps_" : [
+                      ],
+                      "compositeLoops_" : [
+                      ],
+                      "outerLoops_" : [
+                      ],
+                      "sizesWithGaps_" : {
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "nodeType_" : "allocate",
+              "name_" : "allocate-Tensor0_hbm",
+              "prev_" : "",
+              "relevantComps_" : {
+              },
+              "ldsIdx_" : 0,
+              "constIdx_" : -1,
+              "tempStorageForCompute_" : "",
+              "component_" : "hbm",
+              "padding_" : {},
+              "layoutDimOrder_" : ["mb", "out"],
+              "maxDimSizes_" : [-1, -1],
+              "numBuffers_" : 1,
+              "startAddressCoreCorelet_" :  {
+                "dim_prop_func" : [
+                  { "Map" : {} },
+                  { "Const" : {} },
+                  { "Const" : {} }
+                ],
+                "dim_prop_attr" : [
+                  { "factor_" : 1, "label_" : "core" },
+                  { "factor_" : 1, "label_" : "corelet" },
+                  { "factor_" : 1, "label_" : "time" }
+                ],
+                "data_" : {
+                  "[0, 0, 0]" :"0"
+                }
+              },
+              "isStartAddrSymbolic_" : 0,
+              "bufferOffsetCoreCorelet_" : {},
+              "backGapCore_" : {},
+              "indirectAllocType_" : "no_indirection",
+              "ignoreSymbolicVolumeLimits_" : 0,
+              "nonUnifiedAllocInHBM_" : 0,
+              "gapStickSpread_" : {},
+              "allocUsers_" : { "transfer_lds0_src:hbm_dst:lx" : 1 },
+              "coordinates_" : {
+                "coordInfo" : {
+                  "out" : {
+                    "spatial" : 3,
+                    "temporal" : 0,
+                    "elemArr" : 2,
+                    "padding" : "nopad",
+                    "folds" :  {
+                      "dim_prop_func" : [
+                        { "Affine" : {"alpha_" : 64, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 0, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 0, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 64, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 1, "beta_" : 0} }
+                      ],
+                      "dim_prop_attr" : [
+                        { "factor_" : 1, "label_" : "core_fold" },
+                        { "factor_" : 1, "label_" : "corelet_fold" },
+                        { "factor_" : 1, "label_" : "row_fold" },
+                        { "factor_" : 1, "label_" : "elem_arr_1" },
+                        { "factor_" : 64, "label_" : "elem_arr_0" }
+                      ]
+                    }
+                  }, 
+                  "mb" : {
+                    "spatial" : 3,
+                    "temporal" : 0,
+                    "elemArr" : 1,
+                    "padding" : "nopad",
+                    "folds" :  {
+                      "dim_prop_func" : [
+                        { "Affine" : {"alpha_" : 128, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 0, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 0, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 1, "beta_" : 0} }
+                      ],
+                      "dim_prop_attr" : [
+                        { "factor_" : 1, "label_" : "core_fold" },
+                        { "factor_" : 1, "label_" : "corelet_fold" },
+                        { "factor_" : 1, "label_" : "row_fold" },
+                        { "factor_" : 128, "label_" : "elem_arr_0" }
+                      ]
+                    }
+                  }
+                },
+                "coreIdToWkSlice_" : { 
+                } 
+              }
+            },
+            {
+              "nodeType_" : "allocate",
+              "name_" : "allocate-Tensor1_hbm",
+              "prev_" : "",
+              "relevantComps_" : {
+              },
+              "ldsIdx_" : 2,
+              "constIdx_" : -1,
+              "tempStorageForCompute_" : "",
+              "component_" : "hbm",
+              "padding_" : {},
+              "layoutDimOrder_" : ["out", "mb"],
+              "maxDimSizes_" : [-1, -1],
+              "numBuffers_" : 1,
+              "startAddressCoreCorelet_" :  {
+                "dim_prop_func" : [
+                  { "Map" : {} },
+                  { "Const" : {} },
+                  { "Const" : {} }
+                ],
+                "dim_prop_attr" : [
+                  { "factor_" : 1, "label_" : "core" },
+                  { "factor_" : 1, "label_" : "corelet" },
+                  { "factor_" : 1, "label_" : "time" }
+                ],
+                "data_" : {
+                  "[0, 0, 0]" :"17179869184"
+                }
+              },
+              "isStartAddrSymbolic_" : 0,
+              "bufferOffsetCoreCorelet_" : {},
+              "backGapCore_" : {},
+              "indirectAllocType_" : "no_indirection",
+              "ignoreSymbolicVolumeLimits_" : 0,
+              "nonUnifiedAllocInHBM_" : 0,
+              "gapStickSpread_" : {},
+              "allocUsers_" : { "transfer_lds1_src:lx_dst:hbm" : 1 },
+              "coordinates_" : {
+                "coordInfo" : {
+                  "out" : {
+                    "spatial" : 3,
+                    "temporal" : 0,
+                    "elemArr" : 2,
+                    "padding" : "nopad",
+                    "folds" :  {
+                      "dim_prop_func" : [
+                        { "Affine" : {"alpha_" : 64, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 0, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 0, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 64, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 1, "beta_" : 0} }
+                      ],
+                      "dim_prop_attr" : [
+                        { "factor_" : 1, "label_" : "core_fold" },
+                        { "factor_" : 1, "label_" : "corelet_fold" },
+                        { "factor_" : 1, "label_" : "row_fold" },
+                        { "factor_" : 1, "label_" : "elem_arr_1" },
+                        { "factor_" : 64, "label_" : "elem_arr_0" }
+                      ]
+                    }
+                  }, 
+                  "mb" : {
+                    "spatial" : 3,
+                    "temporal" : 0,
+                    "elemArr" : 1,
+                    "padding" : "nopad",
+                    "folds" :  {
+                      "dim_prop_func" : [
+                        { "Affine" : {"alpha_" : 1, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 0, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 0, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 1, "beta_" : 0} }
+                      ],
+                      "dim_prop_attr" : [
+                        { "factor_" : 1, "label_" : "core_fold" },
+                        { "factor_" : 1, "label_" : "corelet_fold" },
+                        { "factor_" : 1, "label_" : "row_fold" },
+                        { "factor_" : 1, "label_" : "elem_arr_0" }
+                      ]
+                    }
+                  }
+                },
+                "coreIdToWkSlice_" : { 
+                } 
+              }
+            },
+            {
+              "nodeType_" : "loop",
+              "name_" : "loop_ds0_ds1_out",
+              "prev_" : "",
+              "relevantComps_" : {
+                "sfp" : {"0":[0]},
+                "pe" : {"0":[0]},
+                "l3lu" : {"0":[0]},
+                "l3su" : {"0":[0]},
+                "lxlu" : {"0":[0]},
+                "lxsu" : {"0":[0]}
+              },
+              "next_" : ["allocate_lds1_lx", "loop_ds0_ds1_mb", "sync_send_lxsu_to_l3su", "sync_receive_l3su_from_lxsu", "sync_send_l3su_to_lxsu", "sync_receive_lxsu_from_l3su", "transfer_lds1_src:lx_dst:hbm"],
+              "numId_" : 0,
+              "denId_" : 1,
+              "parametricLoop_" : 0,
+              "parametricIterCount_" : -1,
+              "parametricLdsIdx_" : -1,
+              "dims_" : [{"dim_" : "out", "kind_" : "unpadded"}],
+              "loopCountSymbolIds_" : {}
+            },
+            {
+              "nodeType_" : "allocate",
+              "name_" : "allocate_lds1_lx",
+              "prev_" : "loop_ds0_ds1_out",
+              "relevantComps_" : {
+              },
+              "ldsIdx_" : 2,
+              "constIdx_" : -1,
+              "tempStorageForCompute_" : "",
+              "component_" : "lx",
+              "padding_" : {},
+              "layoutDimOrder_" : ["out", "mb"],
+              "maxDimSizes_" : [-1, -1],
+              "numBuffers_" : 2,
+              "startAddressCoreCorelet_" :  {
+                "dim_prop_func" : [
+                  { "Map" : {} },
+                  { "Map" : {} },
+                  { "Const" : {} }
+                ],
+                "dim_prop_attr" : [
+                  { "factor_" : 1, "label_" : "core" },
+                  { "factor_" : 1, "label_" : "corelet" },
+                  { "factor_" : 1, "label_" : "time" }
+                ],
+                "data_" : {
+                  "[0, 0, 0]" :"1633536"
+                }
+              },
+              "isStartAddrSymbolic_" : 0,
+              "bufferOffsetCoreCorelet_" : {"0":{"0":"256"}},
+              "backGapCore_" : {},
+              "indirectAllocType_" : "no_indirection",
+              "ignoreSymbolicVolumeLimits_" : 0,
+              "nonUnifiedAllocInHBM_" : 0,
+              "gapStickSpread_" : {},
+              "allocUsers_" : { "transfer_lds1_src:lx_dst:hbm" : 1, "transfer_lds2_src:lxlu_dst:sfp" : 1, "transfer_lds2_src:sfp_dst:lxsu" : 1 },
+              "coordinates_" : {
+                "coordInfo" : {
+                  "out" : {
+                    "spatial" : 3,
+                    "temporal" : 1,
+                    "elemArr" : 1,
+                    "padding" : "nopad",
+                    "folds" :  {
+                      "dim_prop_func" : [
+                        { "Affine" : {"alpha_" : 64, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 0, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 0, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 64, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 1, "beta_" : 0} }
+                      ],
+                      "dim_prop_attr" : [
+                        { "factor_" : 1, "label_" : "core_fold" },
+                        { "factor_" : 1, "label_" : "corelet_fold" },
+                        { "factor_" : 1, "label_" : "row_fold" },
+                        { "factor_" : 1, "label_" : "loop_ds0_ds1_out out" },
+                        { "factor_" : 64, "label_" : "elem_arr_0" }
+                      ]
+                    }
+                  }, 
+                  "mb" : {
+                    "spatial" : 3,
+                    "temporal" : 0,
+                    "elemArr" : 1,
+                    "padding" : "nopad",
+                    "folds" :  {
+                      "dim_prop_func" : [
+                        { "Affine" : {"alpha_" : 1, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 0, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 0, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 1, "beta_" : 0} }
+                      ],
+                      "dim_prop_attr" : [
+                        { "factor_" : 1, "label_" : "core_fold" },
+                        { "factor_" : 1, "label_" : "corelet_fold" },
+                        { "factor_" : 1, "label_" : "row_fold" },
+                        { "factor_" : 1, "label_" : "elem_arr_0" }
+                      ]
+                    }
+                  }
+                },
+                "coreIdToWkSlice_" : { 
+                } 
+              }
+            },
+            {
+              "nodeType_" : "loop",
+              "name_" : "loop_ds0_ds1_mb",
+              "prev_" : "loop_ds0_ds1_out",
+              "relevantComps_" : {
+                "sfp" : {"0":[0]},
+                "pe" : {"0":[0]},
+                "l3lu" : {"0":[0]},
+                "lxlu" : {"0":[0]},
+                "lxsu" : {"0":[0]}
+              },
+              "next_" : ["allocate_lds0_lx", "transfer_lds0_src:hbm_dst:lx", "sync_send_l3lu_to_lxlu", "sync_receive_lxlu_from_l3lu", "sync_send_lxlu_to_l3lu", "sync_receive_l3lu_from_lxlu", "lx_below_schedule"],
+              "numId_" : 0,
+              "denId_" : 1,
+              "parametricLoop_" : 0,
+              "parametricIterCount_" : -1,
+              "parametricLdsIdx_" : -1,
+              "dims_" : [{"dim_" : "mb", "kind_" : "unpadded"}],
+              "loopCountSymbolIds_" : {}
+            },
+            {
+              "nodeType_" : "allocate",
+              "name_" : "allocate_lds0_lx",
+              "prev_" : "loop_ds0_ds1_mb",
+              "relevantComps_" : {
+              },
+              "ldsIdx_" : 0,
+              "constIdx_" : -1,
+              "tempStorageForCompute_" : "",
+              "component_" : "lx",
+              "padding_" : {},
+              "layoutDimOrder_" : ["mb", "out"],
+              "maxDimSizes_" : [-1, -1],
+              "numBuffers_" : 2,
+              "startAddressCoreCorelet_" :  {
+                "dim_prop_func" : [
+                  { "Map" : {} },
+                  { "Map" : {} },
+                  { "Const" : {} }
+                ],
+                "dim_prop_attr" : [
+                  { "factor_" : 1, "label_" : "core" },
+                  { "factor_" : 1, "label_" : "corelet" },
+                  { "factor_" : 1, "label_" : "time" }
+                ],
+                "data_" : {
+                  "[0, 0, 0]" :"1625344"
+                }
+              },
+              "isStartAddrSymbolic_" : 0,
+              "bufferOffsetCoreCorelet_" : {"0":{"0":"4096"}},
+              "backGapCore_" : {},
+              "indirectAllocType_" : "no_indirection",
+              "ignoreSymbolicVolumeLimits_" : 0,
+              "nonUnifiedAllocInHBM_" : 0,
+              "gapStickSpread_" : {},
+              "allocUsers_" : { "transfer_lds0_src:hbm_dst:lx" : 1, "transfer_lds0_src:lxlu_dst:pe" : 1 },
+              "coordinates_" : {
+                "coordInfo" : {
+                  "out" : {
+                    "spatial" : 3,
+                    "temporal" : 1,
+                    "elemArr" : 1,
+                    "padding" : "nopad",
+                    "folds" :  {
+                      "dim_prop_func" : [
+                        { "Affine" : {"alpha_" : 64, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 0, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 0, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 64, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 1, "beta_" : 0} }
+                      ],
+                      "dim_prop_attr" : [
+                        { "factor_" : 1, "label_" : "core_fold" },
+                        { "factor_" : 1, "label_" : "corelet_fold" },
+                        { "factor_" : 1, "label_" : "row_fold" },
+                        { "factor_" : 1, "label_" : "loop_ds0_ds1_out out" },
+                        { "factor_" : 64, "label_" : "elem_arr_0" }
+                      ]
+                    }
+                  }, 
+                  "mb" : {
+                    "spatial" : 3,
+                    "temporal" : 1,
+                    "elemArr" : 1,
+                    "padding" : "nopad",
+                    "folds" :  {
+                      "dim_prop_func" : [
+                        { "Affine" : {"alpha_" : 128, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 0, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 0, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 32, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 1, "beta_" : 0} }
+                      ],
+                      "dim_prop_attr" : [
+                        { "factor_" : 1, "label_" : "core_fold" },
+                        { "factor_" : 1, "label_" : "corelet_fold" },
+                        { "factor_" : 1, "label_" : "row_fold" },
+                        { "factor_" : 4, "label_" : "loop_ds0_ds1_mb mb" },
+                        { "factor_" : 32, "label_" : "elem_arr_0" }
+                      ]
+                    }
+                  }
+                },
+                "coreIdToWkSlice_" : { 
+                } 
+              }
+            },
+            {
+              "nodeType_" : "transfer",
+              "name_" : "transfer_lds0_src:hbm_dst:lx",
+              "prev_" : "loop_ds0_ds1_mb",
+              "relevantComps_" : {
+                "l3lu" : {"0":[0]}
+              },
+              "src_" : {"unit_" : "l3lu", "storage_" : "hbm"},
+              "dstVias_" : [
+                {
+                  "loc_" : {"unit_" : "l3lu", "storage_" : "lx"},
+                  "via_" : []
+                }
+              ],
+              "lastFusableParentLoopSrc_" : "",
+              "lastFusableParentLoopDst_" : [""],
+              "srcLdsAndLoopOffsets_" : {
+                "myLdsIdx_" : 0,
+                "startAddr_" :  {
+                  "dim_prop_func" : [
+                    { "Map" : {} },
+                    { "Const" : {} },
+                    { "Const" : {} }
+                  ],
+                  "dim_prop_attr" : [
+                    { "factor_" : 1, "label_" : "core" },
+                    { "factor_" : 1, "label_" : "corelet" },
+                    { "factor_" : 1, "label_" : "time" }
+                  ],
+                  "data_" : {
+                    "[0, 0, 0]" :"0"
+                  }
+                },
+                "isStartAddrSymbolic_" : 0,
+                "latchDataId_" : -1,
+                "constantId_" : -1,
+                "constEleOffsets_" : {
+                },
+                "loopEleOffsets_" : {
+                  "0" : {
+                    "loop_ds0_ds1_mb" : {"mb" : 32},
+                    "loop_ds0_ds1_out" : {"out" : 64}
+                  }
+                },
+                "bufferAddrOffset_" : {},
+                "bufferSwitchPosition_" : "",
+                "dataConnect_" : ""
+              },
+              "dstLdsAndLoopOffsets_" : [
+                {
+                  "myLdsIdx_" : 0,
+                  "startAddr_" :  {
+                    "dim_prop_func" : [
+                      { "Map" : {} },
+                      { "Map" : {} },
+                      { "Const" : {} }
+                    ],
+                    "dim_prop_attr" : [
+                      { "factor_" : 1, "label_" : "core" },
+                      { "factor_" : 1, "label_" : "corelet" },
+                      { "factor_" : 1, "label_" : "time" }
+                    ],
+                    "data_" : {
+                      "[0, 0, 0]" :"12698"
+                    }
+                  },
+                  "isStartAddrSymbolic_" : 0,
+                  "latchDataId_" : -1,
+                  "constantId_" : -1,
+                  "constEleOffsets_" : {
+                  },
+                  "loopEleOffsets_" : {
+                  },
+                  "bufferAddrOffset_" : {"0" : {"0" : "32"}},
+                  "bufferSwitchPosition_" : "loop_ds0_ds1_mb",
+                  "dataConnect_" : "l3_lx_input"
+                }
+              ],
+              "replicationFactor_" : 1,
+              "unitTimeTransferChunkSize_" : [
+                {
+                  "sizeDim_" : {"dim_" : "out", "size_" : 64},
+                  "srcSizeIdx_" : 0,
+                  "dstSizeIdx_" : 0
+                }
+              ],
+              "unitTimeTransferNumChunks_" : 1,
+              "unitTimeTransferChunkStride_" : [
+              ],
+              "rotateNumElements_" : 0,
+              "coreIdToGTRInfo_" : {
+                "0" : {
+                  "groupId_" : -1,
+                  "numSharers_" : 1
+                }
+              },
+              "transferSize_" : {},
+              "coreletViews_" : {
+                "0" : {
+                  "srcLoopsAndSize_" : {
+                    "sizesNoGaps_" : [
+                      {"dim_" : "out", "size_" : 64},
+                      {"dim_" : "mb", "size_" : 128},
+                      {"dim_" : "out", "size_" : 1}
+                    ],
+                    "compositeLoops_" : [
+                    ],
+                    "outerLoops_" : [
+                      {"loop_" : "loop_ds0_ds1_mb", "dim_" : "mb", "sizeIdx_" : 1, "elemOffset_" : 32},
+                      {"loop_" : "loop_ds0_ds1_out", "dim_" : "out", "sizeIdx_" : 2, "elemOffset_" : 1}
+                    ],
+                    "sizesWithGaps_" : {
+                    }
+                  },
+                  "dstLoopsAndSizes_" : [
+                    {
+                      "sizesNoGaps_" : [
+                        {"dim_" : "out", "size_" : 64},
+                        {"dim_" : "mb", "size_" : 32},
+                        {"dim_" : "out", "size_" : 1}
+                      ],
+                      "compositeLoops_" : [
+                      ],
+                      "outerLoops_" : [
+                      ],
+                      "sizesWithGaps_" : {
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "nodeType_" : "sync",
+              "name_" : "sync_send_l3lu_to_lxlu",
+              "prev_" : "loop_ds0_ds1_mb",
+              "relevantComps_" : {
+                "l3lu" : {"0":[0]}
+              },
+              "units_" : ["l3lu"],
+              "isReceive_" : 0,
+              "isSoft_" : 0,
+              "implicitSyncRefTransfer_" : "",
+              "otherEndOfTheSignals_" : ["sync_receive_lxlu_from_l3lu"]
+            },
+            {
+              "nodeType_" : "sync",
+              "name_" : "sync_receive_lxlu_from_l3lu",
+              "prev_" : "loop_ds0_ds1_mb",
+              "relevantComps_" : {
+                "lxlu" : {"0":[0]}
+              },
+              "units_" : ["lxlu"],
+              "isReceive_" : 1,
+              "isSoft_" : 0,
+              "implicitSyncRefTransfer_" : "",
+              "otherEndOfTheSignals_" : ["sync_send_l3lu_to_lxlu"]
+            },
+            {
+              "nodeType_" : "sync",
+              "name_" : "sync_send_lxlu_to_l3lu",
+              "prev_" : "loop_ds0_ds1_mb",
+              "relevantComps_" : {
+                "lxlu" : {"0":[0]}
+              },
+              "units_" : ["lxlu"],
+              "isReceive_" : 0,
+              "isSoft_" : 0,
+              "implicitSyncRefTransfer_" : "",
+              "otherEndOfTheSignals_" : ["sync_receive_l3lu_from_lxlu"]
+            },
+            {
+              "nodeType_" : "sync",
+              "name_" : "sync_receive_l3lu_from_lxlu",
+              "prev_" : "loop_ds0_ds1_mb",
+              "relevantComps_" : {
+                "l3lu" : {"0":[0]}
+              },
+              "units_" : ["l3lu"],
+              "isReceive_" : 1,
+              "isSoft_" : 0,
+              "implicitSyncRefTransfer_" : "",
+              "otherEndOfTheSignals_" : ["sync_send_lxlu_to_l3lu"]
+            },
+            {
+              "nodeType_" : "block",
+              "name_" : "lx_below_schedule",
+              "prev_" : "loop_ds0_ds1_mb",
+              "relevantComps_" : {
+                "sfp" : {"0":[0]},
+                "pe" : {"0":[0]},
+                "lxlu" : {"0":[0]},
+                "lxsu" : {"0":[0]}
+              },
+              "next_" : ["condition", "loop_ds1_ds2_out"]
+            },
+            {
+              "nodeType_" : "condition",
+              "name_" : "condition",
+              "prev_" : "lx_below_schedule",
+              "relevantComps_" : {
+                "lxlu" : {"0":[0]},
+                "lxsu" : {"0":[0]}
+              },
+              "next_" : ["condition_region0", "condition_region1"],
+              "loopCond_" : {
+                "twoLevelOrOfAnds_" : [
+                  [
+                    {
+                      "loopComp_" : "loop_ds0_ds1_mb",
+                      "dim_" : "mb",
+                      "condOp_" : "eq",
+                      "condValType_" : "first",
+                      "condValInt_" : -1
+                    }
+                  ]
+                ],
+                "negated_" : 1
+              },
+              "coreClCond_" : {}
+            },
+            {
+              "nodeType_" : "block",
+              "name_" : "condition_region0",
+              "prev_" : "condition",
+              "relevantComps_" : {
+                "lxlu" : {"0":[0]},
+                "lxsu" : {"0":[0]}
+              },
+              "next_" : ["sync_input-lxsu-lxlu-sync_lxsu_send", "sync_input-lxsu-lxlu-sync_lxlu_receive"]
+            },
+            {
+              "nodeType_" : "sync",
+              "name_" : "sync_input-lxsu-lxlu-sync_lxsu_send",
+              "prev_" : "condition_region0",
+              "relevantComps_" : {
+                "lxsu" : {"0":[0]}
+              },
+              "units_" : ["lxsu"],
+              "isReceive_" : 0,
+              "isSoft_" : 0,
+              "implicitSyncRefTransfer_" : "",
+              "otherEndOfTheSignals_" : ["sync_input-lxsu-lxlu-sync_lxlu_receive"]
+            },
+            {
+              "nodeType_" : "sync",
+              "name_" : "sync_input-lxsu-lxlu-sync_lxlu_receive",
+              "prev_" : "condition_region0",
+              "relevantComps_" : {
+                "lxlu" : {"0":[0]}
+              },
+              "units_" : ["lxlu"],
+              "isReceive_" : 1,
+              "isSoft_" : 0,
+              "implicitSyncRefTransfer_" : "",
+              "otherEndOfTheSignals_" : ["sync_input-lxsu-lxlu-sync_lxsu_send"]
+            },
+            {
+              "nodeType_" : "block",
+              "name_" : "condition_region1",
+              "prev_" : "condition",
+              "relevantComps_" : {
+              },
+              "next_" : []
+            },
+            {
+              "nodeType_" : "loop",
+              "name_" : "loop_ds1_ds2_out",
+              "prev_" : "lx_below_schedule",
+              "relevantComps_" : {
+                "sfp" : {"0":[0]},
+                "pe" : {"0":[0]},
+                "lxlu" : {"0":[0]},
+                "lxsu" : {"0":[0]}
+              },
+              "next_" : ["allocate_lds2_sfplrf", "allocate_lds2_pelrf", "allocate_lds1_sfplrf", "condition__1", "loop_ds2_ds3_out", "loop_ds1_ds3_mb", "loop_ds2_ds3_out__2", "loop_ds2_ds3_out__3", "condition__2", "loop_ds2_ds3_out__5"],
+              "numId_" : 1,
+              "denId_" : 2,
+              "parametricLoop_" : 0,
+              "parametricIterCount_" : -1,
+              "parametricLdsIdx_" : -1,
+              "dims_" : [{"dim_" : "out", "kind_" : "unpadded"}],
+              "loopCountSymbolIds_" : {}
+            },
+            {
+              "nodeType_" : "allocate",
+              "name_" : "allocate_lds2_sfplrf",
+              "prev_" : "loop_ds1_ds2_out",
+              "relevantComps_" : {
+              },
+              "ldsIdx_" : 2,
+              "constIdx_" : -1,
+              "tempStorageForCompute_" : "",
+              "component_" : "sfplrf",
+              "padding_" : {},
+              "layoutDimOrder_" : ["out", "mb"],
+              "maxDimSizes_" : [-1, -1],
+              "numBuffers_" : 1,
+              "startAddressCoreCorelet_" :  {
+                "dim_prop_func" : [
+                  { "Const" : {} },
+                  { "Const" : {} },
+                  { "Const" : {} }
+                ],
+                "dim_prop_attr" : [
+                  { "factor_" : 1, "label_" : "core" },
+                  { "factor_" : 1, "label_" : "corelet" },
+                  { "factor_" : 1, "label_" : "time" }
+                ],
+                "data_" : {
+                  "[0, 0, 0]" :"128"
+                }
+              },
+              "isStartAddrSymbolic_" : 0,
+              "bufferOffsetCoreCorelet_" : {"0":{"0":"128"}},
+              "backGapCore_" : {},
+              "indirectAllocType_" : "no_indirection",
+              "ignoreSymbolicVolumeLimits_" : 0,
+              "nonUnifiedAllocInHBM_" : 0,
+              "gapStickSpread_" : {},
+              "allocUsers_" : { "compute_sfp_fma16" : 1, "compute_sfp_fma16__1" : 2, "transfer_lds2_src:sfp_dst:lxsu" : 1 },
+              "coordinates_" : {
+                "coordInfo" : {
+                  "out" : {
+                    "spatial" : 3,
+                    "temporal" : 2,
+                    "elemArr" : 2,
+                    "padding" : "nopad",
+                    "folds" :  {
+                      "dim_prop_func" : [
+                        { "Affine" : {"alpha_" : 64, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 0, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 0, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 64, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 64, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 64, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 1, "beta_" : 0} }
+                      ],
+                      "dim_prop_attr" : [
+                        { "factor_" : 1, "label_" : "core_fold" },
+                        { "factor_" : 1, "label_" : "corelet_fold" },
+                        { "factor_" : 1, "label_" : "rowsplit_fold" },
+                        { "factor_" : 1, "label_" : "loop_ds0_ds1_out out" },
+                        { "factor_" : 1, "label_" : "loop_ds1_ds2_out out" },
+                        { "factor_" : 1, "label_" : "elem_arr_1" },
+                        { "factor_" : 64, "label_" : "elem_arr_0" }
+                      ]
+                    }
+                  }, 
+                  "mb" : {
+                    "spatial" : 3,
+                    "temporal" : 0,
+                    "elemArr" : 1,
+                    "padding" : "nopad",
+                    "folds" :  {
+                      "dim_prop_func" : [
+                        { "Affine" : {"alpha_" : 1, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 0, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 0, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 1, "beta_" : 0} }
+                      ],
+                      "dim_prop_attr" : [
+                        { "factor_" : 1, "label_" : "core_fold" },
+                        { "factor_" : 1, "label_" : "corelet_fold" },
+                        { "factor_" : 1, "label_" : "rowsplit_fold" },
+                        { "factor_" : 1, "label_" : "elem_arr_0" }
+                      ]
+                    }
+                  }
+                },
+                "coreIdToWkSlice_" : { 
+                } 
+              }
+            },
+            {
+              "nodeType_" : "allocate",
+              "name_" : "allocate_lds2_pelrf",
+              "prev_" : "loop_ds1_ds2_out",
+              "relevantComps_" : {
+              },
+              "ldsIdx_" : 2,
+              "constIdx_" : -1,
+              "tempStorageForCompute_" : "",
+              "component_" : "pelrf",
+              "padding_" : {},
+              "layoutDimOrder_" : ["out", "mb"],
+              "maxDimSizes_" : [-1, -1],
+              "numBuffers_" : 1,
+              "startAddressCoreCorelet_" :  {
+                "dim_prop_func" : [
+                  { "Const" : {} },
+                  { "Const" : {} },
+                  { "Const" : {} }
+                ],
+                "dim_prop_attr" : [
+                  { "factor_" : 1, "label_" : "core" },
+                  { "factor_" : 1, "label_" : "corelet" },
+                  { "factor_" : 1, "label_" : "time" }
+                ],
+                "data_" : {
+                  "[0, 0, 0]" :"0"
+                }
+              },
+              "isStartAddrSymbolic_" : 0,
+              "bufferOffsetCoreCorelet_" : {"0":{"0":"128"}},
+              "backGapCore_" : {},
+              "indirectAllocType_" : "no_indirection",
+              "ignoreSymbolicVolumeLimits_" : 0,
+              "nonUnifiedAllocInHBM_" : 0,
+              "gapStickSpread_" : {},
+              "allocUsers_" : { "compute_pe_fma16" : 1, "compute_pe_fma16__1" : 2, "transfer_lds2_src:pe_dst:sfp" : 1 },
+              "coordinates_" : {
+                "coordInfo" : {
+                  "out" : {
+                    "spatial" : 3,
+                    "temporal" : 2,
+                    "elemArr" : 2,
+                    "padding" : "nopad",
+                    "folds" :  {
+                      "dim_prop_func" : [
+                        { "Affine" : {"alpha_" : 64, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 0, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 0, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 64, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 64, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 64, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 1, "beta_" : 0} }
+                      ],
+                      "dim_prop_attr" : [
+                        { "factor_" : 1, "label_" : "core_fold" },
+                        { "factor_" : 1, "label_" : "corelet_fold" },
+                        { "factor_" : 1, "label_" : "rowsplit_fold" },
+                        { "factor_" : 1, "label_" : "loop_ds0_ds1_out out" },
+                        { "factor_" : 1, "label_" : "loop_ds1_ds2_out out" },
+                        { "factor_" : 1, "label_" : "elem_arr_1" },
+                        { "factor_" : 64, "label_" : "elem_arr_0" }
+                      ]
+                    }
+                  }, 
+                  "mb" : {
+                    "spatial" : 3,
+                    "temporal" : 0,
+                    "elemArr" : 1,
+                    "padding" : "nopad",
+                    "folds" :  {
+                      "dim_prop_func" : [
+                        { "Affine" : {"alpha_" : 1, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 1, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 0, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 0, "beta_" : 0} }
+                      ],
+                      "dim_prop_attr" : [
+                        { "factor_" : 1, "label_" : "core_workslice_fold_mb" },
+                        { "factor_" : 1, "label_" : "corelet_fold_mb" },
+                        { "factor_" : 1, "label_" : "rowsplit_fold" },
+                        { "factor_" : 1, "label_" : "elem_arr_0" }
+                      ]
+                    }
+                  }
+                },
+                "coreIdToWkSlice_" : { 
+                } 
+              }
+            },
+            {
+              "nodeType_" : "allocate",
+              "name_" : "allocate_lds1_sfplrf",
+              "prev_" : "loop_ds1_ds2_out",
+              "relevantComps_" : {
+              },
+              "ldsIdx_" : 1,
+              "constIdx_" : -1,
+              "tempStorageForCompute_" : "",
+              "component_" : "sfplrf",
+              "padding_" : {},
+              "layoutDimOrder_" : ["out", "mb"],
+              "maxDimSizes_" : [-1, -1],
+              "numBuffers_" : 1,
+              "startAddressCoreCorelet_" :  {
+                "dim_prop_func" : [
+                  { "Const" : {} },
+                  { "Const" : {} },
+                  { "Const" : {} }
+                ],
+                "dim_prop_attr" : [
+                  { "factor_" : 1, "label_" : "core" },
+                  { "factor_" : 1, "label_" : "corelet" },
+                  { "factor_" : 1, "label_" : "time" }
+                ],
+                "data_" : {
+                  "[0, 0, 0]" :"0"
+                }
+              },
+              "isStartAddrSymbolic_" : 0,
+              "bufferOffsetCoreCorelet_" : {"0":{"0":"128"}},
+              "backGapCore_" : {},
+              "indirectAllocType_" : "no_indirection",
+              "ignoreSymbolicVolumeLimits_" : 0,
+              "nonUnifiedAllocInHBM_" : 0,
+              "gapStickSpread_" : {},
+              "allocUsers_" : { "compute_sfp_fma16__1" : 1, "transfer_lds2_src:lxlu_dst:sfp" : 1 },
+              "coordinates_" : {
+                "coordInfo" : {
+                  "out" : {
+                    "spatial" : 3,
+                    "temporal" : 2,
+                    "elemArr" : 1,
+                    "padding" : "nopad",
+                    "folds" :  {
+                      "dim_prop_func" : [
+                        { "Affine" : {"alpha_" : 64, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 0, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 0, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 64, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 64, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 1, "beta_" : 0} }
+                      ],
+                      "dim_prop_attr" : [
+                        { "factor_" : 1, "label_" : "core_fold" },
+                        { "factor_" : 1, "label_" : "corelet_fold" },
+                        { "factor_" : 1, "label_" : "rowsplit_fold" },
+                        { "factor_" : 1, "label_" : "loop_ds0_ds1_out out" },
+                        { "factor_" : 1, "label_" : "loop_ds1_ds2_out out" },
+                        { "factor_" : 64, "label_" : "elem_arr_0" }
+                      ]
+                    }
+                  }, 
+                  "mb" : {
+                    "spatial" : 3,
+                    "temporal" : 0,
+                    "elemArr" : 1,
+                    "padding" : "nopad",
+                    "folds" :  {
+                      "dim_prop_func" : [
+                        { "Affine" : {"alpha_" : 1, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 0, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 0, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 1, "beta_" : 0} }
+                      ],
+                      "dim_prop_attr" : [
+                        { "factor_" : 1, "label_" : "core_fold" },
+                        { "factor_" : 1, "label_" : "corelet_fold" },
+                        { "factor_" : 1, "label_" : "rowsplit_fold" },
+                        { "factor_" : 1, "label_" : "elem_arr_0" }
+                      ]
+                    }
+                  }
+                },
+                "coreIdToWkSlice_" : { 
+                } 
+              }
+            },
+            {
+              "nodeType_" : "condition",
+              "name_" : "condition__1",
+              "prev_" : "loop_ds1_ds2_out",
+              "relevantComps_" : {
+                "sfp" : {"0":[0]},
+                "lxlu" : {"0":[0]}
+              },
+              "next_" : ["condition_region0__1", "condition_region1__1"],
+              "loopCond_" : {
+                "twoLevelOrOfAnds_" : [
+                  [
+                    {
+                      "loopComp_" : "loop_ds0_ds1_mb",
+                      "dim_" : "mb",
+                      "condOp_" : "eq",
+                      "condValType_" : "first",
+                      "condValInt_" : -1
+                    }
+                  ]
+                ],
+                "negated_" : 1
+              },
+              "coreClCond_" : {}
+            },
+            {
+              "nodeType_" : "block",
+              "name_" : "condition_region0__1",
+              "prev_" : "condition__1",
+              "relevantComps_" : {
+                "sfp" : {"0":[0]},
+                "lxlu" : {"0":[0]}
+              },
+              "next_" : ["transfer_lds2_src:lxlu_dst:sfp"]
+            },
+            {
+              "nodeType_" : "transfer",
+              "name_" : "transfer_lds2_src:lxlu_dst:sfp",
+              "prev_" : "condition_region0__1",
+              "relevantComps_" : {
+                "sfp" : {"0":[0]},
+                "lxlu" : {"0":[0]}
+              },
+              "src_" : {"unit_" : "lxlu", "storage_" : "lx"},
+              "dstVias_" : [
+                {
+                  "loc_" : {"unit_" : "sfp", "storage_" : "sfplrf"},
+                  "via_" : []
+                }
+              ],
+              "lastFusableParentLoopSrc_" : "",
+              "lastFusableParentLoopDst_" : [""],
+              "srcLdsAndLoopOffsets_" : {
+                "myLdsIdx_" : 2,
+                "startAddr_" :  {
+                  "dim_prop_func" : [
+                    { "Map" : {} },
+                    { "Map" : {} },
+                    { "Const" : {} }
+                  ],
+                  "dim_prop_attr" : [
+                    { "factor_" : 1, "label_" : "core" },
+                    { "factor_" : 1, "label_" : "corelet" },
+                    { "factor_" : 1, "label_" : "time" }
+                  ],
+                  "data_" : {
+                    "[0, 0, 0]" :"1633536"
+                  }
+                },
+                "isStartAddrSymbolic_" : 0,
+                "latchDataId_" : -1,
+                "constantId_" : -1,
+                "constEleOffsets_" : {
+                },
+                "loopEleOffsets_" : {
+                  "0" : {
+                    "loop_ds1_ds2_out" : {"out" : 64}
+                  }
+                },
+                "bufferAddrOffset_" : {"0" : {"0" : "256"}},
+                "bufferSwitchPosition_" : "loop_ds0_ds1_out",
+                "dataConnect_" : "lxsu_output"
+              },
+              "dstLdsAndLoopOffsets_" : [
+                {
+                  "myLdsIdx_" : 1,
+                  "startAddr_" :  {
+                    "dim_prop_func" : [
+                      { "Const" : {} },
+                      { "Const" : {} },
+                      { "Const" : {} }
+                    ],
+                    "dim_prop_attr" : [
+                      { "factor_" : 1, "label_" : "core" },
+                      { "factor_" : 1, "label_" : "corelet" },
+                      { "factor_" : 1, "label_" : "time" }
+                    ],
+                    "data_" : {
+                      "[0, 0, 0]" :"0"
+                    }
+                  },
+                  "isStartAddrSymbolic_" : 0,
+                  "latchDataId_" : -1,
+                  "constantId_" : -1,
+                  "constEleOffsets_" : {
+                  },
+                  "loopEleOffsets_" : {
+                  },
+                  "bufferAddrOffset_" : {},
+                  "bufferSwitchPosition_" : "",
+                  "dataConnect_" : "lxsfp_output"
+                }
+              ],
+              "replicationFactor_" : 1,
+              "unitTimeTransferChunkSize_" : [
+                {
+                  "sizeDim_" : {"dim_" : "out", "size_" : 64},
+                  "srcSizeIdx_" : 0,
+                  "dstSizeIdx_" : 0
+                }
+              ],
+              "unitTimeTransferNumChunks_" : 1,
+              "unitTimeTransferChunkStride_" : [
+              ],
+              "rotateNumElements_" : 0,
+              "coreIdToGTRInfo_" : {
+              },
+              "transferSize_" : {},
+              "coreletViews_" : {
+                "0" : {
+                  "srcLoopsAndSize_" : {
+                    "sizesNoGaps_" : [
+                      {"dim_" : "out", "size_" : 64},
+                      {"dim_" : "out", "size_" : 1},
+                      {"dim_" : "mb", "size_" : 1}
+                    ],
+                    "compositeLoops_" : [
+                    ],
+                    "outerLoops_" : [
+                      {"loop_" : "loop_ds1_ds2_out", "dim_" : "out", "sizeIdx_" : 1, "elemOffset_" : 1}
+                    ],
+                    "sizesWithGaps_" : {
+                    }
+                  },
+                  "dstLoopsAndSizes_" : [
+                    {
+                      "sizesNoGaps_" : [
+                        {"dim_" : "out", "size_" : 64},
+                        {"dim_" : "out", "size_" : 1},
+                        {"dim_" : "mb", "size_" : 1}
+                      ],
+                      "compositeLoops_" : [
+                      ],
+                      "outerLoops_" : [
+                      ],
+                      "sizesWithGaps_" : {
+                      }
+                    }
+                  ]
+                }
+              },
+              "coordinates_" : {
+                "coordInfo" : {
+                  "out" : {
+                    "spatial" : 3,
+                    "temporal" : 2,
+                    "elemArr" : 1,
+                    "padding" : "nopad",
+                    "folds" :  {
+                      "dim_prop_func" : [
+                        { "Affine" : {"alpha_" : 64, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 0, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 0, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 64, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 64, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 1, "beta_" : 0} }
+                      ],
+                      "dim_prop_attr" : [
+                        { "factor_" : 1, "label_" : "core_fold" },
+                        { "factor_" : 1, "label_" : "corelet_fold" },
+                        { "factor_" : 1, "label_" : "rowsplit_fold" },
+                        { "factor_" : 1, "label_" : "loop_ds0_ds1_out out" },
+                        { "factor_" : 1, "label_" : "loop_ds1_ds2_out out" },
+                        { "factor_" : 64, "label_" : "elem_arr_0" }
+                      ]
+                    }
+                  }, 
+                  "mb" : {
+                    "spatial" : 3,
+                    "temporal" : 0,
+                    "elemArr" : 1,
+                    "padding" : "nopad",
+                    "folds" :  {
+                      "dim_prop_func" : [
+                        { "Affine" : {"alpha_" : 1, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 0, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 0, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 1, "beta_" : 0} }
+                      ],
+                      "dim_prop_attr" : [
+                        { "factor_" : 1, "label_" : "core_fold" },
+                        { "factor_" : 1, "label_" : "corelet_fold" },
+                        { "factor_" : 1, "label_" : "rowsplit_fold" },
+                        { "factor_" : 1, "label_" : "elem_arr_0" }
+                      ]
+                    }
+                  }
+                },
+                "coreIdToWkSlice_" : { 
+                } 
+              }
+            },
+            {
+              "nodeType_" : "block",
+              "name_" : "condition_region1__1",
+              "prev_" : "condition__1",
+              "relevantComps_" : {
+              },
+              "next_" : []
+            },
+            {
+              "nodeType_" : "loop",
+              "name_" : "loop_ds2_ds3_out",
+              "prev_" : "loop_ds1_ds2_out",
+              "relevantComps_" : {
+                "pe" : {"0":[0]}
+              },
+              "next_" : ["compute_pe_fma16"],
+              "numId_" : 2,
+              "denId_" : 3,
+              "parametricLoop_" : 0,
+              "parametricIterCount_" : -1,
+              "parametricLdsIdx_" : -1,
+              "dims_" : [{"dim_" : "out", "kind_" : "unpadded"}],
+              "loopCountSymbolIds_" : {}
+            },
+            {
+              "nodeType_" : "compute",
+              "name_" : "compute_pe_fma16",
+              "prev_" : "loop_ds2_ds3_out",
+              "relevantComps_" : {
+                "pe" : {"0":[0]}
+              },
+              "exUnit_" : "pe",
+              "type_" : "fma16",
+              "dataFormat_" : "SEN169_FP16",
+              "inputs_" : ["pelrf", "one", "zero"],
+              "outputs_" : ["pelrf"],
+              "inputsLdsAndLoopOffsets_" : [
+                {
+                  "myLdsIdx_" : -1,
+                  "startAddr_" :  {
+                    "dim_prop_func" : [
+                      { "Const" : {} },
+                      { "Const" : {} },
+                      { "Const" : {} }
+                    ],
+                    "dim_prop_attr" : [
+                      { "factor_" : 1, "label_" : "core" },
+                      { "factor_" : 1, "label_" : "corelet" },
+                      { "factor_" : 1, "label_" : "time" }
+                    ],
+                    "data_" : {
+                      "[0, 0, 0]" :"2"
+                    }
+                  },
+                  "isStartAddrSymbolic_" : 0,
+                  "latchDataId_" : -1,
+                  "constantId_" : 1,
+                  "constEleOffsets_" : {
+                  },
+                  "loopEleOffsets_" : {
+                  },
+                  "bufferAddrOffset_" : {},
+                  "bufferSwitchPosition_" : "",
+                  "dataConnect_" : "zero_pe_lrf"
+                },
+                {
+                  "myLdsIdx_" : -1,
+                  "startAddr_" : "0",
+                  "isStartAddrSymbolic_" : 0,
+                  "latchDataId_" : -1,
+                  "constantId_" : -1,
+                  "constEleOffsets_" : {
+                  },
+                  "loopEleOffsets_" : {
+                  },
+                  "bufferAddrOffset_" : {},
+                  "bufferSwitchPosition_" : "",
+                  "dataConnect_" : ""
+                },
+                {
+                  "myLdsIdx_" : -1,
+                  "startAddr_" : "0",
+                  "isStartAddrSymbolic_" : 0,
+                  "latchDataId_" : -1,
+                  "constantId_" : -1,
+                  "constEleOffsets_" : {
+                  },
+                  "loopEleOffsets_" : {
+                  },
+                  "bufferAddrOffset_" : {},
+                  "bufferSwitchPosition_" : "",
+                  "dataConnect_" : ""
+                }
+              ],
+              "outputsLdsAndLoopOffsets_" : [
+                {
+                  "myLdsIdx_" : 2,
+                  "startAddr_" :  {
+                    "dim_prop_func" : [
+                      { "Const" : {} },
+                      { "Const" : {} },
+                      { "Const" : {} }
+                    ],
+                    "dim_prop_attr" : [
+                      { "factor_" : 1, "label_" : "core" },
+                      { "factor_" : 1, "label_" : "corelet" },
+                      { "factor_" : 1, "label_" : "time" }
+                    ],
+                    "data_" : {
+                      "[0, 0, 0]" :"0"
+                    }
+                  },
+                  "isStartAddrSymbolic_" : 0,
+                  "latchDataId_" : -1,
+                  "constantId_" : -1,
+                  "constEleOffsets_" : {
+                  },
+                  "loopEleOffsets_" : {
+                    "0" : {
+                      "loop_ds2_ds3_out" : {"out" : 64}
+                    }
+                  },
+                  "bufferAddrOffset_" : {},
+                  "bufferSwitchPosition_" : "",
+                  "dataConnect_" : "inter_stick_output"
+                }
+              ],
+              "coreletViews_" : {
+                "0" : {
+                  "inputsLoopsAndSizes_" : [
+                    {
+                      "sizesNoGaps_" : [
+                      ],
+                      "compositeLoops_" : [
+                      ],
+                      "outerLoops_" : [
+                      ],
+                      "sizesWithGaps_" : {
+                      }
+                    },
+                    {
+                      "sizesNoGaps_" : [
+                      ],
+                      "compositeLoops_" : [
+                      ],
+                      "outerLoops_" : [
+                      ],
+                      "sizesWithGaps_" : {
+                      }
+                    },
+                    {
+                      "sizesNoGaps_" : [
+                      ],
+                      "compositeLoops_" : [
+                      ],
+                      "outerLoops_" : [
+                      ],
+                      "sizesWithGaps_" : {
+                      }
+                    }
+                  ],
+                  "outputsLoopsAndSizes_" : [
+                    {
+                      "sizesNoGaps_" : [
+                        {"dim_" : "out", "size_" : 64},
+                        {"dim_" : "out", "size_" : 1},
+                        {"dim_" : "mb", "size_" : 1}
+                      ],
+                      "compositeLoops_" : [
+                      ],
+                      "outerLoops_" : [
+                        {"loop_" : "loop_ds2_ds3_out", "dim_" : "out", "sizeIdx_" : 1, "elemOffset_" : 1}
+                      ],
+                      "sizesWithGaps_" : {
+                      }
+                    }
+                  ]
+                }
+              },
+              "numFoldsEngaged" : 1,
+              "isOpaqueOp_" : 0,
+              "instrAttribute_" : {
+                "indices_" : [],
+                "repetition_" : 8,
+                "sign_extend_" : 0,
+                "read_write_reg_map_" : {  },
+                "read_only_reg_map_" : {  },
+                "param_map_" : {  },
+                "mode_" : -1,
+                "computeMaskLoopOffsets_" : {
+                },
+                "compute_mask_" : 255
+              }
+            },
+            {
+              "nodeType_" : "loop",
+              "name_" : "loop_ds1_ds3_mb",
+              "prev_" : "loop_ds1_ds2_out",
+              "relevantComps_" : {
+                "pe" : {"0":[0]},
+                "lxlu" : {"0":[0]}
+              },
+              "next_" : ["loop_ds2_ds3_out__1"],
+              "numId_" : 1,
+              "denId_" : 3,
+              "parametricLoop_" : 0,
+              "parametricIterCount_" : -1,
+              "parametricLdsIdx_" : -1,
+              "dims_" : [{"dim_" : "mb", "kind_" : "unpadded"}],
+              "loopCountSymbolIds_" : {}
+            },
+            {
+              "nodeType_" : "loop",
+              "name_" : "loop_ds2_ds3_out__1",
+              "prev_" : "loop_ds1_ds3_mb",
+              "relevantComps_" : {
+                "pe" : {"0":[0]},
+                "lxlu" : {"0":[0]}
+              },
+              "next_" : ["transfer_lds0_src:lxlu_dst:pe", "compute_pe_fma16__1"],
+              "numId_" : 2,
+              "denId_" : 3,
+              "parametricLoop_" : 0,
+              "parametricIterCount_" : -1,
+              "parametricLdsIdx_" : -1,
+              "dims_" : [{"dim_" : "out", "kind_" : "unpadded"}],
+              "loopCountSymbolIds_" : {}
+            },
+            {
+              "nodeType_" : "transfer",
+              "name_" : "transfer_lds0_src:lxlu_dst:pe",
+              "prev_" : "loop_ds2_ds3_out__1",
+              "relevantComps_" : {
+                "lxlu" : {"0":[0]}
+              },
+              "src_" : {"unit_" : "lxlu", "storage_" : "lx"},
+              "dstVias_" : [
+                {
+                  "loc_" : {"unit_" : "pe", "storage_" : "lxlu"},
+                  "via_" : []
+                }
+              ],
+              "lastFusableParentLoopSrc_" : "loop_ds1_ds3_mb",
+              "lastFusableParentLoopDst_" : [""],
+              "srcLdsAndLoopOffsets_" : {
+                "myLdsIdx_" : 0,
+                "startAddr_" :  {
+                  "dim_prop_func" : [
+                    { "Map" : {} },
+                    { "Map" : {} },
+                    { "Const" : {} }
+                  ],
+                  "dim_prop_attr" : [
+                    { "factor_" : 1, "label_" : "core" },
+                    { "factor_" : 1, "label_" : "corelet" },
+                    { "factor_" : 1, "label_" : "time" }
+                  ],
+                  "data_" : {
+                    "[0, 0, 0]" :"1625344"
+                  }
+                },
+                "isStartAddrSymbolic_" : 0,
+                "latchDataId_" : -1,
+                "constantId_" : -1,
+                "constEleOffsets_" : {
+                },
+                "loopEleOffsets_" : {
+                  "0" : {
+                    "loop_ds1_ds2_out" : {"out" : 64},
+                    "loop_ds1_ds3_mb" : {"mb" : 1},
+                    "loop_ds2_ds3_out__1" : {"out" : 64}
+                  }
+                },
+                "bufferAddrOffset_" : {"0" : {"0" : "4096"}},
+                "bufferSwitchPosition_" : "loop_ds0_ds1_mb",
+                "dataConnect_" : "l3_lx_input"
+              },
+              "dstLdsAndLoopOffsets_" : [
+                {
+                  "myLdsIdx_" : 0,
+                  "startAddr_" : "0",
+                  "isStartAddrSymbolic_" : 0,
+                  "latchDataId_" : -1,
+                  "constantId_" : -1,
+                  "constEleOffsets_" : {
+                  },
+                  "loopEleOffsets_" : {
+                  },
+                  "bufferAddrOffset_" : {},
+                  "bufferSwitchPosition_" : "",
+                  "dataConnect_" : "pe_lx_input"
+                }
+              ],
+              "replicationFactor_" : 1,
+              "unitTimeTransferChunkSize_" : [
+                {
+                  "sizeDim_" : {"dim_" : "out", "size_" : 64},
+                  "srcSizeIdx_" : 0,
+                  "dstSizeIdx_" : 0
+                }
+              ],
+              "unitTimeTransferNumChunks_" : 1,
+              "unitTimeTransferChunkStride_" : [
+              ],
+              "rotateNumElements_" : 0,
+              "coreIdToGTRInfo_" : {
+              },
+              "transferSize_" : {},
+              "coreletViews_" : {
+                "0" : {
+                  "srcLoopsAndSize_" : {
+                    "sizesNoGaps_" : [
+                      {"dim_" : "out", "size_" : 64},
+                      {"dim_" : "mb", "size_" : 32},
+                      {"dim_" : "out", "size_" : 1}
+                    ],
+                    "compositeLoops_" : [
+                      {"loop_" : "loop_ds2_ds3_out__1", "dim_" : "out", "sizeIdx_" : 2, "elemOffset_" : 1},
+                      {"loop_" : "loop_ds1_ds3_mb", "dim_" : "mb", "sizeIdx_" : 1, "elemOffset_" : 1}
+                    ],
+                    "outerLoops_" : [
+                      {"loop_" : "loop_ds1_ds2_out", "dim_" : "out", "sizeIdx_" : 2, "elemOffset_" : 1}
+                    ],
+                    "sizesWithGaps_" : {
+                    }
+                  },
+                  "dstLoopsAndSizes_" : [
+                    {
+                      "sizesNoGaps_" : [
+                      ],
+                      "compositeLoops_" : [
+                      ],
+                      "outerLoops_" : [
+                      ],
+                      "sizesWithGaps_" : {
+                      }
+                    }
+                  ]
+                }
+              },
+              "coordinates_" : {
+                "coordInfo" : {
+                  "out" : {
+                    "spatial" : 3,
+                    "temporal" : 3,
+                    "elemArr" : 1,
+                    "padding" : "nopad",
+                    "folds" :  {
+                      "dim_prop_func" : [
+                        { "Affine" : {"alpha_" : 64, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 0, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 0, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 64, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 64, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 64, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 1, "beta_" : 0} }
+                      ],
+                      "dim_prop_attr" : [
+                        { "factor_" : 1, "label_" : "core_fold" },
+                        { "factor_" : 1, "label_" : "corelet_fold" },
+                        { "factor_" : 1, "label_" : "rowsplit_fold" },
+                        { "factor_" : 1, "label_" : "loop_ds0_ds1_out out" },
+                        { "factor_" : 1, "label_" : "loop_ds1_ds2_out out" },
+                        { "factor_" : 1, "label_" : "loop_ds2_ds3_out out" },
+                        { "factor_" : 64, "label_" : "elem_arr_0" }
+                      ]
+                    }
+                  }, 
+                  "mb" : {
+                    "spatial" : 3,
+                    "temporal" : 2,
+                    "elemArr" : 1,
+                    "padding" : "nopad",
+                    "folds" :  {
+                      "dim_prop_func" : [
+                        { "Affine" : {"alpha_" : 128, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 0, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 0, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 32, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 1, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 1, "beta_" : 0} }
+                      ],
+                      "dim_prop_attr" : [
+                        { "factor_" : 1, "label_" : "core_fold" },
+                        { "factor_" : 1, "label_" : "corelet_fold" },
+                        { "factor_" : 1, "label_" : "rowsplit_fold" },
+                        { "factor_" : 4, "label_" : "loop_ds0_ds1_mb mb" },
+                        { "factor_" : 32, "label_" : "loop_ds1_ds3_mb mb" },
+                        { "factor_" : 1, "label_" : "elem_arr_0" }
+                      ]
+                    }
+                  }
+                },
+                "coreIdToWkSlice_" : { 
+                } 
+              }
+            },
+            {
+              "nodeType_" : "compute",
+              "name_" : "compute_pe_fma16__1",
+              "prev_" : "loop_ds2_ds3_out__1",
+              "relevantComps_" : {
+                "pe" : {"0":[0]}
+              },
+              "exUnit_" : "pe",
+              "type_" : "fma16",
+              "dataFormat_" : "SEN169_FP16",
+              "inputs_" : ["lxlu", "pelrf", "pelrf"],
+              "outputs_" : ["pelrf"],
+              "inputsLdsAndLoopOffsets_" : [
+                {
+                  "myLdsIdx_" : 0,
+                  "startAddr_" : "0",
+                  "isStartAddrSymbolic_" : 0,
+                  "latchDataId_" : -1,
+                  "constantId_" : -1,
+                  "constEleOffsets_" : {
+                  },
+                  "loopEleOffsets_" : {
+                  },
+                  "bufferAddrOffset_" : {},
+                  "bufferSwitchPosition_" : "",
+                  "dataConnect_" : "pe_lx_input"
+                },
+                {
+                  "myLdsIdx_" : -1,
+                  "startAddr_" :  {
+                    "dim_prop_func" : [
+                      { "Const" : {} },
+                      { "Const" : {} },
+                      { "Const" : {} }
+                    ],
+                    "dim_prop_attr" : [
+                      { "factor_" : 1, "label_" : "core" },
+                      { "factor_" : 1, "label_" : "corelet" },
+                      { "factor_" : 1, "label_" : "time" }
+                    ],
+                    "data_" : {
+                      "[0, 0, 0]" :"1"
+                    }
+                  },
+                  "isStartAddrSymbolic_" : 0,
+                  "latchDataId_" : -1,
+                  "constantId_" : 0,
+                  "constEleOffsets_" : {
+                  },
+                  "loopEleOffsets_" : {
+                  },
+                  "bufferAddrOffset_" : {},
+                  "bufferSwitchPosition_" : "",
+                  "dataConnect_" : "scaling_factor_pe_lrf"
+                },
+                {
+                  "myLdsIdx_" : 2,
+                  "startAddr_" :  {
+                    "dim_prop_func" : [
+                      { "Const" : {} },
+                      { "Const" : {} },
+                      { "Const" : {} }
+                    ],
+                    "dim_prop_attr" : [
+                      { "factor_" : 1, "label_" : "core" },
+                      { "factor_" : 1, "label_" : "corelet" },
+                      { "factor_" : 1, "label_" : "time" }
+                    ],
+                    "data_" : {
+                      "[0, 0, 0]" :"0"
+                    }
+                  },
+                  "isStartAddrSymbolic_" : 0,
+                  "latchDataId_" : -1,
+                  "constantId_" : -1,
+                  "constEleOffsets_" : {
+                  },
+                  "loopEleOffsets_" : {
+                    "0" : {
+                      "loop_ds2_ds3_out__1" : {"out" : 64}
+                    }
+                  },
+                  "bufferAddrOffset_" : {},
+                  "bufferSwitchPosition_" : "",
+                  "dataConnect_" : "inter_stick_output"
+                }
+              ],
+              "outputsLdsAndLoopOffsets_" : [
+                {
+                  "myLdsIdx_" : 2,
+                  "startAddr_" :  {
+                    "dim_prop_func" : [
+                      { "Const" : {} },
+                      { "Const" : {} },
+                      { "Const" : {} }
+                    ],
+                    "dim_prop_attr" : [
+                      { "factor_" : 1, "label_" : "core" },
+                      { "factor_" : 1, "label_" : "corelet" },
+                      { "factor_" : 1, "label_" : "time" }
+                    ],
+                    "data_" : {
+                      "[0, 0, 0]" :"0"
+                    }
+                  },
+                  "isStartAddrSymbolic_" : 0,
+                  "latchDataId_" : -1,
+                  "constantId_" : -1,
+                  "constEleOffsets_" : {
+                  },
+                  "loopEleOffsets_" : {
+                    "0" : {
+                      "loop_ds2_ds3_out__1" : {"out" : 64}
+                    }
+                  },
+                  "bufferAddrOffset_" : {},
+                  "bufferSwitchPosition_" : "",
+                  "dataConnect_" : "inter_stick_output"
+                }
+              ],
+              "coreletViews_" : {
+                "0" : {
+                  "inputsLoopsAndSizes_" : [
+                    {
+                      "sizesNoGaps_" : [
+                      ],
+                      "compositeLoops_" : [
+                      ],
+                      "outerLoops_" : [
+                      ],
+                      "sizesWithGaps_" : {
+                      }
+                    },
+                    {
+                      "sizesNoGaps_" : [
+                      ],
+                      "compositeLoops_" : [
+                      ],
+                      "outerLoops_" : [
+                      ],
+                      "sizesWithGaps_" : {
+                      }
+                    },
+                    {
+                      "sizesNoGaps_" : [
+                        {"dim_" : "out", "size_" : 64},
+                        {"dim_" : "out", "size_" : 1},
+                        {"dim_" : "mb", "size_" : 1}
+                      ],
+                      "compositeLoops_" : [
+                      ],
+                      "outerLoops_" : [
+                        {"loop_" : "loop_ds2_ds3_out__1", "dim_" : "out", "sizeIdx_" : 1, "elemOffset_" : 1}
+                      ],
+                      "sizesWithGaps_" : {
+                      }
+                    }
+                  ],
+                  "outputsLoopsAndSizes_" : [
+                    {
+                      "sizesNoGaps_" : [
+                        {"dim_" : "out", "size_" : 64},
+                        {"dim_" : "out", "size_" : 1},
+                        {"dim_" : "mb", "size_" : 1}
+                      ],
+                      "compositeLoops_" : [
+                      ],
+                      "outerLoops_" : [
+                        {"loop_" : "loop_ds2_ds3_out__1", "dim_" : "out", "sizeIdx_" : 1, "elemOffset_" : 1}
+                      ],
+                      "sizesWithGaps_" : {
+                      }
+                    }
+                  ]
+                }
+              },
+              "numFoldsEngaged" : 1,
+              "isOpaqueOp_" : 0,
+              "instrAttribute_" : {
+                "indices_" : [],
+                "repetition_" : 8,
+                "sign_extend_" : 0,
+                "read_write_reg_map_" : {  },
+                "read_only_reg_map_" : {  },
+                "param_map_" : {  },
+                "mode_" : -1,
+                "computeMaskLoopOffsets_" : {
+                },
+                "compute_mask_" : 255
+              }
+            },
+            {
+              "nodeType_" : "loop",
+              "name_" : "loop_ds2_ds3_out__2",
+              "prev_" : "loop_ds1_ds2_out",
+              "relevantComps_" : {
+                "pe" : {"0":[0]}
+              },
+              "next_" : ["transfer_lds2_src:pe_dst:sfp"],
+              "numId_" : 2,
+              "denId_" : 3,
+              "parametricLoop_" : 0,
+              "parametricIterCount_" : -1,
+              "parametricLdsIdx_" : -1,
+              "dims_" : [{"dim_" : "out", "kind_" : "unpadded"}],
+              "loopCountSymbolIds_" : {}
+            },
+            {
+              "nodeType_" : "transfer",
+              "name_" : "transfer_lds2_src:pe_dst:sfp",
+              "prev_" : "loop_ds2_ds3_out__2",
+              "relevantComps_" : {
+                "pe" : {"0":[0]}
+              },
+              "src_" : {"unit_" : "pe", "storage_" : "pelrf"},
+              "dstVias_" : [
+                {
+                  "loc_" : {"unit_" : "sfp", "storage_" : "pe"},
+                  "via_" : []
+                }
+              ],
+              "lastFusableParentLoopSrc_" : "loop_ds2_ds3_out__2",
+              "lastFusableParentLoopDst_" : [""],
+              "srcLdsAndLoopOffsets_" : {
+                "myLdsIdx_" : 2,
+                "startAddr_" :  {
+                  "dim_prop_func" : [
+                    { "Const" : {} },
+                    { "Const" : {} },
+                    { "Const" : {} }
+                  ],
+                  "dim_prop_attr" : [
+                    { "factor_" : 1, "label_" : "core" },
+                    { "factor_" : 1, "label_" : "corelet" },
+                    { "factor_" : 1, "label_" : "time" }
+                  ],
+                  "data_" : {
+                    "[0, 0, 0]" :"0"
+                  }
+                },
+                "isStartAddrSymbolic_" : 0,
+                "latchDataId_" : -1,
+                "constantId_" : -1,
+                "constEleOffsets_" : {
+                },
+                "loopEleOffsets_" : {
+                  "0" : {
+                    "loop_ds2_ds3_out__2" : {"out" : 64}
+                  }
+                },
+                "bufferAddrOffset_" : {},
+                "bufferSwitchPosition_" : "",
+                "dataConnect_" : "inter_stick_output"
+              },
+              "dstLdsAndLoopOffsets_" : [
+                {
+                  "myLdsIdx_" : 2,
+                  "startAddr_" : "0",
+                  "isStartAddrSymbolic_" : 0,
+                  "latchDataId_" : -1,
+                  "constantId_" : -1,
+                  "constEleOffsets_" : {
+                  },
+                  "loopEleOffsets_" : {
+                  },
+                  "bufferAddrOffset_" : {},
+                  "bufferSwitchPosition_" : "",
+                  "dataConnect_" : "sfp_splat_input"
+                }
+              ],
+              "replicationFactor_" : 1,
+              "unitTimeTransferChunkSize_" : [
+                {
+                  "sizeDim_" : {"dim_" : "out", "size_" : 64},
+                  "srcSizeIdx_" : 0,
+                  "dstSizeIdx_" : 0
+                }
+              ],
+              "unitTimeTransferNumChunks_" : 1,
+              "unitTimeTransferChunkStride_" : [
+              ],
+              "rotateNumElements_" : 0,
+              "coreIdToGTRInfo_" : {
+              },
+              "transferSize_" : {},
+              "coreletViews_" : {
+                "0" : {
+                  "srcLoopsAndSize_" : {
+                    "sizesNoGaps_" : [
+                      {"dim_" : "out", "size_" : 64},
+                      {"dim_" : "out", "size_" : 1},
+                      {"dim_" : "mb", "size_" : 1}
+                    ],
+                    "compositeLoops_" : [
+                      {"loop_" : "loop_ds2_ds3_out__2", "dim_" : "out", "sizeIdx_" : 1, "elemOffset_" : 1}
+                    ],
+                    "outerLoops_" : [
+                    ],
+                    "sizesWithGaps_" : {
+                    }
+                  },
+                  "dstLoopsAndSizes_" : [
+                    {
+                      "sizesNoGaps_" : [
+                      ],
+                      "compositeLoops_" : [
+                      ],
+                      "outerLoops_" : [
+                      ],
+                      "sizesWithGaps_" : {
+                      }
+                    }
+                  ]
+                }
+              },
+              "coordinates_" : {
+                "coordInfo" : {
+                  "out" : {
+                    "spatial" : 3,
+                    "temporal" : 3,
+                    "elemArr" : 1,
+                    "padding" : "nopad",
+                    "folds" :  {
+                      "dim_prop_func" : [
+                        { "Affine" : {"alpha_" : 64, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 0, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 0, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 64, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 64, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 64, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 1, "beta_" : 0} }
+                      ],
+                      "dim_prop_attr" : [
+                        { "factor_" : 1, "label_" : "core_fold" },
+                        { "factor_" : 1, "label_" : "corelet_fold" },
+                        { "factor_" : 1, "label_" : "rowsplit_fold" },
+                        { "factor_" : 1, "label_" : "loop_ds0_ds1_out out" },
+                        { "factor_" : 1, "label_" : "loop_ds1_ds2_out out" },
+                        { "factor_" : 1, "label_" : "loop_ds2_ds3_out out" },
+                        { "factor_" : 64, "label_" : "elem_arr_0" }
+                      ]
+                    }
+                  }, 
+                  "mb" : {
+                    "spatial" : 3,
+                    "temporal" : 0,
+                    "elemArr" : 1,
+                    "padding" : "nopad",
+                    "folds" :  {
+                      "dim_prop_func" : [
+                        { "Affine" : {"alpha_" : 1, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 1, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 0, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 0, "beta_" : 0} }
+                      ],
+                      "dim_prop_attr" : [
+                        { "factor_" : 1, "label_" : "core_workslice_fold_mb" },
+                        { "factor_" : 1, "label_" : "corelet_fold_mb" },
+                        { "factor_" : 1, "label_" : "rowsplit_fold" },
+                        { "factor_" : 1, "label_" : "elem_arr_0" }
+                      ]
+                    }
+                  }
+                },
+                "coreIdToWkSlice_" : { 
+                } 
+              }
+            },
+            {
+              "nodeType_" : "loop",
+              "name_" : "loop_ds2_ds3_out__3",
+              "prev_" : "loop_ds1_ds2_out",
+              "relevantComps_" : {
+                "sfp" : {"0":[0]}
+              },
+              "next_" : ["compute_sfp_fma16"],
+              "numId_" : 2,
+              "denId_" : 3,
+              "parametricLoop_" : 0,
+              "parametricIterCount_" : -1,
+              "parametricLdsIdx_" : -1,
+              "dims_" : [{"dim_" : "out", "kind_" : "unpadded"}],
+              "loopCountSymbolIds_" : {}
+            },
+            {
+              "nodeType_" : "compute",
+              "name_" : "compute_sfp_fma16",
+              "prev_" : "loop_ds2_ds3_out__3",
+              "relevantComps_" : {
+                "sfp" : {"0":[0]}
+              },
+              "exUnit_" : "sfp",
+              "type_" : "fma16",
+              "dataFormat_" : "SEN169_FP16",
+              "inputs_" : ["pe", "one", "zero"],
+              "outputs_" : ["sfplrf"],
+              "inputsLdsAndLoopOffsets_" : [
+                {
+                  "myLdsIdx_" : 2,
+                  "startAddr_" : "0",
+                  "isStartAddrSymbolic_" : 0,
+                  "latchDataId_" : -1,
+                  "constantId_" : -1,
+                  "constEleOffsets_" : {
+                  },
+                  "loopEleOffsets_" : {
+                  },
+                  "bufferAddrOffset_" : {},
+                  "bufferSwitchPosition_" : "",
+                  "dataConnect_" : "sfp_splat_input"
+                },
+                {
+                  "myLdsIdx_" : -1,
+                  "startAddr_" : "0",
+                  "isStartAddrSymbolic_" : 0,
+                  "latchDataId_" : -1,
+                  "constantId_" : -1,
+                  "constEleOffsets_" : {
+                  },
+                  "loopEleOffsets_" : {
+                  },
+                  "bufferAddrOffset_" : {},
+                  "bufferSwitchPosition_" : "",
+                  "dataConnect_" : ""
+                },
+                {
+                  "myLdsIdx_" : -1,
+                  "startAddr_" : "0",
+                  "isStartAddrSymbolic_" : 0,
+                  "latchDataId_" : -1,
+                  "constantId_" : -1,
+                  "constEleOffsets_" : {
+                  },
+                  "loopEleOffsets_" : {
+                  },
+                  "bufferAddrOffset_" : {},
+                  "bufferSwitchPosition_" : "",
+                  "dataConnect_" : ""
+                }
+              ],
+              "outputsLdsAndLoopOffsets_" : [
+                {
+                  "myLdsIdx_" : 2,
+                  "startAddr_" :  {
+                    "dim_prop_func" : [
+                      { "Const" : {} },
+                      { "Const" : {} },
+                      { "Const" : {} }
+                    ],
+                    "dim_prop_attr" : [
+                      { "factor_" : 1, "label_" : "core" },
+                      { "factor_" : 1, "label_" : "corelet" },
+                      { "factor_" : 1, "label_" : "time" }
+                    ],
+                    "data_" : {
+                      "[0, 0, 0]" :"1"
+                    }
+                  },
+                  "isStartAddrSymbolic_" : 0,
+                  "latchDataId_" : -1,
+                  "constantId_" : -1,
+                  "constEleOffsets_" : {
+                  },
+                  "loopEleOffsets_" : {
+                    "0" : {
+                      "loop_ds2_ds3_out__3" : {"out" : 64}
+                    }
+                  },
+                  "bufferAddrOffset_" : {},
+                  "bufferSwitchPosition_" : "",
+                  "dataConnect_" : "sfp_lrf_input_output"
+                }
+              ],
+              "coreletViews_" : {
+                "0" : {
+                  "inputsLoopsAndSizes_" : [
+                    {
+                      "sizesNoGaps_" : [
+                      ],
+                      "compositeLoops_" : [
+                      ],
+                      "outerLoops_" : [
+                      ],
+                      "sizesWithGaps_" : {
+                      }
+                    },
+                    {
+                      "sizesNoGaps_" : [
+                      ],
+                      "compositeLoops_" : [
+                      ],
+                      "outerLoops_" : [
+                      ],
+                      "sizesWithGaps_" : {
+                      }
+                    },
+                    {
+                      "sizesNoGaps_" : [
+                      ],
+                      "compositeLoops_" : [
+                      ],
+                      "outerLoops_" : [
+                      ],
+                      "sizesWithGaps_" : {
+                      }
+                    }
+                  ],
+                  "outputsLoopsAndSizes_" : [
+                    {
+                      "sizesNoGaps_" : [
+                        {"dim_" : "out", "size_" : 64},
+                        {"dim_" : "out", "size_" : 1},
+                        {"dim_" : "mb", "size_" : 1}
+                      ],
+                      "compositeLoops_" : [
+                      ],
+                      "outerLoops_" : [
+                        {"loop_" : "loop_ds2_ds3_out__3", "dim_" : "out", "sizeIdx_" : 1, "elemOffset_" : 1}
+                      ],
+                      "sizesWithGaps_" : {
+                      }
+                    }
+                  ]
+                }
+              },
+              "numFoldsEngaged" : 1,
+              "isOpaqueOp_" : 0,
+              "instrAttribute_" : {
+                "indices_" : [],
+                "repetition_" : 8,
+                "sign_extend_" : 0,
+                "read_write_reg_map_" : {  },
+                "read_only_reg_map_" : {  },
+                "param_map_" : {  },
+                "mode_" : -1,
+                "computeMaskLoopOffsets_" : {
+                },
+                "compute_mask_" : 255
+              }
+            },
+            {
+              "nodeType_" : "condition",
+              "name_" : "condition__2",
+              "prev_" : "loop_ds1_ds2_out",
+              "relevantComps_" : {
+                "sfp" : {"0":[0]}
+              },
+              "next_" : ["condition_region0__2", "condition_region1__2"],
+              "loopCond_" : {
+                "twoLevelOrOfAnds_" : [
+                  [
+                    {
+                      "loopComp_" : "loop_ds0_ds1_mb",
+                      "dim_" : "mb",
+                      "condOp_" : "eq",
+                      "condValType_" : "first",
+                      "condValInt_" : -1
+                    }
+                  ]
+                ],
+                "negated_" : 1
+              },
+              "coreClCond_" : {}
+            },
+            {
+              "nodeType_" : "block",
+              "name_" : "condition_region0__2",
+              "prev_" : "condition__2",
+              "relevantComps_" : {
+                "sfp" : {"0":[0]}
+              },
+              "next_" : ["loop_ds2_ds3_out__4"]
+            },
+            {
+              "nodeType_" : "loop",
+              "name_" : "loop_ds2_ds3_out__4",
+              "prev_" : "condition_region0__2",
+              "relevantComps_" : {
+                "sfp" : {"0":[0]}
+              },
+              "next_" : ["compute_sfp_fma16__1"],
+              "numId_" : 2,
+              "denId_" : 3,
+              "parametricLoop_" : 0,
+              "parametricIterCount_" : -1,
+              "parametricLdsIdx_" : -1,
+              "dims_" : [{"dim_" : "out", "kind_" : "unpadded"}],
+              "loopCountSymbolIds_" : {}
+            },
+            {
+              "nodeType_" : "compute",
+              "name_" : "compute_sfp_fma16__1",
+              "prev_" : "loop_ds2_ds3_out__4",
+              "relevantComps_" : {
+                "sfp" : {"0":[0]}
+              },
+              "exUnit_" : "sfp",
+              "type_" : "fma16",
+              "dataFormat_" : "SEN169_FP16",
+              "inputs_" : ["sfplrf", "one", "sfplrf"],
+              "outputs_" : ["sfplrf"],
+              "inputsLdsAndLoopOffsets_" : [
+                {
+                  "myLdsIdx_" : 1,
+                  "startAddr_" :  {
+                    "dim_prop_func" : [
+                      { "Const" : {} },
+                      { "Const" : {} },
+                      { "Const" : {} }
+                    ],
+                    "dim_prop_attr" : [
+                      { "factor_" : 1, "label_" : "core" },
+                      { "factor_" : 1, "label_" : "corelet" },
+                      { "factor_" : 1, "label_" : "time" }
+                    ],
+                    "data_" : {
+                      "[0, 0, 0]" :"0"
+                    }
+                  },
+                  "isStartAddrSymbolic_" : 0,
+                  "latchDataId_" : -1,
+                  "constantId_" : -1,
+                  "constEleOffsets_" : {
+                  },
+                  "loopEleOffsets_" : {
+                    "0" : {
+                      "loop_ds2_ds3_out__4" : {"out" : 64}
+                    }
+                  },
+                  "bufferAddrOffset_" : {},
+                  "bufferSwitchPosition_" : "",
+                  "dataConnect_" : "lxsfp_output"
+                },
+                {
+                  "myLdsIdx_" : -1,
+                  "startAddr_" : "0",
+                  "isStartAddrSymbolic_" : 0,
+                  "latchDataId_" : -1,
+                  "constantId_" : -1,
+                  "constEleOffsets_" : {
+                  },
+                  "loopEleOffsets_" : {
+                  },
+                  "bufferAddrOffset_" : {},
+                  "bufferSwitchPosition_" : "",
+                  "dataConnect_" : ""
+                },
+                {
+                  "myLdsIdx_" : 2,
+                  "startAddr_" :  {
+                    "dim_prop_func" : [
+                      { "Const" : {} },
+                      { "Const" : {} },
+                      { "Const" : {} }
+                    ],
+                    "dim_prop_attr" : [
+                      { "factor_" : 1, "label_" : "core" },
+                      { "factor_" : 1, "label_" : "corelet" },
+                      { "factor_" : 1, "label_" : "time" }
+                    ],
+                    "data_" : {
+                      "[0, 0, 0]" :"1"
+                    }
+                  },
+                  "isStartAddrSymbolic_" : 0,
+                  "latchDataId_" : -1,
+                  "constantId_" : -1,
+                  "constEleOffsets_" : {
+                  },
+                  "loopEleOffsets_" : {
+                    "0" : {
+                      "loop_ds2_ds3_out__4" : {"out" : 64}
+                    }
+                  },
+                  "bufferAddrOffset_" : {},
+                  "bufferSwitchPosition_" : "",
+                  "dataConnect_" : "sfp_lrf_input_output"
+                }
+              ],
+              "outputsLdsAndLoopOffsets_" : [
+                {
+                  "myLdsIdx_" : 2,
+                  "startAddr_" :  {
+                    "dim_prop_func" : [
+                      { "Const" : {} },
+                      { "Const" : {} },
+                      { "Const" : {} }
+                    ],
+                    "dim_prop_attr" : [
+                      { "factor_" : 1, "label_" : "core" },
+                      { "factor_" : 1, "label_" : "corelet" },
+                      { "factor_" : 1, "label_" : "time" }
+                    ],
+                    "data_" : {
+                      "[0, 0, 0]" :"1"
+                    }
+                  },
+                  "isStartAddrSymbolic_" : 0,
+                  "latchDataId_" : -1,
+                  "constantId_" : -1,
+                  "constEleOffsets_" : {
+                  },
+                  "loopEleOffsets_" : {
+                    "0" : {
+                      "loop_ds2_ds3_out__4" : {"out" : 64}
+                    }
+                  },
+                  "bufferAddrOffset_" : {},
+                  "bufferSwitchPosition_" : "",
+                  "dataConnect_" : "sfp_lrf_input_output"
+                }
+              ],
+              "coreletViews_" : {
+                "0" : {
+                  "inputsLoopsAndSizes_" : [
+                    {
+                      "sizesNoGaps_" : [
+                        {"dim_" : "out", "size_" : 64},
+                        {"dim_" : "out", "size_" : 1},
+                        {"dim_" : "mb", "size_" : 1}
+                      ],
+                      "compositeLoops_" : [
+                      ],
+                      "outerLoops_" : [
+                        {"loop_" : "loop_ds2_ds3_out__4", "dim_" : "out", "sizeIdx_" : 1, "elemOffset_" : 1}
+                      ],
+                      "sizesWithGaps_" : {
+                      }
+                    },
+                    {
+                      "sizesNoGaps_" : [
+                      ],
+                      "compositeLoops_" : [
+                      ],
+                      "outerLoops_" : [
+                      ],
+                      "sizesWithGaps_" : {
+                      }
+                    },
+                    {
+                      "sizesNoGaps_" : [
+                        {"dim_" : "out", "size_" : 64},
+                        {"dim_" : "out", "size_" : 1},
+                        {"dim_" : "mb", "size_" : 1}
+                      ],
+                      "compositeLoops_" : [
+                      ],
+                      "outerLoops_" : [
+                        {"loop_" : "loop_ds2_ds3_out__4", "dim_" : "out", "sizeIdx_" : 1, "elemOffset_" : 1}
+                      ],
+                      "sizesWithGaps_" : {
+                      }
+                    }
+                  ],
+                  "outputsLoopsAndSizes_" : [
+                    {
+                      "sizesNoGaps_" : [
+                        {"dim_" : "out", "size_" : 64},
+                        {"dim_" : "out", "size_" : 1},
+                        {"dim_" : "mb", "size_" : 1}
+                      ],
+                      "compositeLoops_" : [
+                      ],
+                      "outerLoops_" : [
+                        {"loop_" : "loop_ds2_ds3_out__4", "dim_" : "out", "sizeIdx_" : 1, "elemOffset_" : 1}
+                      ],
+                      "sizesWithGaps_" : {
+                      }
+                    }
+                  ]
+                }
+              },
+              "numFoldsEngaged" : 1,
+              "isOpaqueOp_" : 0,
+              "instrAttribute_" : {
+                "indices_" : [],
+                "repetition_" : 8,
+                "sign_extend_" : 0,
+                "read_write_reg_map_" : {  },
+                "read_only_reg_map_" : {  },
+                "param_map_" : {  },
+                "mode_" : -1,
+                "computeMaskLoopOffsets_" : {
+                },
+                "compute_mask_" : 255
+              }
+            },
+            {
+              "nodeType_" : "block",
+              "name_" : "condition_region1__2",
+              "prev_" : "condition__2",
+              "relevantComps_" : {
+              },
+              "next_" : []
+            },
+            {
+              "nodeType_" : "loop",
+              "name_" : "loop_ds2_ds3_out__5",
+              "prev_" : "loop_ds1_ds2_out",
+              "relevantComps_" : {
+                "sfp" : {"0":[0]},
+                "lxsu" : {"0":[0]}
+              },
+              "next_" : ["transfer_lds2_src:sfp_dst:lxsu"],
+              "numId_" : 2,
+              "denId_" : 3,
+              "parametricLoop_" : 0,
+              "parametricIterCount_" : -1,
+              "parametricLdsIdx_" : -1,
+              "dims_" : [{"dim_" : "out", "kind_" : "unpadded"}],
+              "loopCountSymbolIds_" : {}
+            },
+            {
+              "nodeType_" : "transfer",
+              "name_" : "transfer_lds2_src:sfp_dst:lxsu",
+              "prev_" : "loop_ds2_ds3_out__5",
+              "relevantComps_" : {
+                "sfp" : {"0":[0]},
+                "lxsu" : {"0":[0]}
+              },
+              "src_" : {"unit_" : "sfp", "storage_" : "sfplrf"},
+              "dstVias_" : [
+                {
+                  "loc_" : {"unit_" : "lxsu", "storage_" : "lx"},
+                  "via_" : []
+                }
+              ],
+              "lastFusableParentLoopSrc_" : "loop_ds2_ds3_out__5",
+              "lastFusableParentLoopDst_" : ["loop_ds1_ds2_out"],
+              "srcLdsAndLoopOffsets_" : {
+                "myLdsIdx_" : 2,
+                "startAddr_" :  {
+                  "dim_prop_func" : [
+                    { "Const" : {} },
+                    { "Const" : {} },
+                    { "Const" : {} }
+                  ],
+                  "dim_prop_attr" : [
+                    { "factor_" : 1, "label_" : "core" },
+                    { "factor_" : 1, "label_" : "corelet" },
+                    { "factor_" : 1, "label_" : "time" }
+                  ],
+                  "data_" : {
+                    "[0, 0, 0]" :"1"
+                  }
+                },
+                "isStartAddrSymbolic_" : 0,
+                "latchDataId_" : -1,
+                "constantId_" : -1,
+                "constEleOffsets_" : {
+                },
+                "loopEleOffsets_" : {
+                  "0" : {
+                    "loop_ds2_ds3_out__5" : {"out" : 64}
+                  }
+                },
+                "bufferAddrOffset_" : {},
+                "bufferSwitchPosition_" : "",
+                "dataConnect_" : "sfp_lrf_input_output"
+              },
+              "dstLdsAndLoopOffsets_" : [
+                {
+                  "myLdsIdx_" : 2,
+                  "startAddr_" :  {
+                    "dim_prop_func" : [
+                      { "Map" : {} },
+                      { "Map" : {} },
+                      { "Const" : {} }
+                    ],
+                    "dim_prop_attr" : [
+                      { "factor_" : 1, "label_" : "core" },
+                      { "factor_" : 1, "label_" : "corelet" },
+                      { "factor_" : 1, "label_" : "time" }
+                    ],
+                    "data_" : {
+                      "[0, 0, 0]" :"1633536"
+                    }
+                  },
+                  "isStartAddrSymbolic_" : 0,
+                  "latchDataId_" : -1,
+                  "constantId_" : -1,
+                  "constEleOffsets_" : {
+                  },
+                  "loopEleOffsets_" : {
+                    "0" : {
+                      "loop_ds1_ds2_out" : {"out" : 64},
+                      "loop_ds2_ds3_out__5" : {"out" : 64}
+                    }
+                  },
+                  "bufferAddrOffset_" : {"0" : {"0" : "256"}},
+                  "bufferSwitchPosition_" : "loop_ds0_ds1_out",
+                  "dataConnect_" : "lxsu_output"
+                }
+              ],
+              "replicationFactor_" : 1,
+              "unitTimeTransferChunkSize_" : [
+                {
+                  "sizeDim_" : {"dim_" : "out", "size_" : 64},
+                  "srcSizeIdx_" : 0,
+                  "dstSizeIdx_" : 0
+                }
+              ],
+              "unitTimeTransferNumChunks_" : 1,
+              "unitTimeTransferChunkStride_" : [
+              ],
+              "rotateNumElements_" : 0,
+              "coreIdToGTRInfo_" : {
+              },
+              "transferSize_" : {},
+              "coreletViews_" : {
+                "0" : {
+                  "srcLoopsAndSize_" : {
+                    "sizesNoGaps_" : [
+                      {"dim_" : "out", "size_" : 64},
+                      {"dim_" : "out", "size_" : 1},
+                      {"dim_" : "mb", "size_" : 1}
+                    ],
+                    "compositeLoops_" : [
+                      {"loop_" : "loop_ds2_ds3_out__5", "dim_" : "out", "sizeIdx_" : 1, "elemOffset_" : 1}
+                    ],
+                    "outerLoops_" : [
+                    ],
+                    "sizesWithGaps_" : {
+                    }
+                  },
+                  "dstLoopsAndSizes_" : [
+                    {
+                      "sizesNoGaps_" : [
+                        {"dim_" : "out", "size_" : 64},
+                        {"dim_" : "out", "size_" : 1},
+                        {"dim_" : "mb", "size_" : 1}
+                      ],
+                      "compositeLoops_" : [
+                        {"loop_" : "loop_ds2_ds3_out__5", "dim_" : "out", "sizeIdx_" : 1, "elemOffset_" : 1},
+                        {"loop_" : "loop_ds1_ds2_out", "dim_" : "out", "sizeIdx_" : 1, "elemOffset_" : 1}
+                      ],
+                      "outerLoops_" : [
+                      ],
+                      "sizesWithGaps_" : {
+                      }
+                    }
+                  ]
+                }
+              },
+              "coordinates_" : {
+                "coordInfo" : {
+                  "out" : {
+                    "spatial" : 3,
+                    "temporal" : 3,
+                    "elemArr" : 1,
+                    "padding" : "nopad",
+                    "folds" :  {
+                      "dim_prop_func" : [
+                        { "Affine" : {"alpha_" : 64, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 0, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 0, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 64, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 64, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 64, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 1, "beta_" : 0} }
+                      ],
+                      "dim_prop_attr" : [
+                        { "factor_" : 1, "label_" : "core_fold" },
+                        { "factor_" : 1, "label_" : "corelet_fold" },
+                        { "factor_" : 1, "label_" : "rowsplit_fold" },
+                        { "factor_" : 1, "label_" : "loop_ds0_ds1_out out" },
+                        { "factor_" : 1, "label_" : "loop_ds1_ds2_out out" },
+                        { "factor_" : 1, "label_" : "loop_ds2_ds3_out out" },
+                        { "factor_" : 64, "label_" : "elem_arr_0" }
+                      ]
+                    }
+                  }, 
+                  "mb" : {
+                    "spatial" : 3,
+                    "temporal" : 0,
+                    "elemArr" : 1,
+                    "padding" : "nopad",
+                    "folds" :  {
+                      "dim_prop_func" : [
+                        { "Affine" : {"alpha_" : 1, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 0, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 0, "beta_" : 0} },
+                        { "Affine" : {"alpha_" : 1, "beta_" : 0} }
+                      ],
+                      "dim_prop_attr" : [
+                        { "factor_" : 1, "label_" : "core_fold" },
+                        { "factor_" : 1, "label_" : "corelet_fold" },
+                        { "factor_" : 1, "label_" : "rowsplit_fold" },
+                        { "factor_" : 1, "label_" : "elem_arr_0" }
+                      ]
+                    }
+                  }
+                },
+                "coreIdToWkSlice_" : { 
+                } 
+              }
+            },
+            {
+              "nodeType_" : "sync",
+              "name_" : "sync_send_lxsu_to_l3su",
+              "prev_" : "loop_ds0_ds1_out",
+              "relevantComps_" : {
+                "lxsu" : {"0":[0]}
+              },
+              "units_" : ["lxsu"],
+              "isReceive_" : 0,
+              "isSoft_" : 0,
+              "implicitSyncRefTransfer_" : "",
+              "otherEndOfTheSignals_" : ["sync_receive_l3su_from_lxsu"]
+            },
+            {
+              "nodeType_" : "sync",
+              "name_" : "sync_receive_l3su_from_lxsu",
+              "prev_" : "loop_ds0_ds1_out",
+              "relevantComps_" : {
+                "l3su" : {"0":[0]}
+              },
+              "units_" : ["l3su"],
+              "isReceive_" : 1,
+              "isSoft_" : 0,
+              "implicitSyncRefTransfer_" : "",
+              "otherEndOfTheSignals_" : ["sync_send_lxsu_to_l3su"]
+            },
+            {
+              "nodeType_" : "sync",
+              "name_" : "sync_send_l3su_to_lxsu",
+              "prev_" : "loop_ds0_ds1_out",
+              "relevantComps_" : {
+                "l3su" : {"0":[0]}
+              },
+              "units_" : ["l3su"],
+              "isReceive_" : 0,
+              "isSoft_" : 0,
+              "implicitSyncRefTransfer_" : "",
+              "otherEndOfTheSignals_" : ["sync_receive_lxsu_from_l3su"]
+            },
+            {
+              "nodeType_" : "sync",
+              "name_" : "sync_receive_lxsu_from_l3su",
+              "prev_" : "loop_ds0_ds1_out",
+              "relevantComps_" : {
+                "lxsu" : {"0":[0]}
+              },
+              "units_" : ["lxsu"],
+              "isReceive_" : 1,
+              "isSoft_" : 0,
+              "implicitSyncRefTransfer_" : "",
+              "otherEndOfTheSignals_" : ["sync_send_l3su_to_lxsu"]
+            },
+            {
+              "nodeType_" : "transfer",
+              "name_" : "transfer_lds1_src:lx_dst:hbm",
+              "prev_" : "loop_ds0_ds1_out",
+              "relevantComps_" : {
+                "l3su" : {"0":[0]}
+              },
+              "src_" : {"unit_" : "l3su", "storage_" : "lx"},
+              "dstVias_" : [
+                {
+                  "loc_" : {"unit_" : "l3su", "storage_" : "hbm"},
+                  "via_" : []
+                }
+              ],
+              "lastFusableParentLoopSrc_" : "",
+              "lastFusableParentLoopDst_" : [""],
+              "srcLdsAndLoopOffsets_" : {
+                "myLdsIdx_" : 2,
+                "startAddr_" :  {
+                  "dim_prop_func" : [
+                    { "Map" : {} },
+                    { "Map" : {} },
+                    { "Const" : {} }
+                  ],
+                  "dim_prop_attr" : [
+                    { "factor_" : 1, "label_" : "core" },
+                    { "factor_" : 1, "label_" : "corelet" },
+                    { "factor_" : 1, "label_" : "time" }
+                  ],
+                  "data_" : {
+                    "[0, 0, 0]" :"12762"
+                  }
+                },
+                "isStartAddrSymbolic_" : 0,
+                "latchDataId_" : -1,
+                "constantId_" : -1,
+                "constEleOffsets_" : {
+                },
+                "loopEleOffsets_" : {
+                },
+                "bufferAddrOffset_" : {"0" : {"0" : "2"}},
+                "bufferSwitchPosition_" : "loop_ds0_ds1_out",
+                "dataConnect_" : "lxsu_output"
+              },
+              "dstLdsAndLoopOffsets_" : [
+                {
+                  "myLdsIdx_" : 2,
+                  "startAddr_" :  {
+                    "dim_prop_func" : [
+                      { "Map" : {} },
+                      { "Const" : {} },
+                      { "Const" : {} }
+                    ],
+                    "dim_prop_attr" : [
+                      { "factor_" : 1, "label_" : "core" },
+                      { "factor_" : 1, "label_" : "corelet" },
+                      { "factor_" : 1, "label_" : "time" }
+                    ],
+                    "data_" : {
+                      "[0, 0, 0]" :"134217728"
+                    }
+                  },
+                  "isStartAddrSymbolic_" : 0,
+                  "latchDataId_" : -1,
+                  "constantId_" : -1,
+                  "constEleOffsets_" : {
+                  },
+                  "loopEleOffsets_" : {
+                    "0" : {
+                      "loop_ds0_ds1_out" : {"out" : 64}
+                    }
+                  },
+                  "bufferAddrOffset_" : {},
+                  "bufferSwitchPosition_" : "",
+                  "dataConnect_" : ""
+                }
+              ],
+              "replicationFactor_" : 1,
+              "unitTimeTransferChunkSize_" : [
+                {
+                  "sizeDim_" : {"dim_" : "out", "size_" : 64},
+                  "srcSizeIdx_" : 0,
+                  "dstSizeIdx_" : 0
+                }
+              ],
+              "unitTimeTransferNumChunks_" : 1,
+              "unitTimeTransferChunkStride_" : [
+              ],
+              "rotateNumElements_" : 0,
+              "coreIdToGTRInfo_" : {
+              },
+              "transferSize_" : {},
+              "coreletViews_" : {
+                "0" : {
+                  "srcLoopsAndSize_" : {
+                    "sizesNoGaps_" : [
+                      {"dim_" : "out", "size_" : 64},
+                      {"dim_" : "out", "size_" : 1},
+                      {"dim_" : "mb", "size_" : 1}
+                    ],
+                    "compositeLoops_" : [
+                    ],
+                    "outerLoops_" : [
+                    ],
+                    "sizesWithGaps_" : {
+                    }
+                  },
+                  "dstLoopsAndSizes_" : [
+                    {
+                      "sizesNoGaps_" : [
+                        {"dim_" : "out", "size_" : 64},
+                        {"dim_" : "out", "size_" : 1},
+                        {"dim_" : "mb", "size_" : 1}
+                      ],
+                      "compositeLoops_" : [
+                      ],
+                      "outerLoops_" : [
+                        {"loop_" : "loop_ds0_ds1_out", "dim_" : "out", "sizeIdx_" : 1, "elemOffset_" : 1}
+                      ],
+                      "sizesWithGaps_" : {
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "primaryDsInfo_" : {
+            "INPUT" : {
+              "layoutDimOrder_" : ["mb", "out"],
+              "stickDimOrder_" : ["out"],
+              "stickSize_" : [64],
+              "stickRepl_" : [1]
+            },
+            "OUTPUT" : {
+              "layoutDimOrder_" : ["out", "mb"],
+              "stickDimOrder_" : ["out"],
+              "stickSize_" : [64],
+              "stickRepl_" : [1]
+            }
+          },
+          "pdsRelation_" : { "isPdsReuse" : 1 },
+          "labeledDs_" : [
+            {
+              "ldsIdx_" : 0,
+              "dsName_" : "Tensor0",
+              "dsType_" : "INPUT",
+              "segment_" : "output",
+              "isStatic_" : 0,
+              "isFirstUse_" : 1,
+              "isExternal_" : 0,
+              "scale_" : [1, 1],
+              "density_" : [1, 1],
+              "wordLength" : 2,
+              "dataFormat_" : "SEN169_FP16",
+              "level" : 0,
+              "memOrg_" : {
+                  "hbm" : { "isPresent" : 1, "isPadded" : 0, "isZeroPadded" : 0, "zpadGapFront" : [ 0, 0 ], "gapPerDim" : {  }, "dsOffset" : 0, "allocateNode_" : "allocate-Tensor0_hbm" },
+                  "lx" : { "isPresent" : 1, "isPadded" : 0, "isZeroPadded" : 0, "zpadGapFront" : [ 0, 0 ], "gapPerDim" : {  }, "dsOffset" : 0, "allocateNode_" : "allocate_lds0_lx" }
+              },
+              "dataTransfers_" : [
+              ],
+              "hbmStartAddress_" : -1,
+              "lxStartAddress_" : -1,
+              "hbmSize_" : 18446744073709551615,
+              "lxSize_" : 18446744073709551615,
+              "lxBufferSize_" : 18446744073709551615,
+              "totSlicesPerDim_" : {  },
+              "coreStateInit_" : [
+              ]
+            },
+            {
+              "ldsIdx_" : 1,
+              "dsName_" : "internal_tensor_lds1",
+              "dsType_" : "OUTPUT",
+              "segment_" : "stack",
+              "isStatic_" : 0,
+              "isFirstUse_" : 1,
+              "isExternal_" : 0,
+              "scale_" : [1, -1],
+              "density_" : [1, 1],
+              "wordLength" : 2,
+              "dataFormat_" : "SEN169_FP16",
+              "level" : 0,
+              "memOrg_" : {
+                  "sfplrf" : { "isPresent" : 1, "isPadded" : 0, "isZeroPadded" : 0, "zpadGapFront" : [ 0, 0 ], "gapPerDim" : {  }, "dsOffset" : 0, "allocateNode_" : "allocate_lds1_sfplrf" }
+              },
+              "dataTransfers_" : [
+              ],
+              "hbmStartAddress_" : -1,
+              "lxStartAddress_" : -1,
+              "hbmSize_" : 0,
+              "lxSize_" : 0,
+              "lxBufferSize_" : 0,
+              "totSlicesPerDim_" : {  },
+              "coreStateInit_" : [
+              ]
+            },
+            {
+              "ldsIdx_" : 2,
+              "dsName_" : "Tensor1",
+              "dsType_" : "OUTPUT",
+              "segment_" : "output",
+              "isStatic_" : 0,
+              "isFirstUse_" : 1,
+              "isExternal_" : 0,
+              "scale_" : [1, -1],
+              "density_" : [1, 1],
+              "wordLength" : 2,
+              "dataFormat_" : "SEN169_FP16",
+              "level" : 0,
+              "memOrg_" : {
+                  "hbm" : { "isPresent" : 1, "isPadded" : 0, "isZeroPadded" : 0, "zpadGapFront" : [ 0, 0 ], "gapPerDim" : {  }, "dsOffset" : 0, "allocateNode_" : "allocate-Tensor1_hbm" },
+                  "lx" : { "isPresent" : 1, "isPadded" : 0, "isZeroPadded" : 0, "zpadGapFront" : [ 0, 0 ], "gapPerDim" : {  }, "dsOffset" : 0, "allocateNode_" : "allocate_lds1_lx" },
+                  "pelrf" : { "isPresent" : 1, "isPadded" : 0, "isZeroPadded" : 0, "zpadGapFront" : [ 0, 0 ], "gapPerDim" : {  }, "dsOffset" : 0, "allocateNode_" : "allocate_lds2_pelrf" },
+                  "sfplrf" : { "isPresent" : 1, "isPadded" : 0, "isZeroPadded" : 0, "zpadGapFront" : [ 0, 0 ], "gapPerDim" : {  }, "dsOffset" : 0, "allocateNode_" : "allocate_lds2_sfplrf" }
+              },
+              "dataTransfers_" : [
+              ],
+              "hbmStartAddress_" : -1,
+              "lxStartAddress_" : -1,
+              "hbmSize_" : 18446744073709551615,
+              "lxSize_" : 18446744073709551615,
+              "lxBufferSize_" : 18446744073709551615,
+              "totSlicesPerDim_" : {  },
+              "coreStateInit_" : [
+              ]
+            }
+          ],
+          "computeOp_" : [
+            {
+              "exUnit" : "sfp",
+              "opFuncName" : "meannonstick",
+              "attributes_" : {
+                "dataFormat_" : "SEN169_FP16",
+                "fidelity_" : "regular"
+              },
+              "location" : "Inner",
+              "auxLoopName" : "",
+              "isAtMainLoop" : 1,
+              "isAtTop" : 1,
+              "level" : 0,
+              "coreExclude" : [  ],
+              "coreClExclude" : [  ],
+              "opConsts" : { },
+              "inputLabeledDs" : ["Tensor0-idx0", "Tensor1-idx2"],
+              "interimLabeledDs" : ["internal_tensor_lds1-idx1"],
+              "outputLabeledDs" : ["Tensor1-idx2"],
+              "indirectAccessIndexLabeledDs" : []
+            }
+          ],
+          "pcfg_" : [
+          ],
+          "target_" : "undefined"
+        }
+      }
+    ],
+    "datadscs_" : [ 
+    ],
+    "dimToSymbolMappingOpcodeCorrection_" : {  },
+    "inputSymbolsAndTags_" : {  },
+    "symbolDefinitions_" : {
+    }
+  }
+}

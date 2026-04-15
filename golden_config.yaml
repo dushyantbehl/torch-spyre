@@ -1,0 +1,20 @@
+golden:
+  torch_spyre_version: "0.1.0"
+  deeptools_version: "2.3.0"
+  collected_dir: "collected_golden"
+
+current:
+  torch_spyre_version: "0.1.1"
+  deeptools_version: "2.4.0"
+  collected_dir: "collected_new"
+
+compare:
+  method: "diff"
+  input_files:
+    - "execute/*/sdsc.json"
+    - "sdsc_*.json"
+  output_files:
+    - "execute/*/debug/**/*.json"
+    - "execute/*/debug/**/*.txt"
+    - "debug/**/*.json"
+    - "debug/**/*.txt"
