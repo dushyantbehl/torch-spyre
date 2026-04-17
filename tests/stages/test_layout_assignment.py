@@ -21,9 +21,13 @@ the real create_op_spec() method with a mock SchedulerNode — no
 torch.compile or Spyre hardware needed.
 """
 
+import pytest
+
 from torch_spyre._C import DataFormats
 
 from tests.stages.helpers import generate_mock_op_spec
+
+pytestmark = pytest.mark.no_device
 
 
 def test_pointwise_output_inherits_input_layout():

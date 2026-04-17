@@ -26,6 +26,8 @@ from torch_spyre._C import DataFormats
 
 from tests.stages.helpers import generate_mock_op_spec
 
+pytestmark = pytest.mark.no_device
+
 
 @pytest.mark.parametrize(
     "desc,op_name,is_reduction,output_shape,reduction_shape,expected_num_args",

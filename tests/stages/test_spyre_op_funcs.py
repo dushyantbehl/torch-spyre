@@ -29,6 +29,8 @@ from torch_spyre._inductor.spyre_kernel import (
     SpyreOpFuncs,
 )
 
+pytestmark = pytest.mark.no_device
+
 # Each row: (method_name, args, expected_op, expected_type, expected_constants)
 # expected_type is None for special cases (e.g. exx2 returns a string).
 # expected_constants is a dict of {constant_name: value} or None.

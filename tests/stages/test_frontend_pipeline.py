@@ -34,6 +34,8 @@ from tests.stages.helpers import (
     validate_sdsc_structure,
 )
 
+pytestmark = pytest.mark.no_device
+
 
 @pytest.mark.parametrize(
     "desc,op_name,is_reduction,output_shape,reduction_shape,num_inputs,expected_ops",

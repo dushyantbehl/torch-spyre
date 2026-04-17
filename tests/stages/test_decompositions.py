@@ -26,6 +26,8 @@ from torch.fx.experimental.proxy_tensor import make_fx
 
 from torch_spyre._inductor.decompositions import spyre_decompositions
 
+pytestmark = pytest.mark.no_device
+
 
 def _decompose(fn, *args):
     """Run fn through make_fx with Spyre decompositions and return op targets."""

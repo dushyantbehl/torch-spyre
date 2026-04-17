@@ -26,6 +26,8 @@ from torch_spyre._inductor.core_division import (
     multi_dim_iteration_space_split,
 )
 
+pytestmark = pytest.mark.no_device
+
 
 @pytest.mark.parametrize(
     "size,max_cores,expected",

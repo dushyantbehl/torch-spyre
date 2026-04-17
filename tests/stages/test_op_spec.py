@@ -33,6 +33,8 @@ from torch_spyre._inductor.spyre_kernel import SpyreKernel
 
 from tests.stages.helpers import generate_mock_op_spec, make_mock_node
 
+pytestmark = pytest.mark.no_device
+
 
 def test_op_spec_construction_and_parse():
     """Build OpSpec via generate_mock_op_spec(), validate structure,
