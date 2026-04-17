@@ -1,4 +1,3 @@
-import pytest
 import unittest
 import torch
 
@@ -9,9 +8,9 @@ from utils_inductor import (
 
 from torch._dynamo.testing import (
     InductorAndRecordGraphs,
-    normalize_gm,
 )
 import torch._inductor.config as config
+
 
 def run_inject_test_pass(target_fn, pass_fn, pass_class, args):
     config.force_disable_caches = True
@@ -23,13 +22,12 @@ def run_inject_test_pass(target_fn, pass_fn, pass_class, args):
     cmp(*args)
     pass_class.passes.pop()
 
+
 class TestOps(unittest.TestCase, metaclass=ParameterizedTestMeta):
     torch.manual_seed(0xAFFE)
 
     PARAMS = {
-        (
-            "test_matmul_padding", "test_matmul_padding"
-        ): {
+        ("test_matmul_padding", "test_matmul_padding"): {
             "param_sets": {
                 "2d": (
                     cached_randn((10, 2), dtype=torch.float16).to("spyre"),
@@ -40,12 +38,10 @@ class TestOps(unittest.TestCase, metaclass=ParameterizedTestMeta):
     }
 
     def test_matmul_padding(self, x: torch.Tensor, y: torch.Tensor):
-
         def test(x, y):
             return torch.matmul(x, y)
 
         def test_pass(graph: torch.fx.Graph) -> None:
-
             for node in list(graph.nodes):
                 if node.op == "call_function" and node.target == torch.matmul:
                     print("Checking matmul args")
@@ -74,7 +70,4 @@ class TestOps(unittest.TestCase, metaclass=ParameterizedTestMeta):
 
         from torch_spyre._inductor.passes import CustomPreGradPasses
 
-        run_inject_test_pass(test,
-                             test_pass,
-                             CustomPreGradPasses,
-                             [x, y])
+        run_inject_test_pass(test, test_pass, CustomPreGradPasses, [x, y])
