@@ -30,7 +30,8 @@ from torch_spyre._C import SpyreTensorLayout
 from torch_spyre._inductor.op_spec import TensorArg
 from torch_spyre._inductor.spyre_kernel import SpyreKernel
 
-GOLDEN_DIR = pathlib.Path(__file__).parent / "golden"
+ARTIFACTS_DIR = pathlib.Path(__file__).parent / "artifacts"
+GOLDEN_DIR = ARTIFACTS_DIR / "golden"
 
 
 # ---------------------------------------------------------------------------
@@ -121,14 +122,144 @@ def generate_mock_op_spec(
 
 
 # ---------------------------------------------------------------------------
-# SuperDSC JSON validators
+# SuperDSC JSON schema and validators
+#
+# These checks are a lightweight subset of what the full SDSC validator
+# (see rfcs/sdsc_validator/SDSC_VALIDATOR_DESIGN.md) would enforce.
+# Once the validator is implemented it can be plugged in here to perform
+# comprehensive structural + semantic validation via its YAML rule engine.
 # ---------------------------------------------------------------------------
+
+SCHEMA_PATH = ARTIFACTS_DIR / "sdsc_schema.json"
+
+with open(SCHEMA_PATH) as _f:
+    SDSC_SCHEMA = json.load(_f)
+
+
+def _check_required(obj, required, path):
+    """Check that all required keys are present in obj."""
+    errors = []
+    for key in required:
+        if key not in obj:
+            errors.append(f"Missing required key '{key}' at {path}")
+    return errors
+
+
+def _check_type(value, expected_type, path):
+    """Check that value matches the expected JSON Schema type."""
+    type_map = {
+        "object": dict,
+        "array": list,
+        "string": str,
+        "integer": int,
+        "number": (int, float),
+    }
+    py_type = type_map.get(expected_type)
+    if py_type and not isinstance(value, py_type):
+        return [f"Expected {expected_type} at {path}, got {type(value).__name__}"]
+    return []
+
+
+def _resolve_ref(ref, schema):
+    """Resolve a $ref pointer like '#/$defs/ComputeOp'."""
+    parts = ref.lstrip("#/").split("/")
+    node = schema
+    for part in parts:
+        node = node[part]
+    return node
+
+
+def _validate_node(value, node_schema, path, root_schema):
+    """Recursively validate a value against a JSON Schema node."""
+    errors = []
+
+    if "$ref" in node_schema:
+        node_schema = _resolve_ref(node_schema["$ref"], root_schema)
+
+    schema_type = node_schema.get("type")
+    if schema_type:
+        errors.extend(_check_type(value, schema_type, path))
+        if errors:
+            return errors
+
+    if schema_type == "object":
+        if not isinstance(value, dict):
+            return errors
+        required = node_schema.get("required", [])
+        errors.extend(_check_required(value, required, path))
+
+        props = node_schema.get("properties", {})
+        for key, prop_schema in props.items():
+            if key in value:
+                errors.extend(
+                    _validate_node(
+                        value[key], prop_schema, f"{path}.{key}", root_schema
+                    )
+                )
+
+        additional = node_schema.get("additionalProperties")
+        if isinstance(additional, dict):
+            for key, val in value.items():
+                if key not in props:
+                    errors.extend(
+                        _validate_node(val, additional, f"{path}.{key}", root_schema)
+                    )
+
+        min_props = node_schema.get("minProperties")
+        if min_props is not None and len(value) < min_props:
+            errors.append(f"Too few properties at {path}: {len(value)} < {min_props}")
+
+    elif schema_type == "array":
+        if not isinstance(value, list):
+            return errors
+        min_items = node_schema.get("minItems")
+        if min_items is not None and len(value) < min_items:
+            errors.append(f"Too few items at {path}: {len(value)} < {min_items}")
+
+        items_schema = node_schema.get("items")
+        if items_schema:
+            for i, item in enumerate(value):
+                errors.extend(
+                    _validate_node(item, items_schema, f"{path}[{i}]", root_schema)
+                )
+
+    elif schema_type == "integer":
+        minimum = node_schema.get("minimum")
+        if minimum is not None and value < minimum:
+            errors.append(f"Value {value} at {path} < minimum {minimum}")
+
+    elif schema_type == "string":
+        enum_vals = node_schema.get("enum")
+        if enum_vals and value not in enum_vals:
+            errors.append(f"Value '{value}' at {path} not in {enum_vals}")
+        min_len = node_schema.get("minLength")
+        if min_len is not None and len(value) < min_len:
+            errors.append(f"String too short at {path}: {len(value)} < {min_len}")
+
+    return errors
+
+
+def validate_sdsc_schema(sdsc):
+    """Validate a SuperDSC dict against the JSON schema.
+
+    Uses a lightweight stdlib-only schema checker (no jsonschema dependency).
+    """
+    errors = _validate_node(sdsc, SDSC_SCHEMA, "$", SDSC_SCHEMA)
+    assert not errors, "SuperDSC schema validation errors:\n" + "\n".join(errors)
 
 
 def validate_sdsc_structure(sdsc):
-    """Validate structural invariants of a SuperDSC dict.
+    """Validate structural invariants and semantic rules of a SuperDSC dict.
 
-    Raises AssertionError with details on failure.
+    Checks JSON serializability, schema conformance, and a subset of the
+    semantic rules from the SDSC validator design
+    (rfcs/sdsc_validator/SDSC_VALIDATOR_DESIGN.md), including:
+      - Phase 1: coreIdsUsed_ cardinality matches numCoresUsed_ (superdsc.cpp:1338)
+      - Phase 1: computeOp_ has valid exUnit and opFuncName (superdsc.cpp:673)
+      - Phase 1: labeledDs_ entries have required fields (superdsc.cpp)
+      - Phase 1: scheduleTree_ has 4-component schedule steps (superdsc.cpp:760)
+      - Phase 2: dscs_ must be non-empty (dxp.cpp:346-347)
+      - Phase 3: labeledDs_ count must not exceed 8 (dxp.cpp:239,262)
     """
     errors = []
 
@@ -137,23 +268,86 @@ def validate_sdsc_structure(sdsc):
     except TypeError as e:
         errors.append(f"Not JSON serializable: {e}")
 
+    validate_sdsc_schema(sdsc)
+
     top_key = list(sdsc.keys())[0]
     inner = sdsc[top_key]
-    if "numCoresUsed_" not in inner:
-        errors.append("Missing 'numCoresUsed_' in top-level")
-    if "dscs_" not in inner:
-        errors.append("Missing 'dscs_' in top-level")
-    elif not isinstance(inner["dscs_"], list) or len(inner["dscs_"]) == 0:
-        errors.append("'dscs_' must be a non-empty list")
 
-    assert not errors, "SuperDSC structural errors:\n" + "\n".join(errors)
+    # Phase 2 (dxp.cpp:346-347): dscs_ must be non-empty
+    dscs = inner.get("dscs_", [])
+    if not dscs:
+        errors.append("dscs_ must be non-empty (phase2_dsc_presence)")
+
+    num_cores_outer = inner.get("numCoresUsed_", 0)
+
+    # Phase 1: coreIdToWkSlice_ cardinality matches numCoresUsed_
+    wk_slices = inner.get("coreIdToWkSlice_", {})
+    if len(wk_slices) != num_cores_outer:
+        errors.append(
+            f"coreIdToWkSlice_ has {len(wk_slices)} entries, "
+            f"expected {num_cores_outer} (numCoresUsed_)"
+        )
+
+    # Phase 1: coreIdToDscSchedule steps must have 4 components (superdsc.cpp:760)
+    schedule = inner.get("coreIdToDscSchedule", {})
+    for core_id, steps in schedule.items():
+        for i, step in enumerate(steps):
+            if not isinstance(step, list) or len(step) != 4:
+                errors.append(
+                    f"coreIdToDscSchedule[{core_id}][{i}] must have 4 components"
+                )
+
+    for dsc_wrapper in dscs:
+        dsc_key = list(dsc_wrapper.keys())[0]
+        dsc = dsc_wrapper[dsc_key]
+
+        # Phase 1 (superdsc.cpp:1338): coreIdsUsed_ cardinality
+        core_ids = dsc.get("coreIdsUsed_", [])
+        num_cores_dsc = dsc.get("numCoresUsed_", 0)
+        if len(core_ids) != num_cores_dsc:
+            errors.append(
+                f"DSC '{dsc_key}': coreIdsUsed_ has {len(core_ids)} entries, "
+                f"expected {num_cores_dsc} (numCoresUsed_)"
+            )
+
+        # Phase 1 (superdsc.cpp:673): computeOp_ validation
+        compute_ops = dsc.get("computeOp_", [])
+        valid_units = {"sfp", "pt"}
+        for j, cop in enumerate(compute_ops):
+            unit = cop.get("exUnit", "")
+            if unit not in valid_units:
+                errors.append(
+                    f"DSC '{dsc_key}' computeOp_[{j}].exUnit='{unit}' "
+                    f"not in {valid_units}"
+                )
+            if not cop.get("opFuncName"):
+                errors.append(f"DSC '{dsc_key}' computeOp_[{j}] missing opFuncName")
+
+        # Phase 3 (dxp.cpp:239,262): labeledDs_ count must not exceed 8
+        labeled_ds = dsc.get("labeledDs_", [])
+        if len(labeled_ds) > 8:
+            errors.append(
+                f"DSC '{dsc_key}': labeledDs_ has {len(labeled_ds)} entries, "
+                "max 8 LDS segments allowed"
+            )
+
+        # Structural: scheduleTree_ and labeledDs_ must have same length
+        schedule_tree = dsc.get("scheduleTree_", [])
+        if len(schedule_tree) != len(labeled_ds):
+            errors.append(
+                f"DSC '{dsc_key}': scheduleTree_ has {len(schedule_tree)} entries "
+                f"but labeledDs_ has {len(labeled_ds)}"
+            )
+
+    assert not errors, "SuperDSC structural/semantic errors:\n" + "\n".join(errors)
 
 
 def validate_sdsc_json_round_trip(sdsc):
-    """Verify the SDSC dict survives JSON serialization."""
+    """Verify the SDSC dict survives JSON serialization round-trip."""
     json_str = json.dumps(sdsc, default=str)
     round_tripped = json.loads(json_str)
-    assert round_tripped == json.loads(json_str)
+    expected = json.loads(json.dumps(sdsc, default=str))
+    assert round_tripped == expected, "SDSC dict did not survive JSON round-trip"
 
 
 # ---------------------------------------------------------------------------
@@ -176,6 +370,12 @@ def assert_sdsc_matches_golden(sdsc_json, golden_path, update=False):
     If the golden file does not exist, it is created and the test is skipped
     so the file can be reviewed and committed. Pass update=True (or run with
     --update-golden) to regenerate.
+
+    NOTE: This uses canonicalized JSON string comparison — a lightweight
+    approach that is order-independent but not a true deep structural diff.
+    Once the full SDSC validator (rfcs/sdsc_validator/SDSC_VALIDATOR_DESIGN.md)
+    is implemented, it should be plugged in here to perform semantic-aware
+    comparison rather than string equality.
     """
     golden_path = str(golden_path)
 

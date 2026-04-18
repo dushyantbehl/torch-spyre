@@ -30,7 +30,7 @@ from torch_spyre._C import DataFormats
 from torch_spyre._inductor.codegen.compute_ops import generate_sdsc
 from torch_spyre._inductor.codegen.superdsc import parse_op_spec
 
-from tests.stages.helpers import (
+from .helpers import (
     GOLDEN_DIR,
     assert_sdsc_matches_golden,
     generate_mock_op_spec,

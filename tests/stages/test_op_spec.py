@@ -31,7 +31,7 @@ from torch_spyre._inductor.errors import Unsupported
 from torch_spyre._inductor.op_spec import TensorArg
 from torch_spyre._inductor.spyre_kernel import SpyreKernel
 
-from tests.stages.helpers import generate_mock_op_spec, make_mock_node
+from .helpers import generate_mock_op_spec, make_mock_node
 
 pytestmark = pytest.mark.no_device
 

@@ -24,7 +24,7 @@ import pytest
 
 from torch_spyre._C import DataFormats
 
-from tests.stages.helpers import generate_mock_op_spec
+from .helpers import generate_mock_op_spec
 
 pytestmark = pytest.mark.no_device
 
