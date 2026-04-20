@@ -12,15 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""
-Seam 4: Layout Assignment (FixedLayout -> FixedTiledLayout) tests.
-
-Validates that SpyreKernel.create_op_spec() produces OpSpecs with correct
-device sizes and dtypes for input and output tensor args. Tests call
-the real create_op_spec() method with a mock SchedulerNode — no
-torch.compile or Spyre hardware needed.
-"""
-
 import pytest
 
 from torch_spyre._C import DataFormats

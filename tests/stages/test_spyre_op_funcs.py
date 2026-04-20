@@ -12,14 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""
-Seam 6: SpyreOpFuncs (Op Name Mapping) tests.
-
-Pure Python — no hardware or _C module needed.
-Tests that every SpyreOpFuncs static method returns the correct
-PointwiseOp/ReductionOp with the expected op name and constants.
-"""
-
 import inspect
 
 import pytest

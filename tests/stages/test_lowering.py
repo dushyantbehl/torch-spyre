@@ -12,14 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""
-Seam 3: Lowering (FX Graph -> LoopLevelIR) tests.
-
-Validates that SpyreKernel.create_op_spec() produces correct OpSpecs
-for different op types. Tests call the real create_op_spec() method
-with a mock SchedulerNode — no torch.compile or Spyre hardware needed.
-"""
-
 import pytest
 
 from torch_spyre._C import DataFormats

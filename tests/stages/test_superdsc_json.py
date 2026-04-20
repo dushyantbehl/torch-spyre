@@ -12,15 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""
-Seam 8: SuperDSC JSON Generation tests.
-
-This is the highest-value testing seam. Validates that
-SpyreKernel.create_op_spec() + parse_op_spec() + generate_sdsc()
-produce structurally correct SuperDSC JSON for each operation type,
-and that outputs match golden reference files.
-"""
-
 from math import prod
 
 import pytest

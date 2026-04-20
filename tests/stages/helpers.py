@@ -12,10 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""
-Shared helpers for compilation stage-wise tests.
-"""
-
 import json
 import os
 import pathlib
@@ -47,12 +43,9 @@ def make_mock_node(is_reduction, ranges_dict):
     node.read_writes.reads.ranges (Reduction).
     """
     node = Mock()
-    node.node.data = Mock(spec=Reduction if is_reduction else Pointwise)
-
-    # create_op_spec() checks hasattr(node, "op_it_space_splits") — on a Mock
-    # hasattr always returns True, so we must set it to a real dict to avoid
-    # core_division.get() returning a Mock instead of an int.
     node.op_it_space_splits = {}
+    node.node = Mock(spec=["data"])
+    node.node.data = Mock(spec=Reduction if is_reduction else Pointwise)
 
     dep = Mock()
     dep.ranges = ranges_dict

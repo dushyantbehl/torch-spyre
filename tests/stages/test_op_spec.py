@@ -12,14 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""
-Seam 7: OpSpec Construction tests.
-
-Validates that SpyreKernel.create_op_spec() produces correct OpSpecs
-and that parse_op_spec() converts them to valid SDSCSpecs.
-Also checks FP32 whitelist enforcement.
-"""
-
 import pytest
 import torch
 from sympy import Symbol

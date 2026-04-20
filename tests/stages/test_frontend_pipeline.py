@@ -12,15 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""
-Seam 9: Full Front-End Pipeline (OpSpec -> SDSCSpec -> SuperDSC JSON) tests.
-
-Validates the front-end codegen pipeline by using SpyreKernel.create_op_spec()
-to build OpSpecs from a mock SchedulerNode, then running them through
-parse_op_spec + generate_sdsc, and checking that the output is structurally
-valid. No torch.compile or Spyre hardware needed.
-"""
-
 import pytest
 
 from torch_spyre._C import DataFormats

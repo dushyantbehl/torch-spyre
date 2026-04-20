@@ -12,13 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""
-Seam 2: Decompositions (FX Graph -> FX Graph) tests.
-
-Validates that Spyre-registered decompositions replace the source op with
-the expected target ops. Uses make_fx — no hardware needed.
-"""
-
 import pytest
 import torch
 from torch._decomp import get_decompositions

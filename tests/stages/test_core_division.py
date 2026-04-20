@@ -12,12 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""
-Seam 5: Core Division Planning tests.
-
-Pure math — no hardware or _C module needed.
-"""
-
 import pytest
 from sympy import Symbol
 
