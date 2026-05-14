@@ -36,7 +36,8 @@ from utils_inductor import _compile_and_run, compare_with_cpu
 
 DEVICE = torch.device("spyre")
 S = 128  # must be a multiple of 64
-T = 64   # side length for 4D tests (all dims equal)
+T = 64  # side length for 4D tests (all dims equal)
+
 
 # -------- Helpers ---------- #
 def _compute_cost(restickify_plan):
@@ -46,8 +47,8 @@ def _compute_cost(restickify_plan):
         for entry in entries
     )
 
-def _compile_and_run_plan_capture(fn, *args):
 
+def _compile_and_run_plan_capture(fn, *args):
     import torch_spyre._inductor.passes as _passes
 
     captured = {}
@@ -59,7 +60,9 @@ def _compile_and_run_plan_capture(fn, *args):
 
     with patch.object(_passes, "finalize_layouts", capturing_finalize_layouts):
         spyre_result = _compile_and_run(fn, args, DEVICE)
-        return spyre_result, captured.get("plan", {})
+
+    return spyre_result, captured.get("plan", {})
+
 
 def _compare(fn, *args, check_strides=True, optimal_cost=None, skip_correctness=False):
     """Run fn on Spyre, assert correctness against CPU, and optionally assert the restickify
@@ -80,6 +83,7 @@ def _compare(fn, *args, check_strides=True, optimal_cost=None, skip_correctness=
         assert cpu_result.stride() == spyre_result.stride(), (
             f"Stride mismatch: CPU {cpu_result.stride()} vs Spyre {spyre_result.stride()}"
         )
+
 
 def _make_tensors(n, *shape):
     """Make n scaled fp16 tensors of the given shape. Scale keeps values small enough for chained matmuls."""
@@ -488,8 +492,7 @@ def test_bmm_with_inplace_mutation():
         cache.copy_(x)
         return torch.bmm(cache, weight.t().unsqueeze(0).expand(B, -1, -1))
 
-    spyre_result = _compile_and_run(func, (x, weight, cache), DEVICE)
-    compare_with_cpu(func, x, weight, cache, target=spyre_result, run_eager=False)
+    _compare(func, x, weight, cache)
 
 
 # Optimizer correctness + optimality tests: verify both output values and
