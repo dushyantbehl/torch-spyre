@@ -742,6 +742,27 @@ def test_opt_matmul_both_inputs_upstream_conflict():
     )
 
 
+# ------- Intentional failure -------------------
+
+
+def test_wrong_optimal_cost_fails():
+    """This tests checks if the optimal cost is mismatching so proper
+    assertion failure is detected"""
+
+    a, b, c, d, e = _make_tensors(5, S, S)
+
+    def func(a, b, c, d, e):
+        return (a + b.t() + c.t() + d.t()) @ e
+
+    correct_expected_cost = 2 * S * S
+
+    with pytest.raises(
+        AssertionError,
+        match=f"restickify cost: expected 0, got {correct_expected_cost}",
+    ):
+        _compare(func, a, b, c, d, e, optimal_cost=0)
+
+
 # ------- Unsupported stick configurations ---------
 
 
