@@ -752,6 +752,5 @@ def test_sparse_dense_pointwise_unsupported():
     """
     a = torch.randn((S, S), dtype=torch.float16).to(DEVICE)
     b = torch.randn((S, S), dtype=torch.float16).to(DEVICE)
-    cfn = torch.compile(lambda a, b: a.sum(1) + b)
     with pytest.raises(InductorError, match="NotImplementedError"):
-        cfn(a, b)
+        _compare(lambda a, b: a.sum(1) + b, a, b)
