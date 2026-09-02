@@ -1764,6 +1764,28 @@ def max_pool2d_with_indices_decomp(
     )
 
 
+@register_spyre_decompositions([torch.ops.aten.upsample_nearest2d.default])
+def upsample_nearest2d_decomp(
+    input: torch.Tensor,
+    output_size,
+    scales_h=None,
+    scales_w=None,
+):
+    """Route nearest upsample to a CPU fallback instead of the gather decomp.
+
+    Spyre has no native upsample. The default Inductor lowering of
+    ``upsample_nearest2d`` emits an ``index_expr`` gather (each output pixel
+    indexes a source pixel via ``floor(oh * scale)``) that the Spyre layout
+    solver / codegen cannot handle (the YOLOv5n neck upsample wall).
+    ``spyre.upsample_nearest2d_via_cpu`` is an ExternKernel CPU fallback
+    producing a fresh device buffer whose layout re-solves cleanly, mirroring
+    ``reshape_via_cpu`` and ``max_pool2d_via_cpu``.
+    """
+    return torch.ops.spyre.upsample_nearest2d_via_cpu(
+        input, output_size, scales_h, scales_w
+    )
+
+
 @register_spyre_decompositions([torch.ops.aten.logical_not])
 def logical_not_decomp(input: torch.Tensor) -> torch.Tensor:
     # Currently falling back to torch.zeros_like for dtypes other than bool

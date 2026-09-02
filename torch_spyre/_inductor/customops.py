@@ -738,6 +738,46 @@ def _(
     return values, indices
 
 
+@torch.library.custom_op(
+    "spyre::upsample_nearest2d_via_cpu", mutates_args=(), device_types="spyre"
+)
+def spyre_upsample_nearest2d_via_cpu(
+    input: torch.Tensor,
+    output_size: Sequence[int],
+    scales_h: Optional[float] = None,
+    scales_w: Optional[float] = None,
+) -> torch.Tensor:
+    """
+    Nearest-neighbour 2D upsample that executes on CPU.
+
+    Spyre has no native upsample operator, and the default Inductor lowering
+    of ``upsample_nearest2d`` emits an ``index_expr``-based gather (each output
+    pixel indexes a source pixel via ``floor(oh * scale)``) that the Spyre
+    layout solver / codegen cannot handle. This op moves to CPU, upsamples
+    there, then moves back — producing a fresh device buffer whose layout is
+    re-solved dense from scratch, the same escape hatch ``reshape_via_cpu`` and
+    ``max_pool2d_via_cpu`` use.
+    """
+    warn_fallback("torch.ops.spyre.upsample_nearest2d_via_cpu")
+    input_cpu = input.to("cpu")
+    out_cpu = torch.ops.aten.upsample_nearest2d.default(
+        input_cpu, list(output_size), scales_h, scales_w
+    )
+    return out_cpu.to(input.device)
+
+
+@spyre_upsample_nearest2d_via_cpu.register_fake
+def _(
+    input: torch.Tensor,
+    output_size: Sequence[int],
+    scales_h: Optional[float] = None,
+    scales_w: Optional[float] = None,
+) -> torch.Tensor:
+    N, C, _, _ = input.shape
+    H_out, W_out = output_size
+    return input.new_empty((N, C, H_out, W_out))
+
+
 @torch.library.custom_op("spyre::min_dim_int64_fallback", mutates_args=())
 def min_dim_int64_fallback(
     input: torch.Tensor, dim: int, keepdim: bool = False
