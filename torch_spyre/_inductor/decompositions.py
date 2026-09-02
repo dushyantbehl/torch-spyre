@@ -1733,6 +1733,37 @@ def new_ones_decomp(
     )
 
 
+@register_spyre_decompositions([torch.ops.aten.max_pool2d_with_indices.default])
+def max_pool2d_with_indices_decomp(
+    input: torch.Tensor,
+    kernel_size,
+    stride=None,
+    padding=0,
+    dilation=1,
+    ceil_mode: bool = False,
+):
+    """Route max-pool to a CPU fallback instead of the masked-reduction decomp.
+
+    Spyre has no native max-pool. The default Inductor decomposition of a
+    *padded* max-pool builds an ``index_expr`` border mask + ``where(-inf)`` +
+    max reduction that no Spyre pass can split, layout-solve, or codegen (see
+    the SPPF wall in YOLOv5n). ``spyre.max_pool2d_via_cpu`` is an ExternKernel
+    CPU fallback producing a fresh device buffer whose layout re-solves cleanly,
+    mirroring ``reshape_via_cpu``.
+    """
+
+    def _pair(v):
+        return (v, v) if isinstance(v, int) else v
+
+    kernel_size = _pair(kernel_size)
+    stride = _pair(stride) if stride else kernel_size
+    padding = _pair(padding)
+    dilation = _pair(dilation)
+    return torch.ops.spyre.max_pool2d_via_cpu(
+        input, kernel_size, stride, padding, dilation, ceil_mode
+    )
+
+
 @register_spyre_decompositions([torch.ops.aten.logical_not])
 def logical_not_decomp(input: torch.Tensor) -> torch.Tensor:
     # Currently falling back to torch.zeros_like for dtypes other than bool

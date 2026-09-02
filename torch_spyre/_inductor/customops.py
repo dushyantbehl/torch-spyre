@@ -655,6 +655,89 @@ def _(
     return input.new_empty(shape)
 
 
+def _max_pool2d_out_hw(
+    H_in: int,
+    W_in: int,
+    kernel_size: Sequence[int],
+    stride: Optional[Sequence[int]],
+    padding: Sequence[int],
+    dilation: Sequence[int],
+    ceil_mode: bool,
+) -> tuple[int, int]:
+    """Compute (H_out, W_out) for a 2D max-pool, matching aten's formula."""
+    kH, kW = kernel_size
+    sH, sW = stride if stride else kernel_size
+    pH, pW = padding
+    dH, dW = dilation
+    import math
+
+    rnd = math.ceil if ceil_mode else math.floor
+    H_out = int(rnd((H_in + 2 * pH - dH * (kH - 1) - 1) / sH + 1))
+    W_out = int(rnd((W_in + 2 * pW - dW * (kW - 1) - 1) / sW + 1))
+    return H_out, W_out
+
+
+@torch.library.custom_op(
+    "spyre::max_pool2d_via_cpu", mutates_args=(), device_types="spyre"
+)
+def spyre_max_pool2d_via_cpu(
+    input: torch.Tensor,
+    kernel_size: Sequence[int],
+    stride: Optional[Sequence[int]] = None,
+    padding: Optional[Sequence[int]] = None,
+    dilation: Optional[Sequence[int]] = None,
+    ceil_mode: bool = False,
+) -> tuple[torch.Tensor, torch.Tensor]:
+    """
+    2D max-pooling that executes on CPU, returning (values, indices).
+
+    Spyre has no native max-pool operator (constants.POOL_OPS holds avgpool
+    only), and a padded max-pool decomposes into a masked reduction whose
+    ``index_expr`` border mask cannot be split, layout-solved, or codegen'd on
+    device (torch-spyre wall in ``split_multi_ops``/``propagate_layouts``). This
+    op moves to CPU, pools there, then moves back — producing a fresh device
+    buffer whose layout is re-solved dense from scratch, the same escape hatch
+    ``reshape_via_cpu`` uses for unaligned reshapes. Indices are computed on CPU
+    too so a consumer that uses them (e.g. max_unpool) stays correct.
+    """
+    padding = padding or (0, 0)
+    dilation = dilation or (1, 1)
+
+    warn_fallback("torch.ops.spyre.max_pool2d_via_cpu")
+    input_cpu = input.to("cpu")
+    values_cpu, indices_cpu = torch.ops.aten.max_pool2d_with_indices.default(
+        input_cpu,
+        list(kernel_size),
+        list(stride) if stride else [],
+        list(padding),
+        list(dilation),
+        ceil_mode,
+    )
+    return values_cpu.to(input.device), indices_cpu.to(input.device)
+
+
+@spyre_max_pool2d_via_cpu.register_fake
+def _(
+    input: torch.Tensor,
+    kernel_size: Sequence[int],
+    stride: Optional[Sequence[int]] = None,
+    padding: Optional[Sequence[int]] = None,
+    dilation: Optional[Sequence[int]] = None,
+    ceil_mode: bool = False,
+) -> tuple[torch.Tensor, torch.Tensor]:
+    padding = padding or (0, 0)
+    dilation = dilation or (1, 1)
+    N, C, H_in, W_in = input.shape
+    H_out, W_out = _max_pool2d_out_hw(
+        H_in, W_in, kernel_size, stride, padding, dilation, ceil_mode
+    )
+    values = input.new_empty((N, C, H_out, W_out))
+    indices = torch.empty(
+        (N, C, H_out, W_out), dtype=torch.int64, device=input.device
+    )
+    return values, indices
+
+
 @torch.library.custom_op("spyre::min_dim_int64_fallback", mutates_args=())
 def min_dim_int64_fallback(
     input: torch.Tensor, dim: int, keepdim: bool = False
