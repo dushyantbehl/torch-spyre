@@ -3366,6 +3366,91 @@ def conv2d_via_bmm_decomp(
     return output
 
 
+def _resolve_reshape_shape(
+    input: torch.Tensor, shape: Sequence[int]
+) -> Optional[tuple[int, ...]]:
+    """Resolve a reshape target ``shape`` (possibly containing one ``-1``) to a
+    concrete int tuple using the input's numel.
+
+    Returns None when any dim other than a single ``-1`` is non-int (SymInt /
+    dynamic), or the numel is not statically known — those cases fall through to
+    the plain reshape (mirrors the dynamic-shape handling elsewhere).
+    """
+    if not all(isinstance(d, int) for d in shape):
+        return None
+    neg = [i for i, d in enumerate(shape) if d == -1]
+    if len(neg) > 1:
+        return None
+    numel = input.numel()
+    if not isinstance(numel, int):
+        return None
+    if not neg:
+        return tuple(int(d) for d in shape)
+    known = 1
+    for d in shape:
+        if d != -1:
+            known *= d
+    if known == 0 or numel % known != 0:
+        return None
+    resolved = list(int(d) for d in shape)
+    resolved[neg[0]] = numel // known
+    return tuple(resolved)
+
+
+@register_spyre_decompositions(
+    [
+        torch.ops.aten.reshape.default,
+        torch.ops.aten.view.default,
+        torch.ops.aten._unsafe_view.default,
+    ]
+)
+def spyre_reshape_substick_merge_decomp(
+    input: torch.Tensor, shape: Sequence[int]
+) -> torch.Tensor:
+    """Route a sub-stick trailing-dim *merge* reshape through the CPU fallback.
+
+    Detect-head flattens (YOLOv5's ``Detect.forward``: ``x.view(bs, no, -1)``
+    then ``torch.cat(..., dim=-1)``) take a tensor whose innermost device dim is
+    sub-stick-aligned (e.g. ``[1, 64, 40, 40]``, innermost 40 with 40 % 64 != 0)
+    and merge the trailing spatial dims into a single stick-aligned flat axis
+    (``[1, 64, 1600]``, 1600 % 64 == 0). A plain reshape is a metadata-only
+    re-index: it keeps the physical sub-stick layout (``Mod(d, 40)``), and the
+    downstream dense ``cat`` on dim -1 then has no feasible layout (issue #1353
+    family). Routing through ``reshape_via_cpu`` mints a fresh device buffer
+    whose layout is re-solved dense from scratch, so the cat lowers cleanly.
+
+    The guard is deliberately tight — it fires ONLY when:
+      * the reshape *reduces* rank (a merge, not a split), and
+      * the input's innermost dim is sub-stick (``% get_elem_in_stick != 0``),
+        i.e. the physical layout to escape from is the problematic one.
+    Every other reshape (ordinary aligned reshapes, splits such as
+    ``[1, 16, 102400] -> [1, 16, 320, 320]``, and dynamic shapes) falls through
+    to ``NotImplemented`` so Inductor uses its normal view lowering.
+
+    Note the output innermost is deliberately *not* required to be stick-aligned:
+    YOLOv5's smallest detect scale flattens ``[1, 64, 20, 20] -> [1, 64, 400]``
+    where 400 % 64 == 16 is itself sub-stick, yet it still feeds the dense
+    ``dim=-1`` cat. What matters is minting a fresh ExternKernel buffer whose
+    layout re-solves from scratch instead of inheriting the sub-stick
+    ``Mod(d, W)`` layout of the source; the cat then reads a clean layout.
+    """
+    resolved = _resolve_reshape_shape(input, shape)
+    if resolved is None:
+        return NotImplemented
+    in_shape = tuple(input.shape)
+    if not all(isinstance(d, int) for d in in_shape):
+        return NotImplemented
+    # Only a rank-reducing merge is a candidate.
+    if len(resolved) >= len(in_shape):
+        return NotImplemented
+    eps = get_elem_in_stick(input.dtype)  # 64 for fp16
+    in_inner = in_shape[-1]
+    if in_inner % eps == 0:
+        # Input innermost already stick-aligned; plain reshape is fine.
+        return NotImplemented
+    return torch.ops.spyre.reshape_via_cpu(input, resolved)
+
+
 @register_spyre_decompositions([torch.ops.spyre.conv2d_with_bias.default])
 def spyre_conv2d_with_bias_decomp(
     input: torch.Tensor,
