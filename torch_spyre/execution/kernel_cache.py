@@ -485,6 +485,141 @@ def load_symbol_kinds(cached_dir: str) -> list[SymbolKind]:
         return [SymbolKind(**kind) for kind in json.load(f)]
 
 
+# ---------------------------------------------------------------------------
+# Launch spec — what a compiled folder expects to be called with.
+#
+# A compiled folder is not self-describing: spyrecode.json carries execution
+# plans and device-side tiled shapes, with no host shape, host dtype or
+# input/output role. Neither is recoverable from what is there -- device dtype
+# is many-to-one (float16, bool and bfloat16 all reach SEN169_FP16) and device
+# shape is ceil-divided into sticks, discarding the remainder. So a launcher
+# holding only a folder has to guess, and a wrong guess launches: a transposed
+# or wrong-dtype launch returns wrong data and exits 0.
+#
+# This is that contract, written where the compiler still knows it. Schema in
+# RFC 4755. Plain JSON on purpose: the reader is a separate package
+# (extensions/spyre-cli) that must not need to import our dataclasses.
+# ---------------------------------------------------------------------------
+
+LAUNCH_SPEC_FILE = "launch_spec.json"
+
+# Bumped only for a breaking change. A reader refuses a major it does not know
+# rather than guessing at fields whose meaning may have changed.
+LAUNCH_SPEC_VERSION = 1
+
+
+def save_launch_spec(compile_dir: str, spec: dict) -> None:
+    """Write ``launch_spec.json`` into ``compile_dir``.
+
+    A sibling of ``spyreCodeDir/``, not inside it: that directory is the backend
+    compiler's output, and ``prepare_kernel`` reads only ``spyrecode.json`` and
+    ``init_binary.bin`` from it.
+    """
+    with open(os.path.join(compile_dir, LAUNCH_SPEC_FILE), "w") as f:
+        json.dump(spec, f, indent=2)
+
+
+def load_launch_spec(code_dir: str) -> Optional[dict]:
+    """Read the launch spec beside ``code_dir``, or None when there is none.
+
+    Absent is not an error: folders compiled before this existed have no spec,
+    and callers fall back to their old behaviour. A spec that is present but
+    unreadable, or newer than this build, *is* an error -- ignoring it would put
+    the caller back to guessing, which is what the spec exists to stop.
+    """
+    path = os.path.join(code_dir, LAUNCH_SPEC_FILE)
+    if not os.path.isfile(path):
+        return None
+    try:
+        with open(path) as f:
+            spec = json.load(f)
+    except (OSError, json.JSONDecodeError) as e:
+        raise RuntimeError(f"could not read launch spec at {path}: {e}") from e
+
+    version = spec.get("version")
+    if version is None:
+        raise RuntimeError(f"launch spec at {path} has no 'version'")
+    if version > LAUNCH_SPEC_VERSION:
+        raise RuntimeError(
+            f"launch spec at {path} is version {version}, newer than this build "
+            f"understands ({LAUNCH_SPEC_VERSION}). Upgrade torch-spyre to launch "
+            "this folder."
+        )
+    return spec
+
+
+def check_launch_spec(
+    spec: dict, tensors: Sequence, bindings: Optional[dict] = None
+) -> list[str]:
+    """Return the ways ``tensors`` disagree with ``spec``; empty means well-formed.
+
+    Reports every problem rather than the first, so one run tells the caller
+    everything to fix. Well-formed is not correct: this checks count, shape and
+    dtype, and says nothing about the values in the tensors.
+    """
+    problems: list[str] = []
+    args = sorted(spec["args"], key=lambda a: a["arg_index"])
+    pool_size = spec.get("pool_size", 0)
+    offset = 1 if pool_size > 0 else 0
+
+    expected_n = len(args) + offset
+    if len(tensors) != expected_n:
+        note = ""
+        if offset:
+            note = (
+                f" ({len(args)} kernel args + 1 caller-supplied pool tensor of "
+                f"{pool_size} bytes)"
+            )
+        # Positions no longer line up, so per-arg checks would be noise.
+        return [f"expected {expected_n} tensors{note}, got {len(tensors)}"]
+
+    if offset:
+        pool = tensors[0]
+        got_bytes = pool.numel() * pool.element_size()
+        if got_bytes != pool_size:
+            problems.append(
+                f"pool tensor (position 0): expected {pool_size} bytes, "
+                f"got {got_bytes}"
+            )
+
+    symbols = spec.get("symbols", {})
+    bindings = bindings or {}
+    for arg in args:
+        tensor = tensors[arg["arg_index"] + offset]
+        where = f"arg {arg['arg_index']} ({arg['role']})"
+
+        want_shape = []
+        unbound = False
+        for dim in arg["shape"]:
+            if isinstance(dim, int):
+                want_shape.append(dim)
+            elif dim in bindings:
+                want_shape.append(int(bindings[dim]))
+            else:
+                problems.append(
+                    f"{where}: dimension '{dim}' is symbolic and unbound "
+                    f"(known symbols: {sorted(symbols) or 'none recorded'})"
+                )
+                unbound = True
+        if unbound:
+            continue
+
+        got_shape = list(tensor.shape)
+        if got_shape != want_shape:
+            hint = ""
+            if sorted(got_shape) == sorted(want_shape):
+                hint = " -- same extents in a different order (transposed?)"
+            problems.append(
+                f"{where}: expected shape {want_shape}, got {got_shape}{hint}"
+            )
+
+        got_dtype = str(tensor.dtype).removeprefix("torch.")
+        if got_dtype != arg["dtype"]:
+            problems.append(f"{where}: expected dtype {arg['dtype']}, got {got_dtype}")
+
+    return problems
+
+
 def allocate_compile_dir(cache_key: str) -> str:
     """Reserve a unique temp directory inside the cache root for compilation.
 

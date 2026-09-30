@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import dataclasses
 import os
 import shutil
 import subprocess
@@ -41,12 +42,15 @@ from torch_spyre._inductor.codegen.bundle import generate_bundle
 from torch_spyre.profiler._ffdc import CATEGORY_COMPILE_BACKEND, try_collect
 from .kernel_runner import SpyreSDSCKernelRunner, SpyreUnimplementedRunner
 from .kernel_cache import (
+    LAUNCH_SPEC_FILE,
+    LAUNCH_SPEC_VERSION,
     allocate_compile_dir,
     commit_compile_dir,
     compute_specs_hash,
     get_cached_kernel_dir,
     get_kernel_registry,
     load_symbol_kinds,
+    save_launch_spec,
     save_symbol_kinds,
     _move_to_failed_dir,
 )
@@ -135,11 +139,17 @@ def _compile_to_dir(
     compile_dir: str,
     specs,
     pool_size: int,
+    launch_args=None,
 ):
     """Run generate_bundle for ``specs`` into ``compile_dir``.
 
     Shared by the cache-miss path and the no-cache path so that any change to
     the compilation sequence is applied in both places automatically.
+
+    ``launch_args`` is the per-argument host shape/dtype the generated wrapper
+    carried in (see ``scheduler.define_kernel``); when present, a
+    ``launch_spec.json`` is written beside the bundle so a later process holding
+    only this folder knows what tensors to build.
 
     Returns:
         The list of ``SymbolKind`` values produced by ``generate_bundle``,
@@ -157,7 +167,62 @@ def _compile_to_dir(
         raise NotImplementedError(
             "SDSC bundle dimension symbols require runtime kDimension support"
         )
+    _write_launch_spec(
+        compile_dir, kernel_name, launch_args, symbol_kinds, pool_size, "sdsc"
+    )
     return symbol_kinds
+
+
+def _write_launch_spec(
+    compile_dir: str,
+    kernel_name: str,
+    launch_args,
+    symbol_kinds,
+    pool_size: int,
+    emitter: str,
+) -> None:
+    """Write ``launch_spec.json`` beside a freshly compiled bundle.
+
+    ``pool_size`` here is the spec's meaning -- the size of the pool tensor the
+    *caller* must pass -- not the kernel's own pool extent. A bundle can
+    allocate scratch internally, in which case it has a pool but no parameter
+    for one, and a launcher that prepended a tensor would trip the argument
+    count check. That is the same two-part condition ``call_kernel`` uses, so it
+    is resolved here rather than recorded raw.
+
+    Never fails a compile: a folder without a spec still launches the old way.
+    """
+    if not launch_args:
+        return
+    try:
+        caller_pool_size = (
+            pool_size if _spyre_config.pool_allocated_by_frontend() else 0
+        )
+        spec = {
+            "version": LAUNCH_SPEC_VERSION,
+            "kernel_name": kernel_name,
+            "pool_size": caller_pool_size,
+            "bundle_symbolic_args": bool(_spyre_config.bundle_symbolic_args),
+            "emitter": emitter,
+            "symbol_kinds": [dataclasses.asdict(sk) for sk in symbol_kinds or []],
+            "args": list(launch_args),
+        }
+        symbols = {
+            dim: {}
+            for arg in launch_args
+            for dim in arg.get("shape", [])
+            if not isinstance(dim, int)
+        }
+        if symbols:
+            spec["symbols"] = symbols
+        save_launch_spec(compile_dir, spec)
+    except Exception:  # noqa: BLE001 - a missing spec must not fail a compile
+        logger.warning(
+            "could not write %s for %s; the folder will launch without a spec",
+            LAUNCH_SPEC_FILE,
+            kernel_name,
+            exc_info=True,
+        )
 
 
 def _run_backend_compiler(
@@ -385,6 +450,7 @@ class SpyreAsyncCompile(AsyncCompile):
         kernel_name: str,
         specs: Sequence[OpSpec | LoopSpec | UnimplementedOp],
         pool_size: int = 0,
+        launch_args: list[dict] | None = None,
     ):
         unimp = find_unimplemented(list(specs))
         if unimp is not None:
@@ -457,7 +523,7 @@ class SpyreAsyncCompile(AsyncCompile):
                 compile_dir: str = allocate_compile_dir(cache_key)
                 try:
                     symbol_kinds = _compile_to_dir(
-                        kernel_name, compile_dir, specs, pool_size
+                        kernel_name, compile_dir, specs, pool_size, launch_args
                     )
                     save_symbol_kinds(compile_dir, symbol_kinds)
                     task = self._submit_backend_compile(kernel_name, compile_dir)
@@ -487,7 +553,9 @@ class SpyreAsyncCompile(AsyncCompile):
         # Caching disabled (SPYRE_KERNEL_CACHE=0 or force_disable_caches).
         # Compile into a throw-away temp dir that lives for this process only.
         output_dir = get_output_dir(kernel_name)
-        symbol_kinds = _compile_to_dir(kernel_name, output_dir, specs, pool_size)
+        symbol_kinds = _compile_to_dir(
+            kernel_name, output_dir, specs, pool_size, launch_args
+        )
         task = self._submit_backend_compile(kernel_name, output_dir)
         if task is not None:
             return self._compile_future(
@@ -505,7 +573,10 @@ class SpyreAsyncCompile(AsyncCompile):
         )
 
     def ktir(
-        self, kernel_name: str, specs: Sequence[OpSpec | LoopSpec | UnimplementedOp]
+        self,
+        kernel_name: str,
+        specs: Sequence[OpSpec | LoopSpec | UnimplementedOp],
+        launch_args: list[dict] | None = None,
     ):
         """Emit KTDP-dialect MLIR for ``specs`` (OpSpec->KTIR path).
 
@@ -554,7 +625,32 @@ class SpyreAsyncCompile(AsyncCompile):
             fh.write(ktir_text)
         logger.debug("OpSpec->KTIR: wrote %s", ktir_path)
 
-        return self._compile_ktir_with_dbo(kernel_name, ktir_path, output_dir)
+        runner = self._compile_ktir_with_dbo(kernel_name, ktir_path, output_dir)
+
+        # After dbo-opt, so a failed compile leaves no spec beside a folder that
+        # cannot be launched.
+        #
+        # A pooled KTIR kernel is skipped rather than described: under
+        # ``ktir_emitter``, ``pool_allocated_by_frontend()`` is always true
+        # (config.py), so such a kernel DOES take a caller-supplied pool tensor
+        # -- the opposite of the default SDSC case -- but this path never
+        # receives the pool's byte size (``ktir()`` takes no ``pool_size``, it
+        # re-derives only the boolean from config). Writing 0 would tell a
+        # launcher to pass nothing and mis-bind every argument after the absent
+        # slot; inventing a size would be worse. No spec means the launcher falls
+        # back to explicit arguments: unhelpful, but correct.
+        from torch_spyre._inductor.spyre_kernel import uses_hbm_pool
+
+        if uses_hbm_pool(specs):
+            logger.debug(
+                "not writing %s for %s: a pooled KTIR kernel needs a "
+                "caller-supplied pool whose size this path does not receive",
+                LAUNCH_SPEC_FILE,
+                kernel_name,
+            )
+        else:
+            _write_launch_spec(output_dir, kernel_name, launch_args, [], 0, "ktir")
+        return runner
 
     def _compile_ktir_with_dbo(self, kernel_name: str, ktir_path: str, output_dir: str):
         """Compile ``ktir_path`` with ``dbo-opt`` and return a runner for it.

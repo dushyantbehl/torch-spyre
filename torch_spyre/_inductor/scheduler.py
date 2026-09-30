@@ -762,9 +762,19 @@ class SuperDSCScheduling(BaseScheduling):
             with buf.indent():
                 buf.splice(f"{src_code}")
             if method == "sdsc" and kernel._kernel_uses_hbm_pool():
-                buf.writeline(f", pool_size={kernel.pool_size})")
-            else:
-                buf.writeline(")")
+                buf.writeline(f", pool_size={kernel.pool_size}")
+            # Per-argument host shape/dtype for the launch spec. Emitted here,
+            # OUTSIDE src_code, because src_code is the op-spec literal that
+            # compute_specs_hash() hashes into the kernel cache key and that
+            # keys src_to_kernel above -- a launch-time descriptor must not
+            # perturb compile-time identity. Passing it through the generated
+            # wrapper (rather than computing it in sdsc()) is what makes it
+            # survive a wrapper-cache replay in a later process, where V.graph
+            # no longer exists.
+            launch_args = kernel.launch_args()
+            if launch_args:
+                buf.writeline(f", launch_args={launch_args!r}")
+            buf.writeline(")")
             origins, detailed_origins = get_kernel_metadata(node_schedule, wrapper)
             metadata_comment = f"{origins}\n{detailed_origins}"
             wrapper.define_kernel(kernel_name, buf.getvalue(), metadata_comment)

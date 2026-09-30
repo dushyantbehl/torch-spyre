@@ -531,6 +531,10 @@ class SpyreKernel(Kernel[CSEVariable]):
         # Set by codegen_kernel(); used by call_kernel() to ensure arg_index
         # values match .run() positional args.
         self._live_call_arg_names: list[str] | None = None
+        # Per-argument HOST shape/dtype for the launch spec, keyed by arg_index.
+        # Filled by _record_launch_arg() from codegen_kernel(), the last point
+        # where V.graph and the buffers' host layouts are still in scope.
+        self._launch_args: dict[int, dict] = {}
         # The op names of the scheduler nodes codegenned into this kernel, set by
         # the scheduler before any spec is built; empty means "unknown", which
         # makes every buffer look non-local.  Read by create_tensor_arg for
@@ -1130,6 +1134,78 @@ class SpyreKernel(Kernel[CSEVariable]):
                 if name in self.args.output_buffers:
                     self.args.output_buffers[name] = REMOVED
 
+    def _record_launch_arg(self, name: str, tensor_arg) -> None:
+        """Record one argument's HOST shape and dtype for the launch spec.
+
+        Called from ``codegen_kernel`` as each ``arg_index`` is assigned, which
+        is the last point where this is knowable: the host view lives on the
+        buffer's ``FixedTiledLayout`` (which augments inductor's host
+        ``FixedLayout`` with the device one), and ``TensorArg`` keeps only the
+        device half. By the time ``async_compile.sdsc()`` runs, the generated
+        wrapper may be replaying in a different process with no ``V.graph`` at
+        all.
+
+        Deliberately kept off ``TensorArg``: that dataclass is serialized into
+        the op-spec literal, which is hashed into the kernel cache key
+        (``compute_specs_hash``) and used as the wrapper's ``src_to_kernel``
+        dedup key. Adding fields there would invalidate every cached kernel and
+        perturb compile-time identity for a launch-time descriptor.
+
+        Symbolic dims are recorded as the symbol's name, never concretized: the
+        usual ``concretize_expr`` returns an optimization *hint* for a free
+        symbol, and writing that would record a plausible-looking wrong extent.
+        """
+        # try_get_buffer, not get_buffer: the latter raises on a name it cannot
+        # resolve, and a descriptive sidecar must never be able to fail a compile
+        # that would otherwise have succeeded. Same reason for the outer guard --
+        # every step below is read-only, so bailing out just means no spec.
+        try:
+            buf = V.graph.try_get_buffer(name)
+            if buf is None:
+                return
+            layout = buf.get_layout()
+            if not isinstance(layout, FixedTiledLayout):
+                return
+
+            shape: list = []
+            for dim in layout.size:
+                if isinstance(dim, (int, sympy.Integer)):
+                    shape.append(int(dim))
+                else:
+                    # A free symbol (mark_dynamic/dynamic=True): name it and let
+                    # the launcher bind it, rather than baking in a hint.
+                    shape.append(str(dim))
+
+            device_layout = layout.device_layout
+            record = {
+                "arg_index": tensor_arg.arg_index,
+                "role": "input" if tensor_arg.is_input else "output",
+                "shape": shape,
+                "dtype": str(layout.dtype).removeprefix("torch."),
+                "layout": {
+                    "device_size": [int(d) for d in device_layout.device_size],
+                    "stride_map": [int(s) for s in device_layout.stride_map],
+                    "device_dtype": str(device_layout.device_dtype).rsplit(".", 1)[
+                        -1
+                    ],
+                    "element_arrangement": str(
+                        device_layout.element_arrangement
+                    ).rsplit(".", 1)[-1],
+                },
+            }
+        except Exception:  # noqa: BLE001 - no spec is better than a failed compile
+            logger.debug("could not record launch arg for %s", name, exc_info=True)
+            return
+        self._launch_args[tensor_arg.arg_index] = record
+
+    def launch_args(self) -> list[dict]:
+        """The recorded per-argument host records, in ``arg_index`` order.
+
+        Empty when ``codegen_kernel`` has not run, or when no argument resolved
+        to a buffer with a host layout -- callers treat that as "no spec".
+        """
+        return [self._launch_args[i] for i in sorted(self._launch_args)]
+
     def load(self, name: str, index: sympy.Expr):
         """Codegen a load from an InputBuffer"""
         scheduler = getattr(V.graph, "scheduler", None)
@@ -1418,6 +1494,7 @@ class SpyreKernel(Kernel[CSEVariable]):
             if "hbm_pool" in tensor_arg.allocation:
                 continue  # pooled after preparation; addressed inside the pool
             tensor_arg.arg_index = actuals.index(name)
+            self._record_launch_arg(name, tensor_arg)
             if _spyre_config.bundle_symbolic_args:
                 # On the symbolic path the HBM address is provided at runtime
                 # via input_arg_extract; start_address is never used as a
