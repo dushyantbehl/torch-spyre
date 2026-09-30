@@ -548,6 +548,65 @@ def load_launch_spec(code_dir: str) -> Optional[dict]:
     return spec
 
 
+def spyre_layout_from_spec(layout: dict):
+    """Build a ``SpyreTensorLayout`` from a spec's ``layout`` block.
+
+    Returns None when the block cannot be turned into a layout (an older spec
+    missing a field, or an enum spelling this build does not know), so a caller
+    can fall back to the default arrangement rather than fail.
+    """
+    from torch_spyre._C import DataFormats, ElementArrangement, SpyreTensorLayout
+
+    try:
+        device_size = [int(d) for d in layout["device_size"]]
+        stride_map = [int(x) for x in layout["stride_map"]]
+        device_dtype = getattr(DataFormats, layout["device_dtype"])
+        arrangement = getattr(
+            ElementArrangement, layout.get("element_arrangement", "STANDARD")
+        )
+    except (KeyError, TypeError, AttributeError, ValueError):
+        return None
+    return SpyreTensorLayout(device_size, stride_map, device_dtype, arrangement)
+
+
+def _describe_layout(layout) -> str:
+    return (
+        f"device_size={list(layout.device_size)} "
+        f"stride_map={list(layout.stride_map)}"
+    )
+
+
+def _layout_mismatch(arg: dict, tensor) -> Optional[str]:
+    """How ``tensor``'s device layout differs from what ``arg`` records.
+
+    None when they agree, or when the comparison cannot be made. A tensor whose
+    layout differs is packed differently along the sticks: the launch will
+    succeed and return wrong data, which is exactly what the spec exists to
+    prevent, so this is reported like any other mismatch.
+    """
+    spec_layout = arg.get("layout")
+    if not spec_layout:
+        return None
+    want = spyre_layout_from_spec(spec_layout)
+    if want is None:
+        return None
+    try:
+        from torch_spyre._C import get_spyre_tensor_layout
+
+        got = get_spyre_tensor_layout(tensor)
+    except Exception:  # noqa: BLE001 - a CPU tensor has no device layout to read
+        return None
+    if list(got.device_size) == list(want.device_size) and list(
+        got.stride_map
+    ) == list(want.stride_map):
+        return None
+    return (
+        f"expected layout {_describe_layout(want)}, "
+        f"got {_describe_layout(got)} -- the tensor is packed differently "
+        "along the sticks, so the launch would return wrong data"
+    )
+
+
 def check_launch_spec(
     spec: dict, tensors: Sequence, bindings: Optional[dict] = None
 ) -> list[str]:
@@ -616,6 +675,10 @@ def check_launch_spec(
         got_dtype = str(tensor.dtype).removeprefix("torch.")
         if got_dtype != arg["dtype"]:
             problems.append(f"{where}: expected dtype {arg['dtype']}, got {got_dtype}")
+
+        mismatch = _layout_mismatch(arg, tensor)
+        if mismatch:
+            problems.append(f"{where}: {mismatch}")
 
     return problems
 

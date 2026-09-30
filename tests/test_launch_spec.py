@@ -212,3 +212,56 @@ def test_binding_to_the_wrong_extent_is_caught():
     problems = check_launch_spec(_symbolic_spec(), _tensors(), {"s0": 64})
     assert len(problems) == 3
     assert "expected shape [64, 512], got [10, 512]" in problems[0]
+
+
+# --------------------------------------------------------------------------
+# Layout — a non-default packing along the sticks
+#
+# The motivating case is a depthwise conv2d, compiled against a layout that puts
+# the 64 channels in one stick. Shape and dtype match the default arrangement
+# exactly, so nothing but the layout distinguishes a correct launch from one that
+# exits 0 with wrong data.
+# --------------------------------------------------------------------------
+
+
+_DWCONV_LAYOUT = {
+    "device_size": [32, 32, 1, 1, 64],
+    "stride_map": [1, 32, -1, 65536, 1024],
+    "device_dtype": "SEN169_FP16",
+    "element_arrangement": "STANDARD",
+}
+
+
+def test_layout_round_trips_through_the_spec_file(tmp_path):
+    spec = _spec()
+    spec["args"][0]["layout"] = dict(_DWCONV_LAYOUT)
+    save_launch_spec(str(tmp_path), spec)
+    back = load_launch_spec(str(tmp_path))
+    assert back["args"][0]["layout"] == _DWCONV_LAYOUT
+
+
+def test_spyre_layout_from_spec_builds_the_recorded_layout():
+    from torch_spyre.execution.kernel_cache import spyre_layout_from_spec
+
+    layout = spyre_layout_from_spec(_DWCONV_LAYOUT)
+    assert layout is not None
+    assert list(layout.device_size) == _DWCONV_LAYOUT["device_size"]
+    assert list(layout.stride_map) == _DWCONV_LAYOUT["stride_map"]
+
+
+def test_spyre_layout_from_spec_returns_none_for_an_unusable_block():
+    """An older spec, or an enum spelling this build does not know."""
+    from torch_spyre.execution.kernel_cache import spyre_layout_from_spec
+
+    assert spyre_layout_from_spec({"device_size": [1]}) is None  # no stride_map
+    assert spyre_layout_from_spec(
+        {**_DWCONV_LAYOUT, "device_dtype": "NOT_A_FORMAT"}
+    ) is None
+
+
+def test_a_spec_without_layout_is_not_layout_checked():
+    """Older specs still validate on shape and dtype alone."""
+    spec = _spec()
+    for arg in spec["args"]:
+        arg.pop("layout", None)
+    assert check_launch_spec(spec, _tensors()) == []

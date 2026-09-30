@@ -89,6 +89,18 @@ def _load_spec(path):
     return load_launch_spec(str(path))
 
 
+def _contiguous_strides(shape):
+    """Row-major host strides for ``shape``.
+
+    ``spyre_empty_with_layout`` takes host strides separately from the device
+    layout; the host view of a CLI-built tensor is always contiguous.
+    """
+    strides = [1] * len(shape)
+    for i in range(len(shape) - 2, -1, -1):
+        strides[i] = strides[i + 1] * shape[i + 1]
+    return strides
+
+
 def _tensors_from_spec(spec, bindings):
     """Build every tensor the kernel expects, straight from the spec.
 
@@ -116,8 +128,40 @@ def _tensors_from_spec(spec, bindings):
                     f"Bind it with --bind {dim}=N"
                 )
         dtype = getattr(torch, arg["dtype"])
-        make = torch.ones if arg["role"] == "input" else torch.empty
-        tensors.append(make(shape, dtype=dtype, device="spyre"))
+        is_input = arg["role"] == "input"
+
+        # Allocate WITH the recorded device layout when there is one. Shape and
+        # dtype alone are not enough: an op can be compiled against a specific
+        # packing along the sticks -- a depthwise conv2d puts the channels in one
+        # stick -- and a tensor in the default arrangement launches fine and
+        # returns wrong data. The layout is part of the execution contract.
+        layout = None
+        if arg.get("layout"):
+            from torch_spyre.execution.kernel_cache import spyre_layout_from_spec
+
+            layout = spyre_layout_from_spec(arg["layout"])
+
+        if layout is None:
+            tensor = (torch.ones if is_input else torch.empty)(
+                shape, dtype=dtype, device="spyre"
+            )
+        else:
+            from torch_spyre._C import spyre_empty_with_layout
+
+            # spyre_empty_with_layout goes straight to the allocator, which needs
+            # a live RuntimeContext. Ordinary factory calls bring it up lazily;
+            # this one does not, and it can be the first allocation we make.
+            torch.spyre._impl._lazy_init()
+            tensor = spyre_empty_with_layout(
+                tuple(shape),
+                tuple(_contiguous_strides(shape)),
+                dtype,
+                layout,
+                torch.device("spyre"),
+            )
+            if is_input:
+                tensor.fill_(1.0)
+        tensors.append(tensor)
     return tensors
 
 
