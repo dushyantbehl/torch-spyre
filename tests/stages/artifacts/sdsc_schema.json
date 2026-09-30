@@ -1,0 +1,179 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$comment": "SuperDSC JSON schema for torch-spyre generated SDSC objects. Derived from the SDSC validator design (rfcs/sdsc_validator/SDSC_VALIDATOR_DESIGN.md). This schema covers the subset of fields produced by generate_sdsc().",
+
+  "type": "object",
+  "minProperties": 1,
+  "maxProperties": 1,
+  "additionalProperties": {
+    "$ref": "#/$defs/SuperDSCInner"
+  },
+
+  "$defs": {
+    "FoldProp": {
+      "type": "object",
+      "required": ["factor_", "label_"],
+      "properties": {
+        "factor_": { "type": "integer", "minimum": 1 },
+        "label_": { "type": "string", "minLength": 1 }
+      }
+    },
+
+    "DimPropFunc": {
+      "type": "object",
+      "minProperties": 1,
+      "maxProperties": 1
+    },
+
+    "FoldStructure": {
+      "type": "object",
+      "required": ["dim_prop_func", "dim_prop_attr", "data_"],
+      "properties": {
+        "dim_prop_func": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/DimPropFunc" }
+        },
+        "dim_prop_attr": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/FoldProp" }
+        },
+        "data_": { "type": "object" }
+      }
+    },
+
+    "ComputeOp": {
+      "type": "object",
+      "required": ["exUnit", "opFuncName", "attributes_", "location", "inputLabeledDs", "outputLabeledDs"],
+      "properties": {
+        "exUnit": { "type": "string", "enum": ["sfp", "pt"] },
+        "opFuncName": { "type": "string", "minLength": 1 },
+        "attributes_": {
+          "type": "object",
+          "required": ["dataFormat_", "fidelity_"],
+          "properties": {
+            "dataFormat_": { "type": "string" },
+            "fidelity_": { "type": "string" }
+          }
+        },
+        "location": { "type": "string" },
+        "inputLabeledDs": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" }
+        },
+        "outputLabeledDs": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" }
+        }
+      }
+    },
+
+    "LabeledDs": {
+      "type": "object",
+      "required": ["ldsIdx_", "dsName_", "dsType_", "scale_", "wordLength", "dataFormat_", "memOrg_"],
+      "properties": {
+        "ldsIdx_": { "type": "integer", "minimum": 0 },
+        "dsName_": { "type": "string", "minLength": 1 },
+        "dsType_": { "type": "string", "minLength": 1 },
+        "scale_": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "integer" }
+        },
+        "wordLength": { "type": "integer", "minimum": 1 },
+        "dataFormat_": { "type": "string" },
+        "memOrg_": { "type": "object" }
+      }
+    },
+
+    "ScheduleTreeNode": {
+      "type": "object",
+      "required": ["nodeType_", "name_", "ldsIdx_", "component_", "layoutDimOrder_", "startAddressCoreCorelet_", "coordinates_"],
+      "properties": {
+        "nodeType_": { "type": "string" },
+        "name_": { "type": "string" },
+        "prev_": { "type": "string" },
+        "ldsIdx_": { "type": "integer", "minimum": 0 },
+        "component_": { "type": "string" },
+        "layoutDimOrder_": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "maxDimSizes_": {
+          "type": "array",
+          "items": { "type": "integer" }
+        },
+        "startAddressCoreCorelet_": { "$ref": "#/$defs/FoldStructure" },
+        "coordinates_": { "type": "object" }
+      }
+    },
+
+    "DSCInner": {
+      "type": "object",
+      "required": ["numCoresUsed_", "numCoreletsUsed_", "coreIdsUsed_", "N_", "dataStageParam_", "computeOp_", "labeledDs_", "scheduleTree_"],
+      "properties": {
+        "numCoresUsed_": { "type": "integer", "minimum": 1 },
+        "numCoreletsUsed_": { "type": "integer", "minimum": 1 },
+        "coreIdsUsed_": {
+          "type": "array",
+          "items": { "type": "integer", "minimum": 0 }
+        },
+        "N_": { "type": "object" },
+        "coordinateMasking_": { "type": "object" },
+        "maskingConstId_": { "type": "integer" },
+        "dataStageParam_": { "type": "object" },
+        "primaryDsInfo_": { "type": "object" },
+        "computeOp_": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/ComputeOp" }
+        },
+        "labeledDs_": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/LabeledDs" }
+        },
+        "scheduleTree_": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/ScheduleTreeNode" }
+        },
+        "constantInfo_": {}
+      }
+    },
+
+    "DSC": {
+      "type": "object",
+      "minProperties": 1,
+      "maxProperties": 1,
+      "additionalProperties": {
+        "$ref": "#/$defs/DSCInner"
+      }
+    },
+
+    "SuperDSCInner": {
+      "type": "object",
+      "required": ["numCoresUsed_", "coreIdToDsc_", "coreIdToWkSlice_", "coreIdToDscSchedule", "numWkSlicesPerDim_", "dscs_", "sdscFoldProps_", "sdscFolds_", "coreFoldProp_", "coreletFoldProp_"],
+      "properties": {
+        "numCoresUsed_": { "type": "integer", "minimum": 1 },
+        "sdscFoldProps_": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/FoldProp" }
+        },
+        "sdscFolds_": { "$ref": "#/$defs/FoldStructure" },
+        "coreFoldProp_": { "$ref": "#/$defs/FoldProp" },
+        "coreletFoldProp_": { "$ref": "#/$defs/FoldProp" },
+        "coreIdToDsc_": { "type": "object" },
+        "numWkSlicesPerDim_": { "type": "object" },
+        "coreIdToWkSlice_": { "type": "object" },
+        "coreIdToDscSchedule": { "type": "object" },
+        "dscs_": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/DSC" }
+        }
+      }
+    }
+  }
+}
