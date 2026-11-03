@@ -11,37 +11,81 @@ uv pip install .
 
 ## CLI
 
-If the folder carries a `launch_spec.json` (written by the compiler next to
-`spyreCodeDir/`), there is nothing to type — the tensors are built from it:
+A compiled folder carries a `launch_spec.json` (written by the compiler next to
+`spyreCodeDir/`) describing every argument, so there is nothing to type:
 
 ```
 spyre launch <folder with spyreCode>
 ```
 
-Otherwise, describe the tensors positionally:
+Inputs are filled with ones and the outputs printed. That tells you the folder
+loads and runs, and nothing about the numbers: an add of ones gives 2.0
+everywhere, so any elementwise op touching both inputs looks plausible, and a
+transpose or reduction-axis bug is invisible when every element is identical.
+
+### Verifying the answer
+
+Supply real values with `-i`, and a reference with `-o`, and the same command
+checks the result instead of printing it:
 
 ```
-spyre launch -i 10x512@fp16 -i 10x512@fp16 -o 10x512@fp16 <folder with spyreCode>
+spyre launch -i a.pt -i b.pt -o expected.pt <folder>
 ```
 
-The inputs and outputs are of the form `"axbxc@d"`, where:
-
-1. the first part is the tensor dimension info.
-2. d specifies the dtype short form, like "fp16", "fp32" or "bf16".
-
-Given both a spec and explicit `-i`/`-o`, the arguments are **checked** against
-the spec and the launch is refused if they disagree:
-
 ```
-$ spyre launch -i 512x10@fp16 -i 10x512@fp16 -o 10x512@fp16 <folder>
-ValueError: the tensors given do not match what this kernel expects:
-  - arg 0 (input): expected shape [10, 512], got [512, 10] -- same extents in a
-    different order (transposed?)
+arg 2 (output): match  (max abs diff 4.88e-04, rtol 0.001)
+1 output verified, 0 failed
 ```
 
-A kernel whose bundle takes a caller-supplied pool tensor records its size in the
-spec, and `spyre launch` allocates and prepends it. Passing `-i`/`-o` alone for
-such a kernel is refused, since the pool is not one of the listed arguments.
+On a mismatch it reports what differed and exits non-zero:
+
+```
+arg 2 (output): MISMATCH
+  Tensor-likes are not close!
+  Mismatched elements: 3 / 5120 (0.1%)
+  Greatest absolute difference: 0.0312 at index (0, 17) (up to 1e-05 allowed)
+  Greatest relative difference: 0.0156 at index (0, 17) (up to 0.001 allowed)
+0 output verified, 1 failed
+```
+
+`-i` and `-o` are positional in `arg_index` order, matching how the spec binds
+arguments. The pool tensor, when a kernel takes one, is never named by a flag —
+the launcher allocates and prepends it.
+
+| Exit code | Meaning |
+|---|---|
+| 0 | launched, and every output matched |
+| 1 | a mismatch: well-formed launch, wrong numbers |
+| 2 | could not launch: bad arguments, unreadable file, spec disagreement |
+
+A script needs 1 and 2 separated: "this kernel is wrong" and "this invocation
+was malformed" are different failures.
+
+**File formats.** `.pt` goes through `torch.load` and is self-describing, so its
+shape and dtype are cross-checked against the spec and a disagreement is an
+error. It is the format the OpSpec Lab's `--save-inputs` already writes, so a
+captured kernel replays with no conversion — including its
+`{"tensors": [...]}` layout, where one `-i` supplies several arguments.
+
+`.bin` is raw little-endian row-major element data, with shape and dtype taken
+from the spec. It exists for a non-PyTorch producer. Because it carries no
+metadata the only possible check is length, so a file of the right size but the
+wrong dtype is undetectable — prefer `.pt`.
+
+**Tolerances** default to the output dtype's own, taken from `torch.testing`, so
+a result this tool calls close is one the rest of the test suite would too:
+
+| dtype | rtol | atol |
+|---|---|---|
+| float32 | 1.3e-6 | 1e-5 |
+| float16 | 1e-3 | 1e-5 |
+| bfloat16 | 1.6e-2 | 1e-5 |
+| float64 | 1e-7 | 1e-7 |
+| integer, bool | exact | exact |
+
+Override with `--rtol`/`--atol`, or demand bitwise equality with `--exact`.
+`--save-output FILE` writes the device result, for making a reference or
+inspecting a failure.
 
 ### Ops compiled against a specific device layout
 
@@ -57,20 +101,8 @@ spyre launch <folder with a dwconv spyreCode>
 
 is enough. Shape and dtype alone are **not**: they match the default arrangement
 exactly, so a tensor built without the layout launches fine and returns wrong
-data. For that reason `-i`/`-o` are also checked against the recorded layout and
-refused when they disagree:
-
-```
-$ spyre launch -i 1x64x32x32@fp16 -i 64x1x3x3@fp16 -o 1x64x30x30@fp16 <folder>
-ValueError: the tensors given do not match what this kernel expects:
-  - arg 0 (input): expected layout device_size=[32, 32, 1, 1, 64]
-    stride_map=[1, 32, -1, 65536, 1024], got device_size=[64, 32, 1, 1, 64]
-    stride_map=[1024, 32, 32, -1, 1] -- the tensor is packed differently along
-    the sticks, so the launch would return wrong data
-```
-
-There is no way to express a device layout through `-i`/`-o`, so such a kernel is
-launched from its spec.
+data. Tensors loaded from `-i` files are allocated with the recorded layout for
+the same reason, and checked against it before the launch.
 
 For a kernel with a symbolic dimension, bind it:
 
@@ -80,9 +112,9 @@ spyre launch --bind s0=128 <folder with spyreCode>
 
 ### Without a launch spec
 
-A folder compiled before the spec existed, or by a build that does not write one,
-still launches from `-i`/`-o` exactly as before — but nothing is checked, so the
-two constraints below apply.
+A folder with no `launch_spec.json` cannot be launched: its arguments are
+unknown, there is no order to bind `-i` files in, and a `.bin` has nothing to
+interpret it. Recompile to get a folder that describes itself.
 
 ## SDK
 
@@ -113,16 +145,49 @@ spec, so on this path:
 3. The same goes for a device layout, which is easier to get wrong: shape and
    dtype can be right while the packing along the sticks is not.
 
-`check_launch_spec` reports all three. To get them checked, either use
-`spyre launch` on a folder that has a spec, or validate first:
+The spec API reports all three. `load_kernelspec` reads what an artifact
+requires; `check_kernelspec` checks tensors against it:
 
 ```
 import torch  # before torch_spyre, which torch loads as a backend extension
-from torch_spyre.execution.kernel_cache import load_launch_spec, check_launch_spec
+import spyre_cli
 
-spec = load_launch_spec(folder)          # None when the folder has no spec
+spec = spyre_cli.load_kernelspec(folder)     # None when the folder has no spec
 if spec is not None:
-    problems = check_launch_spec(spec, [a, b, c])
+    for arg in spec.args:
+        print(arg.arg_index, arg.role, arg.shape, arg.dtype, arg.layout)
+
+    problems = spyre_cli.check_kernelspec(spec, [a, b, c])
     if problems:
         raise ValueError("\n".join(problems))
 ```
+
+They are two calls because they take different things at different times:
+`load_kernelspec` takes a path and is what you read to decide what tensors to
+build, so at that point none exist to validate; `check_kernelspec` takes those
+tensors once they do. Problems come back as a list rather than an exception, so
+the policy stays with you.
+
+### Verifying in Python
+
+The comparison the CLI performs is available directly, for a script that owns
+its own reference:
+
+```
+import torch
+import spyre_cli
+
+expected = fn(*cpu_inputs)                   # your reference, however you make it
+
+runner = spyre_cli.launch(*device_inputs, device_output, path=folder)
+torch.testing.assert_close(device_output.cpu(), expected, rtol=1e-2, atol=1e-2)
+```
+
+or, to get the CLI's per-dtype defaults and its failure report as a list:
+
+```
+problems = spyre_cli.check_values([device_output.cpu()], [expected])
+```
+
+`spyre_cli.load_tensors(path, args)` reads a `.pt` or `.bin` the same way the
+CLI does, cross-checking it against the spec's argument records.

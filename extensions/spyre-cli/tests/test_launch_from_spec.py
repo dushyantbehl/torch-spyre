@@ -161,48 +161,54 @@ def test_symbolic_dim_needs_a_binding(made):
 # --------------------------------------------------------------------------
 
 
+def _write_pt(path, shape, dtype=torch.float16):
+    """A reference file holding one tensor of ``shape``."""
+    torch.save(torch.ones(shape, dtype=dtype), path)
+    return str(path)
+
+
 @pytest.mark.parametrize(
-    "inputs,outputs,expected",
+    "shape,dtype,expected",
     [
-        (["512x10@fp16", "10x512@fp16"], ["10x512@fp16"], "transposed"),
-        (["10x512@fp32", "10x512@fp16"], ["10x512@fp16"], "expected dtype float16"),
-        (["10x512@fp16"], ["10x512@fp16"], "expected 3 tensors"),
+        ([512, 10], torch.float16, r"expects shape \[10, 512\]"),
+        ([10, 512], torch.float32, "expects dtype float16"),
     ],
-    ids=["transposed", "wrong-dtype", "wrong-count"],
+    ids=["transposed", "wrong-dtype"],
 )
-def test_explicit_args_that_disagree_with_the_spec_are_refused(
-    tmp_path, inputs, outputs, expected
+def test_an_input_file_that_disagrees_with_the_spec_is_refused(
+    tmp_path, shape, dtype, expected
 ):
-    """Each of these used to launch and return wrong data."""
-    if not torch.accelerator.is_available():
-        pytest.skip("needs a device to allocate the tensors being checked")
+    """A .pt is self-describing, so a disagreement is an error.
+
+    Each of these used to launch and return wrong data.
+    """
     (tmp_path / "spyreCodeDir").mkdir()
     (tmp_path / "spyreCodeDir" / "launch_spec.json").write_text(
         json.dumps(_spec_dict())
     )
+    bad = _write_pt(tmp_path / "bad.pt", shape, dtype)
     with pytest.raises(ValueError, match=expected):
-        launch_from_cli(str(tmp_path), inputs, outputs)
+        launch_from_cli(str(tmp_path), [bad], [])
 
 
-def test_a_folder_without_a_spec_and_no_arguments_is_refused(tmp_path):
-    """Neither source of truth: refuse rather than launch zero tensors.
+def test_too_few_input_files_is_refused(tmp_path):
+    """The spec says how many arguments there are; the files have to supply them."""
+    (tmp_path / "spyreCodeDir").mkdir()
+    (tmp_path / "spyreCodeDir" / "launch_spec.json").write_text(
+        json.dumps(_spec_dict())
+    )
+    one = _write_pt(tmp_path / "a.pt", [10, 512])
+    with pytest.raises(ValueError, match="takes 2 input"):
+        launch_from_cli(str(tmp_path), [one], [])
 
-    Without this the launch proceeds and dies in the runtime with an
-    argument-count error, which says nothing about what the caller omitted.
+
+def test_a_folder_without_a_spec_is_refused(tmp_path):
+    """Its arguments are unknown, so there is nothing to launch against.
+
+    Everything is addressed through the spec now: which arguments exist, the
+    order -i files bind in, and how to interpret a .bin. Refusing beats dying
+    in the runtime with an argument-count error that says nothing about what
+    the caller omitted.
     """
-    with pytest.raises(ValueError, match="no launch spec"):
+    with pytest.raises(ValueError, match="no launch_spec.json"):
         launch_from_cli(str(tmp_path), [], [])
-
-
-def test_a_folder_without_a_spec_is_launched_from_the_arguments(tmp_path, made):
-    """Folders compiled before the spec existed keep working."""
-    from spyre_cli import core
-
-    launched = []
-    with mock.patch.object(
-        core, "_launch", side_effect=lambda p, t: launched.append(t)
-    ):
-        launch_from_cli(str(tmp_path), ["10x512@fp16"], ["10x512@fp16"])
-
-    assert len(launched) == 1
-    assert len(launched[0]) == 2, "one input, one output, unchecked"

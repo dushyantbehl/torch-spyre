@@ -32,127 +32,115 @@ def _launch(path, tensors):
     return runner
 
 
-dtype_mapping = {
-    "fp16": "float16",
-    "fp32": "float32",
-    "bf16": "bfloat16",
-}
+def launch_from_cli(
+    path,
+    inputs,
+    outputs,
+    bindings=None,
+    rtol=None,
+    atol=None,
+    exact=False,
+    save_output=None,
+):
+    """Launch ``path``, verifying the result when a reference was given.
 
+    With no files, every tensor comes from the folder's spec and the outputs
+    are printed -- "did it run". Given ``-i`` files those values are used, and
+    given ``-o`` files as well the result is compared against them -- "is it
+    right".
 
-def create_tensor_info(tinfo):
+    Returns True when every output matched, or when there was nothing to
+    compare; False on a mismatch. A malformed invocation raises instead, since
+    that is a different failure and a script has to tell them apart.
     """
-    Parses strings of type: "10x1024@fp16".
-    """
-
-    # defaults
-    dtype = "float16"
-    dims = ""
-
-    parts = tinfo.split("@")
-
-    if len(parts) == 1:
-        print(f"{tinfo}: No dtype found. Assuming fp16")
-        dims = parts[0]
-    elif len(parts) > 2:
-        raise ValueError(f"Unexpected tensor info: {tinfo}. Expected a single @")
-    else:
-        dims = parts[0]
-        dtype = parts[1]
-        if dtype not in list(dtype_mapping.keys()):
-            raise ValueError(
-                f"Unexpected dtype: {dtype}. Wanted one of: {list(dtype_mapping.keys())}"
-            )
-        dtype = dtype_mapping[dtype]
-
-    dims = dims.split("x")
-    dims = list(filter(lambda x: x != "", dims))
-
-    if len(dims) == 0:
-        raise ValueError(f"Found no dimensions in: {tinfo}")
-
-    try:
-        dims = list(map(lambda x: int(x), dims))
-    except ValueError:
-        raise ValueError(f"Found non integer dimension in: {tinfo}")
-
-    return (dims, dtype)
-
-
-def launch_from_cli(path, inputs, outputs, bindings=None):
     path = Path(path)
     import torch
 
-    # Deferred, like the other torch-spyre imports here: launch_spec imports
-    # torch at module level, and `spyre --help` must work without it.
+    # Deferred, like the other torch-spyre imports here: these import torch at
+    # module level, and `spyre --help` must work without it.
+    from .io import check_values, describe_match, load_tensors
     from .launch_spec import _tensors_from_spec, check_kernelspec, load_kernelspec
 
     bindings = bindings or {}
     spec = load_kernelspec(path)
 
-    if spec is None and not inputs and not outputs:
-        # Nothing to launch with: no spec to read the arguments from, and none
-        # given. Caught here rather than in the CLI, which cannot see whether
-        # the folder has a spec. Launching anyway would pass zero tensors and
-        # fail deep in the runtime with an argument-count error.
+    if spec is None:
+        # Everything here is addressed through the spec: which arguments exist,
+        # what order they bind in, and how to interpret a .bin. Without one
+        # there is nothing to launch against.
         raise ValueError(
-            f"{path} has no launch spec, so the tensors must be described: "
-            "pass -i/-o, or recompile to get a folder that describes itself."
+            f"{path} has no launch_spec.json, so its arguments are unknown. "
+            "Recompile to get a folder that describes itself."
         )
 
-    if spec is not None and not inputs and not outputs:
-        # The folder describes itself, so there is nothing to retype.
-        tensors = _tensors_from_spec(spec, bindings)
-        # By role, not by position: an output need not be a trailing argument,
-        # and an in-place arg is both. ``arg_offset`` skips the pool, which sits
-        # at 0 and is not one of ``args``.
-        out_positions = [
-            arg.arg_index + spec.arg_offset for arg in spec.args if arg.role != "input"
-        ]
-        print(f"using {spec.kernel_name} launch spec from {path}")
+    in_args = [a for a in spec.args if a.role != "output"]
+    out_args = [a for a in spec.args if a.role != "input"]
+    # Position in the tensor list, which the pool shifts when the kernel takes
+    # one. By role, not by index: an output need not be the trailing argument.
+    out_positions = [a.arg_index + spec.arg_offset for a in out_args]
+
+    expected = []
+    for f in outputs:
+        expected.extend(load_tensors(f, out_args[len(expected) :], bindings))
+    if expected and len(expected) != len(out_args):
+        raise ValueError(
+            f"{path} has {len(out_args)} output(s), but {len(outputs)} file(s) "
+            f"gave {len(expected)} expected tensor(s)"
+        )
+
+    if inputs:
+        values = []
+        for f in inputs:
+            values.extend(load_tensors(f, in_args[len(values) :], bindings))
+        if len(values) != len(in_args):
+            raise ValueError(
+                f"{path} takes {len(in_args)} input(s), but {len(inputs)} file(s) "
+                f"gave {len(values)}"
+            )
+        tensors = _tensors_from_spec(spec, bindings, values=values)
     else:
-        tensors = []
-        for iarg in inputs:
-            shape, dtype = create_tensor_info(iarg)
-            tensor = torch.ones(
-                shape,
-                dtype=getattr(torch, dtype),
-                device="spyre",
-            )
-            tensors.append(tensor)
+        # No values given: ones for inputs, which says nothing about numerics
+        # but does say whether the folder loads and runs.
+        tensors = _tensors_from_spec(spec, bindings)
 
-        for oarg in outputs:
-            shape, dtype = create_tensor_info(oarg)
-            tensor = torch.empty(
-                shape,
-                dtype=getattr(torch, dtype),
-                device="spyre",
-            )
-            tensors.append(tensor)
-        # Explicit form appends outputs after inputs, so they are the tail.
-        out_positions = list(range(len(inputs), len(tensors)))
+    print(f"using {spec.kernel_name} launch spec from {path}")
 
-        if spec is not None:
-            # Explicit arguments AND a spec: check them rather than trusting
-            # them. This is the case that used to launch and return wrong data.
-            problems = check_kernelspec(spec, tensors, bindings)
-            if problems:
-                raise ValueError(
-                    "the tensors given do not match what this kernel expects:\n"
-                    + "\n".join(f"  - {p}" for p in problems)
-                    + "\n\nOmit -i/-o to build them from the spec instead."
-                )
+    problems = check_kernelspec(spec, tensors, bindings)
+    if problems:
+        raise ValueError(
+            "the tensors do not match what this kernel expects:\n"
+            + "\n".join(f"  - {p}" for p in problems)
+        )
 
     runner = _launch(path, tensors)
-
-    # Every output, not just the last: reading them all back is also what makes
-    # a failed launch visible, since .cpu() is where a dead kernel surfaces.
-    if not out_positions:
-        out_positions = [len(tensors) - 1]
-    for pos in out_positions:
-        if len(out_positions) > 1:
-            print(f"output (arg {pos}):")
-        print(tensors[pos].cpu())
+    # Reading every output back is also what makes a failed launch visible,
+    # since .cpu() is where a dead kernel surfaces.
+    actual = [tensors[pos].cpu() for pos in out_positions]
     del runner
+
+    if save_output:
+        torch.save(actual[0] if len(actual) == 1 else actual, save_output)
+        print(f"wrote {save_output}")
+
+    labels = [f"arg {a.arg_index} ({a.role})" for a in out_args]
+
+    if not expected:
+        for label, got in zip(labels, actual):
+            if len(actual) > 1:
+                print(f"{label}:")
+            print(got)
+        return True
+
+    problems = check_values(
+        actual, expected, labels=labels, rtol=rtol, atol=atol, exact=exact
+    )
+    for p in problems:
+        print(p)
+    for label, got, want in zip(labels, actual, expected):
+        if not any(p.startswith(label) for p in problems):
+            print(f"{label}: {describe_match(got, want, rtol)}")
+    print(f"{len(expected) - len(problems)} output verified, {len(problems)} failed")
+    return not problems
 
 
 def launch(*tensors, path="."):

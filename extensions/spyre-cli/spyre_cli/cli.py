@@ -12,7 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import sys
+
 import click
+
 from .core import launch_from_cli
 
 
@@ -22,38 +25,74 @@ def cli():
 
 
 @cli.command()
-@click.option("-i", "--input", multiple=True, help="input tensor")
-@click.option("-o", "--output", multiple=True, help="output tensor")
+@click.option(
+    "-i",
+    "--input",
+    multiple=True,
+    metavar="FILE",
+    type=click.Path(exists=True, dir_okay=False),
+    help="input tensor file (.pt or .bin), in arg_index order",
+)
+@click.option(
+    "-o",
+    "--output",
+    multiple=True,
+    metavar="FILE",
+    type=click.Path(exists=True, dir_okay=False),
+    help="EXPECTED output; the launch result is compared against it",
+)
 @click.option(
     "--bind",
     multiple=True,
     metavar="SYM=N",
     help="bind a symbolic dimension, e.g. --bind s0=128",
 )
+@click.option("--rtol", type=float, default=None, help="relative tolerance")
+@click.option("--atol", type=float, default=None, help="absolute tolerance")
+@click.option("--exact", is_flag=True, help="require bitwise equality")
+@click.option(
+    "--save-output",
+    metavar="FILE",
+    default=None,
+    help="write the device result here as a .pt",
+)
 @click.argument("path", default=".")
-def launch(path, input, output, bind):
-    """Launch Spyrecode.
+def launch(path, input, output, bind, rtol, atol, exact, save_output):
+    """Launch SpyreCode, and check the answer when given a reference.
 
-    With no -i/-o, the tensors are built from the folder's launch_spec.json.
-    Given explicitly, they are checked against it when one is present.
+    With no files, the tensors come from the folder's launch_spec.json with
+    ones for inputs, and the outputs are printed.
+
+    
+      spyre launch <folder>
+      spyre launch -i a.pt -i b.pt <folder>
+      spyre launch -i a.pt -i b.pt -o expected.pt <folder>
+
+    Exit codes: 0 matched (or nothing to compare), 1 mismatch, 2 could not
+    launch -- a mismatch and a malformed invocation are different failures.
     """
-
-    input = list(input)
-    output = list(output)
-
     bindings = {}
     for item in bind:
-        if "=" not in item:
-            raise ValueError(f"Expected --bind SYM=N, got: {item}")
-        sym, _, value = item.partition("=")
+        sym, sep, value = item.partition("=")
+        if not sep or not value.isdigit():
+            raise click.BadParameter(f"expected --bind SYM=N, got {item!r}")
         bindings[sym] = int(value)
 
-    # An output is required only when describing the tensors by hand: a spec
-    # already says which arguments are outputs.
-    if output == [] and input != []:
-        raise ValueError("At least 1 output tensor expected!")
-
-    launch_from_cli(path, input, output, bindings)
+    try:
+        matched = launch_from_cli(
+            path,
+            list(input),
+            list(output),
+            bindings,
+            rtol=rtol,
+            atol=atol,
+            exact=exact,
+            save_output=save_output,
+        )
+    except (ValueError, OSError) as e:
+        click.echo(f"error: {e}", err=True)
+        sys.exit(2)
+    sys.exit(0 if matched else 1)
 
 
 def main():

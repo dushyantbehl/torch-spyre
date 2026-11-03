@@ -14,14 +14,20 @@
 
 from .core import launch
 
-__all__ = ["check_kernelspec", "launch", "load_kernelspec"]
+__all__ = [
+    "check_kernelspec",
+    "check_values",
+    "launch",
+    "load_kernelspec",
+    "load_tensors",
+]
 
 
 def __getattr__(name):
     """Resolve the kernelspec API on first use.
 
-    ``launch_spec`` imports torch at module level, so importing it here would
-    make ``spyre --help`` need torch-spyre present. Deferring keeps the import
+    ``launch_spec`` and ``io`` import torch at module level, so importing them
+    here would make ``spyre --help`` need torch-spyre present. Deferring keeps the import
     cost and the dependency at the point of use, while
     ``spyre_cli.load_kernelspec`` still reads as a plain attribute.
     """
@@ -29,4 +35,8 @@ def __getattr__(name):
         from . import launch_spec
 
         return getattr(launch_spec, name)
+    if name in ("load_tensors", "check_values"):
+        from . import io
+
+        return getattr(io, name)
     raise AttributeError(f"module {__name__!r} has no attribute {name!r}")

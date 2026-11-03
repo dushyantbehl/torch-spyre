@@ -79,12 +79,14 @@ def load_kernelspec(path):
     return None if raw is None else LaunchSpec.from_dict(raw)
 
 
-def _tensors_from_spec(spec, bindings):
+def _tensors_from_spec(spec, bindings, values=None):
     """Build every tensor ``spec`` says the kernel expects.
 
-    Inputs are filled with ones and outputs left uninitialised, matching the
-    explicit path. The pool tensor, when the kernel takes one, is prepended
-    exactly as inductor's ``call_kernel`` does -- it is not one of ``args``.
+    Outputs are left uninitialised. Inputs take their values from ``values``,
+    in ``arg_index`` order, when given; otherwise they are filled with ones,
+    which says whether the folder runs but nothing about numerics. The pool
+    tensor, when the kernel takes one, is prepended exactly as inductor's
+    ``call_kernel`` does -- it is not one of ``args``.
 
     Each tensor is allocated with the recorded device layout. Shape and dtype
     alone are not the contract: an op can be compiled against a particular
@@ -97,6 +99,7 @@ def _tensors_from_spec(spec, bindings):
     if spec.caller_passes_pool:
         tensors.append(torch.empty(spec.pool_size, dtype=torch.uint8, device="spyre"))
 
+    supplied = list(values or [])
     for arg in spec.args:
         try:
             shape = arg.resolved_shape(bindings)
@@ -108,8 +111,11 @@ def _tensors_from_spec(spec, bindings):
         tensors.append(
             _alloc(shape, getattr(torch, arg.dtype), spyre_layout(arg.layout))
         )
-        if arg.role == "input":
-            tensors[-1].fill_(1.0)
+        if arg.role != "output":
+            if supplied:
+                tensors[-1].copy_(supplied.pop(0))
+            else:
+                tensors[-1].fill_(1.0)
     return tensors
 
 
