@@ -460,7 +460,7 @@ auto get_device_stride_infos(
     if (stl.stride_map[i] == 0) {
       // Broadcast: extent matches an expanded host dim, so keep it with stride
       // 0.
-      if (i + 1 < device_rank && stl.device_size[i] > 1) {
+      if (stl.device_size[i] > 1) {
         for (int h = 0; h < host_rank; h++) {
           if (strides[h] == 0 && sizes[h] == stl.device_size[i]) {
             dcsi_sizes[i] = stl.device_size[i];
@@ -2039,6 +2039,25 @@ void copy_sharded(const at::Tensor& self, const at::Tensor& dst) {
   }
 }
 
+// True when the dims both tensors step through (size > 1, stride != 0) are
+// not in the same order of decreasing stride, e.g. a transpose.
+bool dim_order_differs(const at::Tensor& a, const at::Tensor& b) {
+  std::vector<int64_t> dims;
+  for (int64_t d = 0; d < a.dim(); d++) {
+    if (a.size(d) > 1 && a.stride(d) != 0 && b.stride(d) != 0) {
+      dims.push_back(d);
+    }
+  }
+  for (const int64_t i : dims) {
+    for (const int64_t j : dims) {
+      if ((a.stride(i) > a.stride(j)) != (b.stride(i) > b.stride(j))) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
 }  // namespace
 
 at::Tensor spyre_copy_from(const at::Tensor& self, const at::Tensor& dst,
@@ -2058,6 +2077,26 @@ at::Tensor spyre_copy_from(const at::Tensor& self, const at::Tensor& dst,
 
   if (dst.is_privateuseone()) {
     stream = getCurrentStream(dst.device());
+    // H2D staging path: the conversion pairs each device dim with a host dim
+    // assuming the host source steps through its dims in the destination's
+    // order, and a destination slice additionally assumes a dense source.
+    // A host source that breaks either (a transposed view, a sliced host view
+    // into a device slice) is first copied on the host into the destination's
+    // layout, so the conversion sees matching strides.
+    if (self.is_cpu() && self.strides() != dst.strides()) {
+      auto* dst_impl = static_cast<SpyreTensorImpl*>(dst.unsafeGetTensorImpl());
+      const bool dst_sliced =
+          c10::multiply_integers(dst_impl->dma_sizes) > dst.numel();
+      if (dim_order_differs(self, dst) ||
+          (dst_sliced && !self.is_contiguous())) {
+        cpu_alloc =
+            dst.is_non_overlapping_and_dense()
+                ? at::empty_strided(dst.sizes(), dst.strides(), self.options())
+                : at::empty(dst.sizes(), self.options());
+        cpu_alloc.copy_(self);
+        copy_from = &cpu_alloc;
+      }
+    }
   } else {
     stream = getCurrentStream(self.device());
     // D2H staging path: DMA the full physical allocation into a CPU buffer
